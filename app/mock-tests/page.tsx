@@ -43,7 +43,7 @@ const MOCK_TESTS = [
 
 export default function MockTestsPage() {
   return (
-    <div className="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white font-sans">
+    <div className="bg-background-light min-h-screen text-slate-900 font-sans">
       <DashboardHeader />
       <main className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-40 py-6">
         {/* Breadcrumbs */}
@@ -56,7 +56,7 @@ export default function MockTestsPage() {
             Home
           </Link>
           <span className="text-[#896161] text-sm font-medium">/</span>
-          <span className="text-[#181111] dark:text-white text-sm font-bold">
+          <span className="text-[#181111] -white text-sm font-bold">
             Mock Test Library
           </span>
         </div>
@@ -68,7 +68,7 @@ export default function MockTestsPage() {
           <div className="flex-1">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h1 className="text-2xl font-bold text-[#181111] dark:text-white">
+                <h1 className="text-2xl font-bold text-[#181111] -white">
                   Mock Test Library
                 </h1>
                 <p className="text-[#896161] text-sm mt-1">
@@ -76,7 +76,7 @@ export default function MockTestsPage() {
                 </p>
               </div>
               <div className="flex gap-2">
-                <div className="bg-white dark:bg-[#3d1d1d] border border-[#f4f0f0] dark:border-[#3d1d1d] rounded-lg px-3 py-1 flex items-center gap-2 cursor-pointer">
+                <div className="bg-white -[#3d1d1d] border border-[#f4f0f0] -[#3d1d1d] rounded-lg px-3 py-1 flex items-center gap-2 cursor-pointer">
                   <span className="text-xs font-bold text-[#896161]">
                     Sort by:
                   </span>
@@ -94,7 +94,7 @@ export default function MockTestsPage() {
 
             {/* Load More */}
             <div className="flex justify-center mt-12 pb-10">
-              <button className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-background-dark/50 border border-[#f4f0f0] dark:border-[#3d1d1d] rounded-xl hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors font-bold text-sm cursor-pointer">
+              <button className="flex items-center gap-2 px-6 py-3 bg-white -background-dark/50 border border-[#f4f0f0] -[#3d1d1d] rounded-xl hover:bg-[#f4f0f0] :bg-[#3d1d1d] transition-colors font-bold text-sm cursor-pointer">
                 View More Tests
                 <span className="material-symbols-outlined">expand_more</span>
               </button>
@@ -104,7 +104,7 @@ export default function MockTestsPage() {
       </main>
 
       {/* Footer Mobile Nav (Quick Access) */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-[#f4f0f0] dark:border-[#3d1d1d] flex justify-around py-2 px-4 z-40">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white -background-dark border-t border-[#f4f0f0] -[#3d1d1d] flex justify-around py-2 px-4 z-40">
         <Link href="/dashboard" className="flex flex-col items-center text-[#896161] hover:text-primary">
             <span className="material-symbols-outlined">home</span>
             <span className="text-[10px] font-bold">Home</span>

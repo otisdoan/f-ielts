@@ -2,8 +2,8 @@
 export default function FilterSidebar() {
   return (
     <aside className="w-full lg:w-64 shrink-0 hidden lg:block">
-      <div className="bg-white dark:bg-background-dark/50 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] p-4 sticky top-24">
-        <h3 className="text-[#181111] dark:text-white text-base font-bold mb-4 px-2">
+      <div className="bg-white -background-dark/50 rounded-xl border border-slate-200 -slate-800 p-4 sticky top-24">
+        <h3 className="text-[#181111] -white text-base font-bold mb-4 px-2">
           Filters
         </h3>
         <div className="flex flex-col gap-1 mb-6">
@@ -11,19 +11,19 @@ export default function FilterSidebar() {
             <span className="material-symbols-outlined">grid_view</span>
             <p className="text-sm font-bold">All Mock Tests</p>
           </div>
-          <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] :bg-[#3d1d1d] transition-colors cursor-pointer">
             <span className="material-symbols-outlined">school</span>
             <p className="text-sm font-medium">Academic</p>
           </div>
-          <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors cursor-pointer">
+          <div className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] :bg-[#3d1d1d] transition-colors cursor-pointer">
             <span className="material-symbols-outlined">work</span>
             <p className="text-sm font-medium">General Training</p>
           </div>
         </div>
-        <div className="border-t border-[#f4f0f0] dark:border-[#3d1d1d] pt-4">
+        <div className="border-t border-[#f4f0f0] -[#3d1d1d] pt-4">
           <details className="group mb-2" open>
-            <summary className="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] dark:group-hover:bg-[#3d1d1d] rounded-lg px-2">
-              <span className="text-[#181111] dark:text-white text-sm font-bold">
+            <summary className="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] -hover:bg-[#3d1d1d] rounded-lg px-2">
+              <span className="text-[#181111] -white text-sm font-bold">
                 Difficulty
               </span>
               <span className="material-symbols-outlined text-lg transition-transform group-open:rotate-180">
@@ -56,8 +56,8 @@ export default function FilterSidebar() {
             </div>
           </details>
           <details className="group">
-            <summary className="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] dark:group-hover:bg-[#3d1d1d] rounded-lg px-2">
-              <span className="text-[#181111] dark:text-white text-sm font-bold">
+            <summary className="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] -hover:bg-[#3d1d1d] rounded-lg px-2">
+              <span className="text-[#181111] -white text-sm font-bold">
                 Status
               </span>
               <span className="material-symbols-outlined text-lg transition-transform group-open:rotate-180">

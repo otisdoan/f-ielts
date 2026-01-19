@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function DashboardHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800">
+    <header className="sticky top-0 z-50 bg-white -background-dark border-b border-slate-200 -slate-800">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-8">
@@ -13,7 +13,7 @@ export default function DashboardHeader() {
                   database
                 </span>
               </div>
-              <h2 className="text-slate-900 dark:text-white text-xl font-black tracking-tight">
+              <h2 className="text-slate-900 -white text-xl font-black tracking-tight">
                 F-IELTS
               </h2>
             </Link>
@@ -25,19 +25,19 @@ export default function DashboardHeader() {
                 Dashboard
               </Link>
               <Link
-                className="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
                 href="/practice"
               >
                 Practice Tests
               </Link>
               <Link
-                className="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
                 href="/courses"
               >
                 Study Material
               </Link>
               <Link
-                className="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
                 href="/settings"
               >
                 Settings
@@ -45,7 +45,7 @@ export default function DashboardHeader() {
             </nav>
           </div>
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-1.5 gap-2 border border-transparent focus-within:border-primary/30 transition-all">
+            <div className="hidden sm:flex items-center bg-slate-100 -slate-800 rounded-lg px-3 py-1.5 gap-2 border border-transparent focus-within:border-primary/30 transition-all">
               <span className="material-symbols-outlined text-slate-400 text-lg">
                 search
               </span>

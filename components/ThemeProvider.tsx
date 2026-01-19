@@ -21,15 +21,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check local storage or system preference
-    const savedTheme = localStorage.getItem("theme") as Theme;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-    
-    // Default to what's in HTML class or system
-    const initialTheme = savedTheme || (document.documentElement.classList.contains("dark") ? "dark" : systemTheme);
-    setTheme(initialTheme);
+    // Force light mode
+    setTheme("light");
     setMounted(true);
   }, []);
 

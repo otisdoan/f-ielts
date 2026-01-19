@@ -7,7 +7,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background-light dark:bg-background-dark p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background-light p-6">
       <div className="w-full max-w-md space-y-8">
         <div className="flex flex-col items-center">
           <Link href="/" className="flex items-center gap-2 group">
@@ -25,7 +25,7 @@ export default function AuthLayout({
                 ></path>
               </svg>
             </div>
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">F-IELTS</h1>
+            <h1 className="text-2xl font-black text-slate-900 -white tracking-tight">F-IELTS</h1>
           </Link>
         </div>
         

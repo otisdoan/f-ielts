@@ -1,29 +1,73 @@
 
 "use client";
 
+
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const supabase = createClient();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: Implement Supabase signup
-    setTimeout(() => setLoading(false), 2000);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const fullName = formData.get("name") as string;
+
+    try {
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      // Check if email confirmation is required (Supabase default)
+      // Usually redirects to a "Check your email" page or directly to dashboard if auto-confirm is on.
+      // For this MVP, we'll assume we might want to redirect to login or check email.
+      // But commonly, signUp implies a verification step.
+      // If auto-confirm is enabled in Supabase settings, user is signed in.
+      
+      router.push("/dashboard"); 
+    } catch (err: any) {
+      setError(err.message || "An error occurred during registration");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 p-8">
+    <div className="bg-white -slate-900 rounded-2xl shadow-xl border border-slate-200 -slate-800 p-8">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Create an account</h2>
+        <h2 className="text-2xl font-bold text-slate-900 -white">Create an account</h2>
         <p className="text-slate-500 text-sm mt-2">Start your journey to Band 8+ today</p>
       </div>
 
+      {error && (
+        <div className="mb-4 p-3 rounded bg-red-50 text-red-600 text-sm border border-red-200">
+          {error}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-slate-700 -slate-300 mb-1">
             Full Name
           </label>
           <input
@@ -31,13 +75,13 @@ export default function RegisterPage() {
             name="name"
             type="text"
             required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300 -slate-700 bg-white -slate-800 text-slate-900 -white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
             placeholder="John Doe"
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-slate-700 -slate-300 mb-1">
             Email address
           </label>
           <input
@@ -46,13 +90,13 @@ export default function RegisterPage() {
             type="email"
             autoComplete="email"
             required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300 -slate-700 bg-white -slate-800 text-slate-900 -white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
             placeholder="you@example.com"
           />
         </div>
 
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+          <label htmlFor="password" className="block text-sm font-medium text-slate-700 -slate-300 mb-1">
             Password
           </label>
           <input
@@ -61,7 +105,7 @@ export default function RegisterPage() {
             type="password"
             autoComplete="new-password"
             required
-            className="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+            className="w-full px-4 py-3 rounded-lg border border-slate-300 -slate-700 bg-white -slate-800 text-slate-900 -white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
             placeholder="••••••••"
           />
           <p className="mt-2 text-xs text-slate-500">
@@ -85,15 +129,15 @@ export default function RegisterPage() {
       <div className="mt-6">
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-slate-200 dark:border-slate-700"></div>
+            <div className="w-full border-t border-slate-200 -slate-700"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white dark:bg-slate-900 text-slate-500">Or continue with</span>
+            <span className="px-2 bg-white -slate-900 text-slate-500">Or continue with</span>
           </div>
         </div>
 
         <div className="mt-6">
-          <button className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <button className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 -slate-700 rounded-lg shadow-sm bg-white -slate-800 text-sm font-medium text-slate-700 -slate-200 hover:bg-slate-50 :bg-slate-700 transition-colors">
             <svg className="size-5" viewBox="0 0 24 24">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -117,7 +161,7 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+      <p className="mt-8 text-center text-sm text-slate-600 -slate-400">
         Already have an account?{" "}
         <Link href="/login" className="font-bold text-primary hover:text-red-700">
           Sign in

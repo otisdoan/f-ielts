@@ -6,10 +6,10 @@ export default function ReadingInterface() {
   const [activeQuestion, setActiveQuestion] = useState(1);
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-[#181111] dark:text-gray-100 overflow-hidden font-display flex flex-col h-screen">
+    <div className="bg-background-light -background-dark text-[#181111] -gray-100 overflow-hidden font-display flex flex-col h-screen">
       {/* Header Section */}
-      <header className="flex-none flex items-center justify-between border-b border-solid border-[#e5e7eb] dark:border-gray-800 bg-white dark:bg-zinc-900 px-6 py-3 z-50">
-        <div className="flex items-center gap-4 text-[#181111] dark:text-white">
+      <header className="flex-none flex items-center justify-between border-b border-solid border-[#e5e7eb] -gray-800 bg-white -zinc-900 px-6 py-3 z-50">
+        <div className="flex items-center gap-4 text-[#181111] -white">
           <div className="size-6 text-primary">
             <svg
               fill="currentColor"
@@ -26,24 +26,24 @@ export default function ReadingInterface() {
         {/* Timer Integration */}
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
-            <div className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded">
+            <div className="flex flex-col items-center bg-zinc-100 -zinc-800 px-3 py-1 rounded">
               <p className="text-sm font-bold leading-none">00</p>
               <p className="text-[10px] uppercase opacity-60">Hr</p>
             </div>
-            <div className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded border-b-2 border-primary">
+            <div className="flex flex-col items-center bg-zinc-100 -zinc-800 px-3 py-1 rounded border-b-2 border-primary">
               <p className="text-sm font-bold leading-none text-primary">54</p>
               <p className="text-[10px] uppercase opacity-60 text-primary">
                 Min
               </p>
             </div>
-            <div className="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded">
+            <div className="flex flex-col items-center bg-zinc-100 -zinc-800 px-3 py-1 rounded">
               <p className="text-sm font-bold leading-none">12</p>
               <p className="text-[10px] uppercase opacity-60">Sec</p>
             </div>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg text-xs font-semibold">
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-green-100 -green-900/30 text-green-700 -green-400 rounded-lg text-xs font-semibold">
             <span className="size-2 bg-green-500 rounded-full animate-pulse"></span>
             24 / 40 Answered
           </div>
@@ -62,7 +62,7 @@ export default function ReadingInterface() {
       </header>
 
       {/* Question Pagination Bar */}
-      <div className="flex-none bg-white dark:bg-zinc-900 border-b border-[#e5e7eb] dark:border-gray-800 px-4 py-2 overflow-x-auto">
+      <div className="flex-none bg-white -zinc-900 border-b border-[#e5e7eb] -gray-800 px-4 py-2 overflow-x-auto">
         <div className="flex items-center gap-1.5 min-w-max mx-auto justify-center">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
             <button
@@ -71,14 +71,14 @@ export default function ReadingInterface() {
               className={`flex size-8 items-center justify-center rounded text-xs cursor-pointer transition-colors ${
                 activeQuestion === num
                   ? "bg-primary text-white font-bold"
-                  : "bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200"
+                  : "bg-zinc-100 -zinc-800 hover:bg-zinc-200"
               }`}
             >
               {num}
             </button>
           ))}
           <span className="text-zinc-400 px-1">...</span>
-          <button className="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200">
+          <button className="flex size-8 items-center justify-center rounded bg-zinc-100 -zinc-800 text-xs hover:bg-zinc-200">
             40
           </button>
         </div>
@@ -87,15 +87,15 @@ export default function ReadingInterface() {
       {/* Main Content Split Screen */}
       <main className="flex-1 flex w-full overflow-hidden">
         {/* Left Side: Reading Passage */}
-        <section className="w-1/2 flex flex-col border-r border-[#e5e7eb] dark:border-gray-800 bg-white dark:bg-zinc-900 relative">
+        <section className="w-1/2 flex flex-col border-r border-[#e5e7eb] -gray-800 bg-white -zinc-900 relative">
           {/* Toolbar for Annotation */}
-          <div className="flex-none flex justify-between items-center px-8 py-3 bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-100 dark:border-zinc-800">
+          <div className="flex-none flex justify-between items-center px-8 py-3 bg-zinc-50 -zinc-800/50 border-b border-zinc-100 -zinc-800">
             <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
               Reading Passage 1
             </span>
             <div className="flex gap-1">
               <button
-                className="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300"
+                className="p-1.5 rounded hover:bg-zinc-200 :bg-zinc-700 text-zinc-600 -zinc-300"
                 title="Highlight"
               >
                 <span className="material-symbols-outlined text-[20px]">
@@ -103,7 +103,7 @@ export default function ReadingInterface() {
                 </span>
               </button>
               <button
-                className="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300"
+                className="p-1.5 rounded hover:bg-zinc-200 :bg-zinc-700 text-zinc-600 -zinc-300"
                 title="Text Size"
               >
                 <span className="material-symbols-outlined text-[20px]">
@@ -111,7 +111,7 @@ export default function ReadingInterface() {
                 </span>
               </button>
               <button
-                className="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300"
+                className="p-1.5 rounded hover:bg-zinc-200 :bg-zinc-700 text-zinc-600 -zinc-300"
                 title="Clear All"
               >
                 <span className="material-symbols-outlined text-[20px]">
@@ -122,10 +122,10 @@ export default function ReadingInterface() {
           </div>
           {/* Scrollable Content */}
           <div className="flex-1 overflow-y-auto custom-scrollbar px-10 py-8">
-            <h1 className="text-3xl font-bold leading-tight mb-8 text-zinc-900 dark:text-white">
+            <h1 className="text-3xl font-bold leading-tight mb-8 text-zinc-900 -white">
               The History of Sustainable Architecture
             </h1>
-            <div className="prose prose-zinc dark:prose-invert max-w-none space-y-6 text-lg leading-relaxed text-zinc-800 dark:text-zinc-300">
+            <div className="prose prose-zinc -invert max-w-none space-y-6 text-lg leading-relaxed text-zinc-800 -zinc-300">
               <p>
                 The origins of sustainable architecture can be traced back to the
                 ancient civilizations that built structures in harmony with their
@@ -136,7 +136,7 @@ export default function ReadingInterface() {
                 overhangs provided shade, keeping the interiors cool.
               </p>
               <p>
-                <mark className="bg-yellow-200 dark:bg-yellow-900/50 rounded-sm px-1">
+                <mark className="bg-yellow-200 -yellow-900/50 rounded-sm px-1">
                   Modern sustainable architecture emerged in the late 1960s
                 </mark>{" "}
                 as a response to the growing environmental movement. Architects
@@ -172,31 +172,31 @@ export default function ReadingInterface() {
         </section>
 
         {/* Right Side: Questions */}
-        <section className="w-1/2 flex flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+        <section className="w-1/2 flex flex-col bg-background-light -background-dark overflow-hidden">
           <div className="flex-1 overflow-y-auto custom-scrollbar px-10 py-8">
             <div className="mb-10">
               <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-2">
                 Questions 1-4
               </h3>
-              <p className="text-sm italic text-zinc-600 dark:text-zinc-400 mb-6 border-l-4 border-zinc-200 dark:border-zinc-700 pl-4">
+              <p className="text-sm italic text-zinc-600 -zinc-400 mb-6 border-l-4 border-zinc-200 -zinc-700 pl-4">
                 Do the following statements agree with the information given in
                 the Reading Passage? Write TRUE, FALSE or NOT GIVEN.
               </p>
               <div className="space-y-8">
                 {/* Question 1: Fill in the blank */}
-                <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+                <div className="bg-white -zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 -zinc-700">
                   <div className="flex gap-4">
-                    <span className="flex-shrink-0 size-7 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-full flex items-center justify-center font-bold text-sm">
+                    <span className="flex-shrink-0 size-7 bg-zinc-900 -zinc-100 text-white -zinc-900 rounded-full flex items-center justify-center font-bold text-sm">
                       1
                     </span>
                     <div className="space-y-3 flex-1">
-                      <p className="font-medium text-zinc-900 dark:text-zinc-100">
+                      <p className="font-medium text-zinc-900 -zinc-100">
                         The Anasazi people used solar energy primarily for
                         cooking food in the winter.
                       </p>
                       <div className="flex gap-3">
                         <input
-                          className="w-full max-w-xs h-10 px-3 rounded-lg border-zinc-300 dark:border-zinc-600 dark:bg-zinc-900 focus:border-primary focus:ring-1 focus:ring-primary text-sm outline-none"
+                          className="w-full max-w-xs h-10 px-3 rounded-lg border-zinc-300 -zinc-600 -zinc-900 focus:border-primary focus:ring-1 focus:ring-primary text-sm outline-none"
                           placeholder="Your answer (e.g. FALSE)"
                           type="text"
                         />
@@ -205,18 +205,18 @@ export default function ReadingInterface() {
                   </div>
                 </div>
                 {/* Question 2: Multiple Choice */}
-                <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border-2 border-primary/20 ring-1 ring-primary/10">
+                <div className="bg-white -zinc-800 p-6 rounded-xl shadow-sm border-2 border-primary/20 ring-1 ring-primary/10">
                   <div className="flex gap-4">
                     <span className="flex-shrink-0 size-7 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
                       2
                     </span>
                     <div className="space-y-4 flex-1">
-                      <p className="font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
+                      <p className="font-medium text-zinc-900 -zinc-100 leading-snug">
                         Which architect is credited with developing the geodesic
                         dome structure?
                       </p>
                       <div className="grid gap-2">
-                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 -zinc-700 hover:bg-zinc-50 :bg-zinc-700 cursor-pointer transition-colors">
                           <input
                             className="text-primary focus:ring-primary h-4 w-4"
                             name="q2"
@@ -224,7 +224,7 @@ export default function ReadingInterface() {
                           />
                           <span className="text-sm">Frank Lloyd Wright</span>
                         </label>
-                        <label className="flex items-center gap-3 p-3 rounded-lg border border-primary/40 bg-primary/5 dark:bg-primary/10 cursor-pointer transition-colors">
+                        <label className="flex items-center gap-3 p-3 rounded-lg border border-primary/40 bg-primary/5 -primary/10 cursor-pointer transition-colors">
                           <input
                             defaultChecked
                             className="text-primary focus:ring-primary h-4 w-4"
@@ -235,7 +235,7 @@ export default function ReadingInterface() {
                             Buckminster Fuller
                           </span>
                         </label>
-                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 -zinc-700 hover:bg-zinc-50 :bg-zinc-700 cursor-pointer transition-colors">
                           <input
                             className="text-primary focus:ring-primary h-4 w-4"
                             name="q2"
@@ -243,7 +243,7 @@ export default function ReadingInterface() {
                           />
                           <span className="text-sm">Le Corbusier</span>
                         </label>
-                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+                        <label className="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 -zinc-700 hover:bg-zinc-50 :bg-zinc-700 cursor-pointer transition-colors">
                           <input
                             className="text-primary focus:ring-primary h-4 w-4"
                             name="q2"
@@ -256,13 +256,13 @@ export default function ReadingInterface() {
                   </div>
                 </div>
                 {/* Question 3 */}
-                <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+                <div className="bg-white -zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 -zinc-700">
                   <div className="flex gap-4">
-                    <span className="flex-shrink-0 size-7 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-full flex items-center justify-center font-bold text-sm">
+                    <span className="flex-shrink-0 size-7 bg-zinc-900 -zinc-100 text-white -zinc-900 rounded-full flex items-center justify-center font-bold text-sm">
                       3
                     </span>
                     <div className="space-y-3 flex-1">
-                      <p className="font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
+                      <p className="font-medium text-zinc-900 -zinc-100 leading-snug">
                         The LEED rating system was established in 1993 to
                         encourage green building practices.
                       </p>
@@ -299,13 +299,13 @@ export default function ReadingInterface() {
             </div>
           </div>
           {/* Question Panel Footer */}
-          <div className="flex-none p-4 border-t border-zinc-200 dark:border-zinc-700 flex justify-between items-center bg-white dark:bg-zinc-900">
-            <button className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer">
+          <div className="flex-none p-4 border-t border-zinc-200 -zinc-700 flex justify-between items-center bg-white -zinc-900">
+            <button className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 :text-white transition-colors cursor-pointer">
               <span className="material-symbols-outlined">arrow_back</span>
               <span className="text-sm font-semibold">Previous Passage</span>
             </button>
             <div className="flex gap-2">
-              <button className="px-5 py-2 rounded-lg border border-zinc-300 dark:border-zinc-600 text-sm font-bold hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer">
+              <button className="px-5 py-2 rounded-lg border border-zinc-300 -zinc-600 text-sm font-bold hover:bg-zinc-50 :bg-zinc-800 cursor-pointer">
                 Review Later
               </button>
               <button className="px-5 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-red-700 shadow-lg shadow-red-500/20 cursor-pointer">

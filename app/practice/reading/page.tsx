@@ -34,7 +34,7 @@ const READING_PRACTICE_SETS = [
 
 export default function ReadingListPage() {
   return (
-    <div className="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white font-sans">
+    <div className="bg-background-light -background-dark min-h-screen text-[#181111] -white font-sans">
       <DashboardHeader />
       <main className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-40 py-6">
         <div className="flex items-center gap-2 mb-6">
@@ -46,12 +46,12 @@ export default function ReadingListPage() {
             Back to Practice
           </Link>
           <span className="text-[#896161] text-sm font-medium">/</span>
-          <span className="text-[#181111] dark:text-white text-sm font-bold">
+          <span className="text-[#181111] -white text-sm font-bold">
             Reading Practice
           </span>
         </div>
 
-        <h1 className="text-2xl font-bold text-[#181111] dark:text-white mb-6">
+        <h1 className="text-2xl font-bold text-[#181111] -white mb-6">
           Reading Practice Library
         </h1>
 

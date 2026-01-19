@@ -4,27 +4,27 @@ import Link from "next/link";
 
 export default function WritingFeedbackPage() {
   return (
-    <div className="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white font-sans pb-24">
+    <div className="bg-background-light -background-dark min-h-screen text-[#181111] -white font-sans pb-24">
       <DashboardHeader />
       <main className="max-w-[1440px] mx-auto py-6 px-4 md:px-10">
         {/* Breadcrumbs */}
         <div className="flex flex-wrap gap-2 mb-6">
           <Link
-            className="text-[#896161] dark:text-[#a08484] text-sm font-medium"
+            className="text-[#896161] -[#a08484] text-sm font-medium"
             href="/dashboard"
           >
             Dashboard
           </Link>
-          <span className="text-[#896161] dark:text-[#a08484] text-sm">/</span>
+          <span className="text-[#896161] -[#a08484] text-sm">/</span>
           <span className="text-sm font-medium">Writing Task 2 Evaluation</span>
         </div>
         {/* Page Heading */}
         <div className="flex flex-wrap justify-between items-end gap-4 mb-8">
           <div className="flex flex-col gap-1">
-            <h1 className="text-[#181111] dark:text-white text-3xl font-bold tracking-tight">
+            <h1 className="text-[#181111] -white text-3xl font-bold tracking-tight">
               Writing Task 2: Academic Essay
             </h1>
-            <p className="text-[#896161] dark:text-[#a08484] text-sm flex items-center gap-2">
+            <p className="text-[#896161] -[#a08484] text-sm flex items-center gap-2">
               <span className="material-symbols-outlined text-base">
                 auto_awesome
               </span>
@@ -32,13 +32,13 @@ export default function WritingFeedbackPage() {
             </p>
           </div>
           <div className="flex gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-background-dark border border-[#e6dbdb] dark:border-[#3d2a2a] text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white -background-dark border border-[#e6dbdb] -[#3d2a2a] text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer">
               <span className="material-symbols-outlined text-base">
                 download
               </span>
               Download PDF Report
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-background-dark border border-[#e6dbdb] dark:border-[#3d2a2a] text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer">
+            <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white -background-dark border border-[#e6dbdb] -[#3d2a2a] text-sm font-medium hover:bg-gray-50 transition-colors cursor-pointer">
               <span className="material-symbols-outlined text-base">share</span>
               Share
             </button>
@@ -48,8 +48,8 @@ export default function WritingFeedbackPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Panel: Editor View */}
           <div className="lg:col-span-7 flex flex-col gap-4">
-            <div className="bg-white dark:bg-background-dark rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] overflow-hidden shadow-sm">
-              <div className="p-4 border-b border-[#e6dbdb] dark:border-[#3d2a2a] flex justify-between items-center bg-gray-50/50 dark:bg-white/5">
+            <div className="bg-white -background-dark rounded-xl border border-[#e6dbdb] -[#3d2a2a] overflow-hidden shadow-sm">
+              <div className="p-4 border-b border-[#e6dbdb] -[#3d2a2a] flex justify-between items-center bg-gray-50/50 -white/5">
                 <span className="text-sm font-bold uppercase tracking-wider text-gray-500">
                   Submitted Essay
                 </span>
@@ -57,7 +57,7 @@ export default function WritingFeedbackPage() {
                   Word Count: 284 words
                 </span>
               </div>
-              <div className="p-8 leading-relaxed text-lg text-gray-700 dark:text-gray-300">
+              <div className="p-8 leading-relaxed text-lg text-gray-700 -gray-300">
                 <p className="mb-4">
                   In contemporary society, the debate regarding whether
                   technology improves our lives or complicates them is{" "}
@@ -96,7 +96,7 @@ export default function WritingFeedbackPage() {
               </div>
             </div>
             {/* AI Suggestions Popover Example (Static for UI Demo) */}
-            <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-4 flex gap-4">
+            <div className="bg-primary/5 -primary/10 border border-primary/20 rounded-lg p-4 flex gap-4">
               <div className="text-primary">
                 <span className="material-symbols-outlined">lightbulb</span>
               </div>
@@ -104,7 +104,7 @@ export default function WritingFeedbackPage() {
                 <p className="text-sm font-bold text-primary mb-1">
                   Correction Suggestion
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600 -gray-400">
                   Change <span className="line-through">"outweighs"</span> to{" "}
                   <span className="font-bold text-primary">"outweigh"</span>.
                 </p>
@@ -118,12 +118,12 @@ export default function WritingFeedbackPage() {
           {/* Right Panel: Feedback Dashboard */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Main Score Card */}
-            <div className="bg-white dark:bg-background-dark rounded-xl border-2 border-primary/30 p-8 shadow-lg flex items-center justify-between">
+            <div className="bg-white -background-dark rounded-xl border-2 border-primary/30 p-8 shadow-lg flex items-center justify-between">
               <div className="flex flex-col gap-1">
                 <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">
                   Estimated Band Score
                 </p>
-                <p className="text-5xl font-black text-[#181111] dark:text-white">
+                <p className="text-5xl font-black text-[#181111] -white">
                   7.5
                 </p>
                 <p className="text-green-600 text-sm font-medium flex items-center gap-1 mt-2">
@@ -139,7 +139,7 @@ export default function WritingFeedbackPage() {
                   viewBox="0 0 36 36"
                 >
                   <path
-                    className="text-gray-200 dark:text-gray-800"
+                    className="text-gray-200 -gray-800"
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     fill="none"
                     stroke="currentColor"
@@ -159,7 +159,7 @@ export default function WritingFeedbackPage() {
               </div>
             </div>
             {/* Detailed Breakdown */}
-            <div className="bg-white dark:bg-background-dark rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] p-6 flex flex-col gap-6">
+            <div className="bg-white -background-dark rounded-xl border border-[#e6dbdb] -[#3d2a2a] p-6 flex flex-col gap-6">
               <h3 className="text-lg font-bold">Criteria Breakdown</h3>
               {/* Criterion 1 */}
               <div className="flex flex-col gap-2">
@@ -167,13 +167,13 @@ export default function WritingFeedbackPage() {
                   <span className="text-sm font-medium">Task Achievement</span>
                   <span className="text-sm font-bold">8.0</span>
                 </div>
-                <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div className="w-full bg-gray-100 -gray-800 rounded-full h-2">
                   <div
                     className="bg-primary h-2 rounded-full"
                     style={{ width: "88%" }}
                   ></div>
                 </div>
-                <p className="text-xs text-[#896161] dark:text-[#a08484]">
+                <p className="text-xs text-[#896161] -[#a08484]">
                   Excellent response to all parts of the task. Your position is
                   clear throughout.
                 </p>
@@ -186,13 +186,13 @@ export default function WritingFeedbackPage() {
                   </span>
                   <span className="text-sm font-bold">7.5</span>
                 </div>
-                <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div className="w-full bg-gray-100 -gray-800 rounded-full h-2">
                   <div
                     className="bg-primary h-2 rounded-full"
                     style={{ width: "83%" }}
                   ></div>
                 </div>
-                <p className="text-xs text-[#896161] dark:text-[#a08484]">
+                <p className="text-xs text-[#896161] -[#a08484]">
                   Information is logically organized. Transitions between
                   paragraphs are mostly smooth.
                 </p>
@@ -203,13 +203,13 @@ export default function WritingFeedbackPage() {
                   <span className="text-sm font-medium">Lexical Resource</span>
                   <span className="text-sm font-bold">7.0</span>
                 </div>
-                <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div className="w-full bg-gray-100 -gray-800 rounded-full h-2">
                   <div
                     className="bg-amber-500 h-2 rounded-full"
                     style={{ width: "77%" }}
                   ></div>
                 </div>
-                <p className="text-xs text-[#896161] dark:text-[#a08484]">
+                <p className="text-xs text-[#896161] -[#a08484]">
                   Good range of vocabulary. Avoid repetitive phrases like "good
                   thing" and "very big".
                 </p>
@@ -222,13 +222,13 @@ export default function WritingFeedbackPage() {
                   </span>
                   <span className="text-sm font-bold">7.0</span>
                 </div>
-                <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div className="w-full bg-gray-100 -gray-800 rounded-full h-2">
                   <div
                     className="bg-amber-500 h-2 rounded-full"
                     style={{ width: "77%" }}
                   ></div>
                 </div>
-                <p className="text-xs text-[#896161] dark:text-[#a08484]">
+                <p className="text-xs text-[#896161] -[#a08484]">
                   Mix of simple and complex sentences. Watch out for
                   subject-verb agreement and plural nouns.
                 </p>
@@ -238,7 +238,7 @@ export default function WritingFeedbackPage() {
               </button>
             </div>
             {/* AI Tutor Advice */}
-            <div className="bg-background-dark dark:bg-white/5 rounded-xl p-6 text-white">
+            <div className="bg-background-dark -white/5 rounded-xl p-6 text-white">
               <div className="flex items-center gap-3 mb-4">
                 <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
                   <span className="material-symbols-outlined text-white">
@@ -272,13 +272,13 @@ export default function WritingFeedbackPage() {
         </div>
         {/* Footer Stats/Summary Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10 mb-20">
-          <div className="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] flex flex-col gap-2">
+          <div className="bg-white -background-dark p-6 rounded-xl border border-[#e6dbdb] -[#3d2a2a] flex flex-col gap-2">
             <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">
               Time Spent
             </p>
             <p className="text-2xl font-bold">34m 12s</p>
           </div>
-          <div className="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] flex flex-col gap-2">
+          <div className="bg-white -background-dark p-6 rounded-xl border border-[#e6dbdb] -[#3d2a2a] flex flex-col gap-2">
             <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">
               Vocabulary Diversity
             </p>
@@ -287,7 +287,7 @@ export default function WritingFeedbackPage() {
               <span className="text-xs text-green-500 pb-1">Strong</span>
             </div>
           </div>
-          <div className="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] flex flex-col gap-2">
+          <div className="bg-white -background-dark p-6 rounded-xl border border-[#e6dbdb] -[#3d2a2a] flex flex-col gap-2">
             <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">
               Grammar Errors
             </p>
@@ -301,7 +301,7 @@ export default function WritingFeedbackPage() {
         </div>
       </main>
       {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-[#e6dbdb] dark:border-[#3d2a2a] py-4 px-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/80 -background-dark/80 backdrop-blur-md border-t border-[#e6dbdb] -[#3d2a2a] py-4 px-10">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
           <p className="text-sm text-gray-500 hidden sm:block">
             Ready for your next challenge?

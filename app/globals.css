@@ -13,7 +13,7 @@
   
   /* Custom Colors from HTML Config */
   --color-primary: #ec1313;
-  --color-background-light: #ffffff;
+  --color-background-light: #f8f6f6;
   --color-background-dark: #221010;
   
   /* Border Radius */
@@ -21,12 +21,7 @@
   --radius-xl: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 body {
   background: var(--background);
@@ -52,9 +47,7 @@ body {
   background: #e5e7eb;
   border-radius: 10px;
 }
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #3f3f46;
-}
+
 .split-pane {
   height: calc(100vh - 140px);
 }

@@ -3,20 +3,20 @@ import Sidebar from "@/components/Sidebar";
 
 export default function AnalyticsPage() {
   return (
-    <div className="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white min-h-screen flex">
+    <div className="bg-background-light font-display text-[#181111] min-h-screen flex">
       {/* Side Navigation */}
       <Sidebar />
       
       {/* Main Content Area */}
       <main className="flex-1 lg:ml-64 flex flex-col">
         {/* Header */}
-        <header className="h-16 border-b border-[#e6dbdb] dark:border-[#3d2424] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between">
+        <header className="h-16 border-b border-[#e6dbdb] -[#3d2424] bg-white/80 -background-dark/80 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h2 className="text-lg font-bold tracking-tight">
               Analytics Dashboard
             </h2>
-            <div className="h-4 w-[1px] bg-[#e6dbdb] dark:bg-[#3d2424]"></div>
-            <p className="text-sm text-[#896161] dark:text-[#c4a1a1]">
+            <div className="h-4 w-[1px] bg-[#e6dbdb] -[#3d2424]"></div>
+            <p className="text-sm text-[#896161] -[#c4a1a1]">
               Overview of your IELTS journey
             </p>
           </div>
@@ -26,12 +26,12 @@ export default function AnalyticsPage() {
                 search
               </span>
               <input
-                className="pl-10 pr-4 py-2 bg-[#f4f0f0] dark:bg-[#3d2424] border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary outline-none"
+                className="pl-10 pr-4 py-2 bg-[#f4f0f0] -slate-800 border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary outline-none"
                 placeholder="Search insights..."
                 type="text"
               />
             </div>
-            <button className="p-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] text-[#896161] transition-colors relative cursor-pointer">
+      <button className="p-2 rounded-lg hover:bg-slate-100 :bg-slate-800 text-slate-500 transition-colors relative cursor-pointer">
               <span className="material-symbols-outlined">notifications</span>
               <span className="absolute top-2 right-2 size-2 bg-primary rounded-full"></span>
             </button>
@@ -50,7 +50,7 @@ export default function AnalyticsPage() {
             <h3 className="text-3xl font-black tracking-tight">
               Your Progress Insights
             </h3>
-            <p className="text-[#896161] dark:text-[#c4a1a1]">
+            <p className="text-[#896161] -[#c4a1a1]">
               Personalized data and deep dive analysis to help you reach Band
               7.5+
             </p>
@@ -58,8 +58,8 @@ export default function AnalyticsPage() {
 
           {/* Stats Overview */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
-              <p className="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">
+            <div className="bg-white -slate-900 p-6 rounded-xl border border-[#e6dbdb] -none shadow-sm flex flex-col gap-1">
+              <p className="text-sm text-[#896161] -[#c4a1a1] font-semibold uppercase tracking-wider">
                 Current Est. Band
               </p>
               <div className="flex items-baseline gap-2">
@@ -72,8 +72,8 @@ export default function AnalyticsPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
-              <p className="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">
+            <div className="bg-white -slate-900 p-6 rounded-xl border border-[#e6dbdb] -none shadow-sm flex flex-col gap-1">
+              <p className="text-sm text-[#896161] -[#c4a1a1] font-semibold uppercase tracking-wider">
                 Weekly Study Time
               </p>
               <div className="flex items-baseline gap-2">
@@ -86,8 +86,8 @@ export default function AnalyticsPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
-              <p className="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">
+            <div className="bg-white -slate-900 p-6 rounded-xl border border-[#e6dbdb] -none shadow-sm flex flex-col gap-1">
+              <p className="text-sm text-[#896161] -[#c4a1a1] font-semibold uppercase tracking-wider">
                 Accuracy Rate
               </p>
               <div className="flex items-baseline gap-2">
@@ -100,8 +100,8 @@ export default function AnalyticsPage() {
                 </p>
               </div>
             </div>
-            <div className="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
-              <p className="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">
+            <div className="bg-white -slate-900 p-6 rounded-xl border border-[#e6dbdb] -none shadow-sm flex flex-col gap-1">
+              <p className="text-sm text-[#896161] -[#c4a1a1] font-semibold uppercase tracking-wider">
                 Test Completed
               </p>
               <div className="flex items-baseline gap-2">
@@ -114,11 +114,11 @@ export default function AnalyticsPage() {
           {/* Main Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Band Score Line Chart */}
-            <div className="lg:col-span-2 bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+            <div className="lg:col-span-2 bg-white -[#3d2424] rounded-xl border border-[#e6dbdb] -none p-6 shadow-sm">
               <div className="flex justify-between items-center mb-6">
                 <div>
                   <h4 className="text-lg font-bold">Band Score Improvement</h4>
-                  <p className="text-sm text-[#896161] dark:text-[#c4a1a1]">
+                  <p className="text-sm text-[#896161] -[#c4a1a1]">
                     Historical performance vs. Target (7.5)
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export default function AnalyticsPage() {
                     Actual
                   </span>
                   <span className="flex items-center gap-1.5 text-xs font-bold text-[#896161]">
-                    <span className="size-2 rounded-full bg-[#e6dbdb] dark:bg-[#5a3a3a]"></span>{" "}
+                    <span className="size-2 rounded-full bg-[#e6dbdb] -[#5a3a3a]"></span>{" "}
                     Goal
                   </span>
                 </div>
@@ -218,10 +218,10 @@ export default function AnalyticsPage() {
               </div>
             </div>
             {/* Skill Radar */}
-            <div className="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm flex flex-col items-center">
+            <div className="bg-white -[#3d2424] rounded-xl border border-[#e6dbdb] -none p-6 shadow-sm flex flex-col items-center">
               <div className="w-full text-left mb-4">
                 <h4 className="text-lg font-bold">Skill Proficiency</h4>
-                <p className="text-sm text-[#896161] dark:text-[#c4a1a1]">
+                <p className="text-sm text-[#896161] -[#c4a1a1]">
                   Balance across four sections
                 </p>
               </div>
@@ -274,7 +274,7 @@ export default function AnalyticsPage() {
             {/* Heatmap & Question Breakdown */}
             <div className="xl:col-span-2 space-y-8">
               {/* Heatmap */}
-              <div className="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+              <div className="bg-white -[#3d2424] rounded-xl border border-[#e6dbdb] -none p-6 shadow-sm">
                 <h4 className="text-lg font-bold mb-4">
                   Weekly Study Consistency
                 </h4>
@@ -285,7 +285,7 @@ export default function AnalyticsPage() {
                       <div className="aspect-square bg-primary/20 rounded-sm" title="2 hours"></div>
                       <div className="aspect-square bg-primary/60 rounded-sm" title="4 hours"></div>
                       <div className="aspect-square bg-primary/10 rounded-sm" title="0.5 hours"></div>
-                      <div className="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+                      <div className="aspect-square bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
                       <div className="text-[10px] text-center font-bold text-[#896161]">MON</div>
                     </div>
                     <div className="space-y-2">
@@ -296,7 +296,7 @@ export default function AnalyticsPage() {
                       <div className="text-[10px] text-center font-bold text-[#896161]">TUE</div>
                     </div>
                     <div className="space-y-2">
-                      <div className="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+                      <div className="aspect-square bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
                       <div className="aspect-square bg-primary/10 rounded-sm"></div>
                       <div className="aspect-square bg-primary/20 rounded-sm"></div>
                       <div className="aspect-square bg-primary/40 rounded-sm"></div>
@@ -311,7 +311,7 @@ export default function AnalyticsPage() {
                     </div>
                      <div className="space-y-2">
                       <div className="aspect-square bg-primary/20 rounded-sm"></div>
-                      <div className="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+                      <div className="aspect-square bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
                       <div className="aspect-square bg-primary/10 rounded-sm"></div>
                       <div className="aspect-square bg-primary/80 rounded-sm"></div>
                       <div className="text-[10px] text-center font-bold text-[#896161]">FRI</div>
@@ -325,8 +325,8 @@ export default function AnalyticsPage() {
                     </div>
                     <div className="space-y-2">
                       <div className="aspect-square bg-primary/10 rounded-sm"></div>
-                      <div className="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
-                      <div className="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+                      <div className="aspect-square bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
+                      <div className="aspect-square bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
                       <div className="aspect-square bg-primary/20 rounded-sm"></div>
                       <div className="text-[10px] text-center font-bold text-[#896161]">SUN</div>
                     </div>
@@ -334,7 +334,7 @@ export default function AnalyticsPage() {
                   <div className="flex items-center justify-end gap-2 mt-2">
                     <span className="text-[10px] text-[#896161]">Less</span>
                     <div className="flex gap-1">
-                      <div className="size-3 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+                      <div className="size-3 bg-[#f4f0f0] -[#4a2b2b] rounded-sm"></div>
                       <div className="size-3 bg-primary/20 rounded-sm"></div>
                       <div className="size-3 bg-primary/50 rounded-sm"></div>
                       <div className="size-3 bg-primary rounded-sm"></div>
@@ -344,7 +344,7 @@ export default function AnalyticsPage() {
                 </div>
               </div>
               {/* Accuracy Breakdown */}
-              <div className="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+              <div className="bg-white -[#3d2424] rounded-xl border border-[#e6dbdb] -none p-6 shadow-sm">
                 <h4 className="text-lg font-bold mb-6">
                   Accuracy by Question Type
                 </h4>
@@ -355,7 +355,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">Multiple Choice</span>
                       <span className="font-bold">85%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-green-500 rounded-full" style={{width: '85%'}}></div>
                     </div>
                   </div>
@@ -364,7 +364,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">Matching Headings</span>
                       <span className="font-bold text-primary">42%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-primary rounded-full" style={{width: '42%'}}></div>
                     </div>
                   </div>
@@ -373,7 +373,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">Map Labeling</span>
                       <span className="font-bold">68%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-yellow-500 rounded-full" style={{width: '68%'}}></div>
                     </div>
                   </div>
@@ -384,7 +384,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">Sentence Completion</span>
                       <span className="font-bold">78%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-green-500 rounded-full" style={{width: '78%'}}></div>
                     </div>
                   </div>
@@ -393,7 +393,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">True/False/Not Given</span>
                       <span className="font-bold">59%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-yellow-500 rounded-full" style={{width: '59%'}}></div>
                     </div>
                   </div>
@@ -402,7 +402,7 @@ export default function AnalyticsPage() {
                       <span className="font-semibold">Short Answer</span>
                       <span className="font-bold">92%</span>
                     </div>
-                    <div className="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+                    <div className="h-2 bg-[#f4f0f0] -[#4a2b2b] rounded-full overflow-hidden">
                       <div className="h-full bg-green-600 rounded-full" style={{width: '92%'}}></div>
                     </div>
                   </div>
@@ -463,7 +463,7 @@ export default function AnalyticsPage() {
 
         {/* Footer-like padding */}
         <footer className="mt-auto p-8 text-center">
-          <p className="text-xs text-[#896161] dark:text-[#c4a1a1]">
+          <p className="text-xs text-[#896161] -[#c4a1a1]">
             © 2024 F-IELTS Learning Systems. All data is updated every 24
             hours.
           </p>

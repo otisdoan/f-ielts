@@ -36,7 +36,7 @@ export default function MockTestCard({
 
   return (
     <div
-      className={`bg-white dark:bg-background-dark/30 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] overflow-hidden hover:shadow-lg transition-all border-l-4 ${borderLeftColor}`}
+      className={`bg-white -background-dark/30 rounded-xl border border-slate-200 -slate-800 overflow-hidden hover:shadow-lg transition-all border-l-4 ${borderLeftColor}`}
     >
       <div className="p-5">
         <div className="flex justify-between items-start mb-4">
@@ -54,7 +54,7 @@ export default function MockTestCard({
             {status}
           </div>
         </div>
-        <h3 className="text-lg font-bold text-[#181111] dark:text-white mb-2">
+        <h3 className="text-lg font-bold text-[#181111] -white mb-2">
           {title}
         </h3>
         <div className="flex flex-wrap gap-4 text-[#896161] text-sm mb-4">
@@ -71,12 +71,12 @@ export default function MockTestCard({
         </div>
 
         {isCompleted && score && (
-          <div className="bg-gray-100 dark:bg-[#3d1d1d] rounded-lg p-3 mb-4">
+          <div className="bg-gray-100 -[#3d1d1d] rounded-lg p-3 mb-4">
             <div className="flex justify-between items-center text-xs font-bold mb-1">
               <span className="text-[#896161]">Performance Score</span>
               <span className="text-primary">{score} Band</span>
             </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-gray-200 -gray-700 h-1.5 rounded-full overflow-hidden">
               <div
                 className="bg-green-500 h-full"
                 style={{ width: "85%" }} // approximation based on score usually
@@ -86,12 +86,12 @@ export default function MockTestCard({
         )}
 
         {isInProgress && progress !== undefined && (
-          <div className="bg-gray-100 dark:bg-[#3d1d1d] rounded-lg p-3 mb-4">
+          <div className="bg-gray-100 -[#3d1d1d] rounded-lg p-3 mb-4">
             <div className="flex justify-between items-center text-xs font-bold mb-1">
               <span className="text-[#896161]">Section: Listening</span>
               <span className="text-orange-600">{progress}% complete</span>
             </div>
-            <div className="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+            <div className="w-full bg-gray-200 -gray-700 h-1.5 rounded-full overflow-hidden">
               <div
                 className="bg-orange-500 h-full"
                 style={{ width: `${progress}%` }}
@@ -102,17 +102,17 @@ export default function MockTestCard({
 
         {isNotStarted && (
            <div className="grid grid-cols-4 gap-1 mb-6">
-           <div className="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
-           <div className="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
-           <div className="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
-           <div className="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+           <div className="bg-gray-100 -[#3d1d1d] h-1 rounded"></div>
+           <div className="bg-gray-100 -[#3d1d1d] h-1 rounded"></div>
+           <div className="bg-gray-100 -[#3d1d1d] h-1 rounded"></div>
+           <div className="bg-gray-100 -[#3d1d1d] h-1 rounded"></div>
            </div>
         )}
 
         <Link href={`/mock-tests/${id}`}>
           <button className={`w-full py-2 font-bold rounded-lg transition-colors text-sm flex items-center justify-center gap-2 ${
               isCompleted 
-              ? "bg-[#f4f0f0] dark:bg-[#3d1d1d] hover:bg-[#e6dbdb] text-[#181111] dark:text-white" 
+              ? "bg-[#f4f0f0] -[#3d1d1d] hover:bg-[#e6dbdb] text-[#181111] -white" 
               : "bg-primary hover:bg-red-700 text-white"
           }`}>
             {isCompleted && "Review Answers"}

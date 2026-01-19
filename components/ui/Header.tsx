@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-solid border-[#e6dbdb] dark:border-[#3d2a2a] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-solid border-[#e6dbdb] -[#3d2a2a] bg-white/80 -background-dark/80 backdrop-blur-md">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="text-primary">
@@ -20,31 +20,31 @@ export default function Header() {
               ></path>
             </svg>
           </div>
-          <h2 className="text-[#181111] dark:text-white text-xl font-black leading-tight tracking-[-0.015em]">
+          <h2 className="text-[#181111] -white text-xl font-black leading-tight tracking-[-0.015em]">
             F-IELTS
           </h2>
         </div>
         <nav className="hidden md:flex flex-1 justify-center items-center gap-10">
           <Link
-            className="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+            className="text-[#181111] -gray-300 text-sm font-semibold hover:text-primary transition-colors"
             href="/practice"
           >
             Practice
           </Link>
           <Link
-            className="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+            className="text-[#181111] -gray-300 text-sm font-semibold hover:text-primary transition-colors"
             href="/mock-tests"
           >
             Mock Tests
           </Link>
           <Link
-            className="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+            className="text-[#181111] -gray-300 text-sm font-semibold hover:text-primary transition-colors"
             href="/courses"
           >
             Courses
           </Link>
           <Link
-            className="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors"
+            className="text-[#181111] -gray-300 text-sm font-semibold hover:text-primary transition-colors"
             href="/blog"
           >
             Blog
