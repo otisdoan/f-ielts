@@ -10,6 +10,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Custom Colors from HTML Config */
+  --color-primary: #ec1313;
+  --color-background-light: #ffffff;
+  --color-background-dark: #221010;
+  
+  /* Border Radius */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +32,46 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Progress Ring */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+.split-pane {
+  height: calc(100vh - 140px);
+}
+
+/* Writing Highlights */
+.highlight-grammar {
+  background-color: rgba(236, 19, 19, 0.1);
+  border-bottom: 2px solid #ec1313;
+  cursor: pointer;
+}
+.highlight-lexical {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-bottom: 2px solid #f59e0b;
+  cursor: pointer;
+}
+.highlight-coherence {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-bottom: 2px solid #3b82f6;
+  cursor: pointer;
 }

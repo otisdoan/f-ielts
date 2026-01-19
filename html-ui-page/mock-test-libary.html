@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mock Test Library | F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-[#f4f0f0] dark:border-[#3d1d1d] px-6 md:px-10 lg:px-40 py-3">
+<div class="flex items-center justify-between whitespace-nowrap max-w-[1200px] mx-auto">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">F-IELTS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#896161] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">Mock Tests</a>
+<a class="text-[#896161] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Materials</a>
+<a class="text-[#896161] dark:text-gray-400 text-sm font-medium hover:text-primary transition-colors" href="#">Performance</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<label class="hidden sm:flex items-center min-w-40 h-10 max-w-64">
+<div class="flex w-full items-stretch rounded-lg bg-[#f4f0f0] dark:bg-[#3d1d1d] overflow-hidden">
+<div class="text-[#896161] flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-[#896161] px-2" placeholder="Search tests..."/>
+</div>
+</label>
+<button class="bg-primary hover:bg-red-700 text-white text-sm font-bold h-10 px-4 rounded-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">person</span>
+                    Profile
+                </button>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-40 py-6">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6">
+<a class="text-[#896161] text-sm font-medium flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-base">home</span>
+                Home
+            </a>
+<span class="text-[#896161] text-sm font-medium">/</span>
+<span class="text-[#181111] dark:text-white text-sm font-bold">Mock Test Library</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar Navigation & Filters -->
+<aside class="w-full lg:w-64 shrink-0">
+<div class="bg-white dark:bg-background-dark/50 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] p-4 sticky top-24">
+<h3 class="text-[#181111] dark:text-white text-base font-bold mb-4 px-2">Filters</h3>
+<div class="flex flex-col gap-1 mb-6">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+<p class="text-sm font-bold">All Mock Tests</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">school</span>
+<p class="text-sm font-medium">Academic</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">work</span>
+<p class="text-sm font-medium">General Training</p>
+</div>
+</div>
+<div class="border-t border-[#f4f0f0] dark:border-[#3d1d1d] pt-4">
+<details class="group mb-2" open="">
+<summary class="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] dark:group-hover:bg-[#3d1d1d] rounded-lg px-2">
+<span class="text-[#181111] dark:text-white text-sm font-bold">Difficulty</span>
+<span class="material-symbols-outlined text-lg transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="flex flex-col gap-2 p-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">Beginner</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">Intermediate</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">Advanced</span>
+</label>
+</div>
+</details>
+<details class="group">
+<summary class="flex cursor-pointer items-center justify-between py-2 group-hover:bg-[#f4f0f0] dark:group-hover:bg-[#3d1d1d] rounded-lg px-2">
+<span class="text-[#181111] dark:text-white text-sm font-bold">Status</span>
+<span class="material-symbols-outlined text-lg transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="flex flex-col gap-2 p-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">Not Started</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">In Progress</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded text-primary focus:ring-primary border-[#e6dbdb] size-4" type="checkbox"/>
+<span class="text-sm text-[#896161]">Completed</span>
+</label>
+</div>
+</details>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h1 class="text-2xl font-bold text-[#181111] dark:text-white">Mock Test Library</h1>
+<p class="text-[#896161] text-sm mt-1">Practice with 24 full-length IELTS tests</p>
+</div>
+<div class="flex gap-2">
+<div class="bg-white dark:bg-[#3d1d1d] border border-[#f4f0f0] dark:border-[#3d1d1d] rounded-lg px-3 py-1 flex items-center gap-2">
+<span class="text-xs font-bold text-[#896161]">Sort by:</span>
+<span class="text-xs font-bold text-primary cursor-pointer">Newest</span>
+</div>
+</div>
+</div>
+<!-- Test Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Completed -->
+<div class="bg-white dark:bg-background-dark/30 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] overflow-hidden hover:shadow-lg transition-all border-l-4 border-l-green-500">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Academic</span>
+<div class="flex items-center gap-1 text-green-600 font-bold text-xs bg-green-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                    Completed
+                                </div>
+</div>
+<h3 class="text-lg font-bold text-[#181111] dark:text-white mb-2">Cambridge 18 - Test 1</h3>
+<div class="flex flex-wrap gap-4 text-[#896161] text-sm mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">schedule</span>
+                                    2h 45m
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">signal_cellular_alt</span>
+                                    Intermediate
+                                </div>
+</div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] rounded-lg p-3 mb-4">
+<div class="flex justify-between items-center text-xs font-bold mb-1">
+<span class="text-[#896161]">Performance Score</span>
+<span class="text-primary">7.5 Band</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[85%]"></div>
+</div>
+</div>
+<button class="w-full py-2 bg-[#f4f0f0] dark:bg-[#3d1d1d] hover:bg-[#e6dbdb] text-[#181111] dark:text-white font-bold rounded-lg transition-colors text-sm">
+                                Review Answers
+                            </button>
+</div>
+</div>
+<!-- Card 2: In Progress -->
+<div class="bg-white dark:bg-background-dark/30 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] overflow-hidden hover:shadow-lg transition-all border-l-4 border-l-orange-500">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Academic</span>
+<div class="flex items-center gap-1 text-orange-600 font-bold text-xs bg-orange-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-sm">pending</span>
+                                    In Progress
+                                </div>
+</div>
+<h3 class="text-lg font-bold text-[#181111] dark:text-white mb-2">Cambridge 18 - Test 2</h3>
+<div class="flex flex-wrap gap-4 text-[#896161] text-sm mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">schedule</span>
+                                    2h 45m
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">signal_cellular_alt</span>
+                                    Advanced
+                                </div>
+</div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] rounded-lg p-3 mb-4">
+<div class="flex justify-between items-center text-xs font-bold mb-1">
+<span class="text-[#896161]">Section: Listening</span>
+<span class="text-orange-600">60% complete</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[60%]"></div>
+</div>
+</div>
+<button class="w-full py-2 bg-primary hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                                Resume Test
+                            </button>
+</div>
+</div>
+<!-- Card 3: Not Started -->
+<div class="bg-white dark:bg-background-dark/30 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] overflow-hidden hover:shadow-lg transition-all">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold uppercase tracking-wider">General</span>
+<div class="flex items-center gap-1 text-gray-500 font-bold text-xs bg-gray-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-sm">fiber_manual_record</span>
+                                    Not Started
+                                </div>
+</div>
+<h3 class="text-lg font-bold text-[#181111] dark:text-white mb-2">Practice Set Alpha</h3>
+<div class="flex flex-wrap gap-4 text-[#896161] text-sm mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">schedule</span>
+                                    2h 45m
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">signal_cellular_alt</span>
+                                    Beginner
+                                </div>
+</div>
+<div class="grid grid-cols-4 gap-1 mb-6">
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+</div>
+<button class="w-full py-2 bg-primary hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+                                Start Test
+                            </button>
+</div>
+</div>
+<!-- Card 4: Not Started -->
+<div class="bg-white dark:bg-background-dark/30 rounded-xl border border-[#f4f0f0] dark:border-[#3d1d1d] overflow-hidden hover:shadow-lg transition-all">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold uppercase tracking-wider">Academic</span>
+<div class="flex items-center gap-1 text-gray-500 font-bold text-xs bg-gray-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-sm">fiber_manual_record</span>
+                                    Not Started
+                                </div>
+</div>
+<h3 class="text-lg font-bold text-[#181111] dark:text-white mb-2">Cambridge 17 - Test 4</h3>
+<div class="flex flex-wrap gap-4 text-[#896161] text-sm mb-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">schedule</span>
+                                    2h 45m
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base">signal_cellular_alt</span>
+                                    Intermediate
+                                </div>
+</div>
+<div class="grid grid-cols-4 gap-1 mb-6">
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+<div class="bg-gray-100 dark:bg-[#3d1d1d] h-1 rounded"></div>
+</div>
+<button class="w-full py-2 bg-primary hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+                                Start Test
+                            </button>
+</div>
+</div>
+</div>
+<!-- Load More / Pagination -->
+<div class="flex justify-center mt-12 pb-10">
+<button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-background-dark/50 border border-[#f4f0f0] dark:border-[#3d1d1d] rounded-xl hover:bg-[#f4f0f0] dark:hover:bg-[#3d1d1d] transition-colors font-bold text-sm">
+                        View More Tests
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Mobile Nav (Quick Access) -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-[#f4f0f0] dark:border-[#3d1d1d] flex justify-around py-2 px-4 z-40">
+<div class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center text-[#896161]">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-bold">Tests</span>
+</div>
+<div class="flex flex-col items-center text-[#896161]">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold">Stats</span>
+</div>
+<div class="flex flex-col items-center text-[#896161]">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</div>
+</div>
+</body></html>

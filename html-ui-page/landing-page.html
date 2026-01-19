@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F-IELTS | Master IELTS with Confidence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181111] dark:text-white antialiased transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#e6dbdb] dark:border-[#3d2a2a] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1280px] mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary">
+<svg class="size-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-xl font-black leading-tight tracking-[-0.015em]">F-IELTS</h2>
+</div>
+<nav class="hidden md:flex flex-1 justify-center items-center gap-10">
+<a class="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Practice</a>
+<a class="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Mock Tests</a>
+<a class="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Courses</a>
+<a class="text-[#181111] dark:text-gray-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-red-600 transition-all active:scale-95">
+                    Login
+                </button>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto overflow-hidden">
+<!-- Hero Section -->
+<section class="px-6 lg:px-10 py-12 @container">
+<div class="flex flex-col gap-10 lg:flex-row lg:items-center">
+<div class="flex flex-col gap-6 lg:w-1/2">
+<div class="flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full w-fit">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+<span class="text-xs font-bold uppercase tracking-wider">AI-Powered Platform</span>
+</div>
+<h1 class="text-[#181111] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl">
+                            Master IELTS with <span class="text-primary">Confidence</span>
+</h1>
+<p class="text-[#181111]/70 dark:text-gray-400 text-lg leading-relaxed max-w-[540px]">
+                            Personalized paths, AI-powered writing feedback, and realistic mock tests designed to help you hit Band 8+ faster than ever.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-primary text-white text-base font-bold shadow-xl shadow-primary/20 hover:shadow-primary/30 hover:bg-red-600 transition-all">
+                            Start Free Practice
+                        </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-white dark:bg-white/5 border border-[#e6dbdb] dark:border-[#3d2a2a] text-[#181111] dark:text-white text-base font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all">
+                            Take Mock Test
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-4">
+<div class="flex -space-x-3">
+<div class="size-10 rounded-full border-2 border-white bg-gray-300 bg-cover" data-alt="Student profile avatar 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAqlMuT8RHgDYctRk1qAl_8ZXQuNWgUWz_MqMzLStzVyUe77Z3KJ3yhU-xy4-69C8GeKzm5obyr5OH3OmC7S4X6eW9Ki2rtQHJJX460HwhR763N8bRCj4WWQsg3hODpOvv9-nGbgBt7pDMoKrcjclyuEs3dASB0PTZW4z654wAuEl4XNYaL5h0NSGqLPmO0Osq_pmZF5G6IFSGvL7uyO8h7L79pMy_76Z7aOu6bT3tDZkix23mkpar79o4l-pumU5L7_k7M_exPjgZU');"></div>
+<div class="size-10 rounded-full border-2 border-white bg-gray-400 bg-cover" data-alt="Student profile avatar 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDKezwmOzrL9WA8RPa9UaASStEMp2RpvHpuRZ2tTM3CmBWKeurFiIZSHFFvBASob471NMdf2eXXe5nAmOf8PaIOPQKKuE_vdGpa_HVT03p8d8qBI4SBmGlXp80mMylBkhCbQd9lxqasP_oOdL1GuIJpZ7H4Phkq0SGdlAVFZW5Fl0NXfSQVu9lVSXKF9gulpEn9NpDjH8tjwQmc8DvWoJ-819lTC3urEXeMgtu7YIphhFSy3dnOnXgK9dilNptj0ooM2Ra0fvGQYr8Y');"></div>
+<div class="size-10 rounded-full border-2 border-white bg-gray-500 bg-cover" data-alt="Student profile avatar 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-RAmw9UuB_g4pE0X3Z_mf1GMtnQhvsNf3BcH_kMIUP5htmhLgOBHAHczWFaIi21CAlYI1LfESF7CfaI2dhetqFCBLbPyXQwCmzCZmyR6fLU6CYLtdpEIXl8yFtD24JHo6rB4McAJo0Cb_hABm3Xc-UKZ0QBTx2bB9zl7QOJMdfRUzGZMKTZjx6vIiVFdDmKL278JXPRJzij-ZgO-knbWf1HaP80dzdBnV422NBGJLd3lObRp6Vue3eEdzL2YgL_iU6bdSdaqczmb1');"></div>
+</div>
+<p class="text-sm text-[#181111]/60 dark:text-gray-400">Join <span class="font-bold text-[#181111] dark:text-white">12,000+ students</span> improving today</p>
+</div>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-2xl shadow-2xl relative z-10 overflow-hidden border-8 border-white dark:border-[#2a1a1a]" data-alt="IELTS student studying with digital dashboard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASlN3P6zwgNMzjSq_7mjv7GOAGcis9EK1S9oUm2fNNcFGsloRwcbr9FybbqD6SVpx0OZzXSJ_Uqn4hTDc6717ikVANqYNAQmWc5QM9qWy9Fvk1BHjroE9THcXfoowJCDY9h9AjALyLEwgSzdjoOO3XYovin6C3ip57M9Gr86SvfkhEqy5wg4Bn-U1a1YpgmEQM3z4LPZy8VmIVe-wSCVXnQ_CmB1t9hiKNFQi10dMKbNU7UTYmLkNtBXoKBz9neeCQT4ri2jscFGr-");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</div>
+<!-- Floating Card -->
+<div class="absolute -bottom-6 -left-6 z-20 bg-white dark:bg-[#2a1a1a] p-4 rounded-xl shadow-2xl border border-[#e6dbdb] dark:border-[#3d2a2a] flex items-center gap-4 animate-bounce-slow">
+<div class="bg-green-100 dark:bg-green-900/30 text-green-600 p-2 rounded-lg">
+<span class="material-symbols-outlined font-bold">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-gray-500 uppercase font-bold tracking-tight">Avg. Improvement</p>
+<p class="text-lg font-black text-[#181111] dark:text-white">+1.5 Band Score</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FeatureSection: The 4 Skills -->
+<section class="px-6 lg:px-10 py-20 @container">
+<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-4 text-center items-center">
+<h2 class="text-[#181111] dark:text-white text-3xl font-black @[480px]:text-4xl">
+                        Comprehensive <span class="text-primary">Skill Modules</span>
+</h2>
+<p class="text-[#181111]/70 dark:text-gray-400 text-lg max-w-[720px]">
+                        Practice all 4 sections of the IELTS exam with expert-crafted materials and real-time performance analytics.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Reading -->
+<div class="group flex flex-col gap-6 rounded-2xl border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-white/5 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">menu_book</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#181111] dark:text-white text-xl font-bold leading-tight">Reading</h3>
+<p class="text-[#181111]/60 dark:text-gray-400 text-sm leading-normal">
+                                Practice with 1,000+ real-world articles and complex academic texts.
+                            </p>
+</div>
+<a class="mt-auto flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Listening -->
+<div class="group flex flex-col gap-6 rounded-2xl border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-white/5 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">headphones</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#181111] dark:text-white text-xl font-bold leading-tight">Listening</h3>
+<p class="text-[#181111]/60 dark:text-gray-400 text-sm leading-normal">
+                                Adaptive audio environments with various accents and background noise levels.
+                            </p>
+</div>
+<a class="mt-auto flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Writing -->
+<div class="group flex flex-col gap-6 rounded-2xl border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-white/5 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">edit_note</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#181111] dark:text-white text-xl font-bold leading-tight">Writing</h3>
+<p class="text-[#181111]/60 dark:text-gray-400 text-sm leading-normal">
+                                Instant AI-driven grading and detailed feedback on grammar and coherence.
+                            </p>
+</div>
+<a class="mt-auto flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Speaking -->
+<div class="group flex flex-col gap-6 rounded-2xl border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-white/5 p-8 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">mic</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#181111] dark:text-white text-xl font-bold leading-tight">Speaking</h3>
+<p class="text-[#181111]/60 dark:text-gray-400 text-sm leading-normal">
+                                Advanced voice recognition and fluency tracking technology to fix your speech.
+                            </p>
+</div>
+<a class="mt-auto flex items-center gap-2 text-primary text-sm font-bold group-hover:gap-3 transition-all" href="#">
+                            Learn more <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Feature Panel -->
+<section class="px-6 lg:px-10 py-10">
+<div class="relative overflow-hidden rounded-3xl border border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-white/5 p-8 lg:p-12 shadow-2xl">
+<div class="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+<div class="flex flex-col gap-6 lg:w-1/2">
+<div class="size-14 rounded-2xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-[#181111] dark:text-white text-3xl font-black leading-tight">AI Writing Assistant</h2>
+<p class="text-[#181111]/70 dark:text-gray-400 text-lg leading-relaxed">
+                                Get instant band scores and detailed grammatical corrections for your essays using our advanced AI engine trained on over 50,000 graded papers.
+                            </p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+<span class="text-sm font-medium dark:text-gray-300">Detailed coherence &amp; cohesion analysis</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+<span class="text-sm font-medium dark:text-gray-300">Vocabulary richness scoring</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 font-bold">check_circle</span>
+<span class="text-sm font-medium dark:text-gray-300">Grammar &amp; Punctuation fixes</span>
+</div>
+</div>
+<button class="flex min-w-[200px] w-fit cursor-pointer items-center justify-center rounded-lg h-12 px-8 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:bg-red-600 transition-all">
+                            Try AI Writing Now
+                        </button>
+</div>
+<div class="lg:w-1/2 w-full">
+<!-- Simulated AI UI -->
+<div class="bg-gray-50 dark:bg-black/20 rounded-xl p-6 border border-[#e6dbdb] dark:border-[#3d2a2a]">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold text-gray-500 uppercase">Analysis result</span>
+<div class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold italic">Band 7.5 Predicted</div>
+</div>
+<div class="space-y-4">
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 italic">
+                                    "The <span class="bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300 px-1 border-b-2 border-red-500">enviromental</span> problems are increasing..."
+                                </p>
+<div class="bg-white dark:bg-[#1a0f0f] p-3 rounded-lg border border-red-200 dark:border-red-900/30 flex gap-3 shadow-sm">
+<span class="material-symbols-outlined text-red-500 text-sm">error</span>
+<div class="text-xs">
+<p class="font-bold text-red-600">Spelling Error</p>
+<p class="text-gray-500 dark:text-gray-400">Correct to: <span class="text-green-600 font-bold">environmental</span></p>
+</div>
+</div>
+<div class="h-2 w-full bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-gray-400">
+<span>Task Achievement</span>
+<span>8.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-6 lg:px-10 py-24 @container">
+<div class="flex flex-col items-center justify-center gap-8 rounded-3xl bg-primary p-12 lg:p-20 text-center shadow-2xl shadow-primary/20">
+<div class="flex flex-col gap-4">
+<h1 class="text-white text-4xl font-black leading-tight @[480px]:text-6xl max-w-[800px]">
+                        Ready to hit <span class="underline decoration-white/30">Band 8+</span>?
+                    </h1>
+<p class="text-white/80 text-lg lg:text-xl font-medium max-w-[640px] mx-auto">
+                        Join thousands of students who have already achieved their target scores with the F-IELTS ecosystem.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<button class="flex min-w-[240px] cursor-pointer items-center justify-center rounded-lg h-14 px-10 bg-white text-primary text-lg font-bold shadow-xl hover:bg-gray-100 transition-all active:scale-95">
+                        Get Started for Free
+                    </button>
+<button class="flex min-w-[240px] cursor-pointer items-center justify-center rounded-lg h-14 px-10 border-2 border-white text-white text-lg font-bold hover:bg-white/10 transition-all">
+                        View Pricing
+                    </button>
+</div>
+<p class="text-white/60 text-xs">No credit card required. 7-day free trial on premium features.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-[#e6dbdb] dark:border-[#3d2a2a] pt-20 pb-10 px-6 lg:px-10">
+<div class="max-w-[1280px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3">
+<div class="text-primary size-8">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-xl font-black">F-IELTS</h2>
+</div>
+<p class="text-[#181111]/60 dark:text-gray-400 text-sm leading-relaxed">
+                        Empowering students globally to achieve their dream IELTS scores through cutting-edge AI technology and expert pedagogy.
+                    </p>
+<div class="flex items-center gap-4">
+<a class="size-8 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="size-8 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">public</span>
+</a>
+<a class="size-8 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">mail</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-[#181111] dark:text-white font-bold mb-6">Product</h4>
+<ul class="flex flex-col gap-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Practice Tests</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">AI Writing Grading</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Speaking Simulator</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Video Courses</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[#181111] dark:text-white font-bold mb-6">Resources</h4>
+<ul class="flex flex-col gap-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">IELTS Blog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Study Guides</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Grammar Bank</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Community Forum</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[#181111] dark:text-white font-bold mb-6">Company</h4>
+<ul class="flex flex-col gap-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-[#e6dbdb] dark:border-[#3d2a2a] pt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs text-gray-400">© 2024 F-IELTS Education. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-xs text-gray-400">
+<span class="material-symbols-outlined text-sm">language</span>
+<span>English (US)</span>
+</div>
+<button class="size-8 rounded-full bg-gray-100 dark:bg-white/5 flex items-center justify-center text-gray-600 dark:text-gray-400" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-sm">dark_mode</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Plans &amp; Pricing | F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white transition-colors duration-300">
+<!-- Main Layout Container -->
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#e6dbdb] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-3">
+<div class="flex items-center justify-between max-w-[1200px] mx-auto">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-xl font-black leading-tight tracking-tight">F-IELTS</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-[#181111] dark:text-white/80 text-sm font-semibold hover:text-primary transition-colors" href="#">Courses</a>
+<a class="text-[#181111] dark:text-white/80 text-sm font-semibold hover:text-primary transition-colors" href="#">Practice</a>
+<a class="text-[#181111] dark:text-white/80 text-sm font-semibold hover:text-primary transition-colors" href="#">Tests</a>
+<a class="text-[#181111] dark:text-white/80 text-sm font-semibold hover:text-primary transition-colors" href="#">Community</a>
+</div>
+<div class="flex gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                        Log In
+                    </button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-[#f4f0f0] dark:bg-white/10 text-[#181111] dark:text-white text-sm font-bold hover:bg-white/20 transition-all">
+                        Sign Up
+                    </button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 max-w-[1200px] mx-auto w-full px-6 lg:px-10 py-12">
+<!-- Page Heading -->
+<div class="flex flex-col items-center text-center gap-4 mb-12">
+<h1 class="text-[#181111] dark:text-white text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]">Choose Your Path to Success</h1>
+<p class="text-[#896161] dark:text-white/60 text-lg max-w-2xl">
+                    Unlock your potential with our expert-led IELTS preparation plans. Join 10,000+ students achieving their dream scores.
+                </p>
+<!-- Toggle Switch -->
+<div class="mt-4 flex h-11 w-72 items-center justify-center rounded-full bg-[#f4f0f0] dark:bg-white/10 p-1">
+<label class="flex cursor-pointer h-full flex-1 items-center justify-center rounded-full px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:shadow-sm text-[#896161] dark:text-white/70 has-[:checked]:text-[#181111] dark:has-[:checked]:text-white text-sm font-bold transition-all">
+<span>Monthly</span>
+<input class="hidden" name="billing" type="radio" value="monthly"/>
+</label>
+<label class="flex cursor-pointer h-full flex-1 items-center justify-center rounded-full px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-primary has-[:checked]:shadow-sm text-[#896161] dark:text-white/70 has-[:checked]:text-[#181111] dark:has-[:checked]:text-white text-sm font-bold transition-all">
+<span>Annual (-20%)</span>
+<input checked="" class="hidden" name="billing" type="radio" value="annual"/>
+</label>
+</div>
+</div>
+<!-- Pricing Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+<!-- Free Plan -->
+<div class="flex flex-col gap-6 rounded-xl border border-solid border-[#e6dbdb] dark:border-white/10 bg-white dark:bg-white/5 p-8 transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-2">
+<h2 class="text-[#181111] dark:text-white text-xl font-bold">Free</h2>
+<div class="flex items-baseline gap-1">
+<span class="text-[#181111] dark:text-white text-5xl font-black tracking-tighter">$0</span>
+<span class="text-[#896161] dark:text-white/60 text-sm font-medium">/month</span>
+</div>
+<p class="text-[#896161] dark:text-white/60 text-sm mt-2">Perfect for getting started and exploring the platform.</p>
+</div>
+<button class="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-[#f4f0f0] dark:bg-white/10 text-[#181111] dark:text-white text-sm font-bold hover:bg-white/20 transition-all">
+                        Get Started
+                    </button>
+<hr class="border-[#e6dbdb] dark:border-white/10"/>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>1 Full-length Mock Test</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Daily Vocab Challenge</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Community Forum Access</span>
+</div>
+</div>
+</div>
+<!-- Premium Plan (Recommended) -->
+<div class="relative flex flex-col gap-6 rounded-xl border-2 border-solid border-primary bg-white dark:bg-white/5 p-8 shadow-2xl shadow-primary/10 transition-transform hover:scale-[1.02] z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+                        Recommended
+                    </div>
+<div class="flex flex-col gap-2 pt-2">
+<h2 class="text-[#181111] dark:text-white text-xl font-bold">Premium</h2>
+<div class="flex items-baseline gap-1">
+<span class="text-[#181111] dark:text-white text-5xl font-black tracking-tighter">$29</span>
+<span class="text-[#896161] dark:text-white/60 text-sm font-medium">/month</span>
+</div>
+<p class="text-[#896161] dark:text-white/60 text-sm mt-2">Comprehensive prep for serious students aiming for 7.5+.</p>
+</div>
+<button class="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all">
+                        Upgrade Now
+                    </button>
+<hr class="border-[#e6dbdb] dark:border-white/10"/>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="font-semibold text-[#181111] dark:text-white">Unlimited Mock Tests</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>AI Writing Grader (Unlimited)</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>500+ Video Lessons</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Priority Email Support</span>
+</div>
+</div>
+</div>
+<!-- Pro Plan -->
+<div class="flex flex-col gap-6 rounded-xl border border-solid border-[#e6dbdb] dark:border-white/10 bg-white dark:bg-white/5 p-8 transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-2">
+<h2 class="text-[#181111] dark:text-white text-xl font-bold">Pro</h2>
+<div class="flex items-baseline gap-1">
+<span class="text-[#181111] dark:text-white text-5xl font-black tracking-tighter">$59</span>
+<span class="text-[#896161] dark:text-white/60 text-sm font-medium">/month</span>
+</div>
+<p class="text-[#896161] dark:text-white/60 text-sm mt-2">Elite coaching and personalized strategy for top bands.</p>
+</div>
+<button class="w-full flex items-center justify-center rounded-lg h-12 px-4 bg-[#181111] dark:bg-white text-white dark:text-[#181111] text-sm font-bold hover:opacity-90 transition-all">
+                        Go Pro
+                    </button>
+<hr class="border-[#e6dbdb] dark:border-white/10"/>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Everything in Premium</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>4x 1-on-1 Speaking Sessions</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Personalized Study Roadmap</span>
+</div>
+<div class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Lifetime Course Updates</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Comparison Table Header -->
+<div class="text-center mb-8">
+<h2 class="text-2xl font-black tracking-tight mb-2">Detailed Feature Comparison</h2>
+<p class="text-[#896161] dark:text-white/60 text-sm">Find the perfect balance of resources for your study schedule.</p>
+</div>
+<!-- Comparison Table -->
+<div class="overflow-x-auto rounded-xl border border-[#e6dbdb] dark:border-white/10">
+<table class="w-full text-left border-collapse bg-white dark:bg-white/5">
+<thead>
+<tr class="bg-[#f4f0f0] dark:bg-white/10">
+<th class="p-6 text-sm font-bold uppercase tracking-wider">Features</th>
+<th class="p-6 text-sm font-bold uppercase tracking-wider text-center">Free</th>
+<th class="p-6 text-sm font-bold uppercase tracking-wider text-center bg-primary/5">Premium</th>
+<th class="p-6 text-sm font-bold uppercase tracking-wider text-center">Pro</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e6dbdb] dark:divide-white/10">
+<tr>
+<td class="p-6 text-sm font-medium">Mock Practice Tests</td>
+<td class="p-6 text-center text-sm">1 Test</td>
+<td class="p-6 text-center text-sm font-bold bg-primary/5">Unlimited</td>
+<td class="p-6 text-center text-sm">Unlimited</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Writing Assessment</td>
+<td class="p-6 text-center text-sm"><span class="material-symbols-outlined text-gray-400">remove</span></td>
+<td class="p-6 text-center bg-primary/5"><span class="material-symbols-outlined text-primary">check_circle</span></td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-primary">check_circle</span></td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Video Lessons</td>
+<td class="p-6 text-center text-sm">Intro Only</td>
+<td class="p-6 text-center text-sm font-bold bg-primary/5">Full Access</td>
+<td class="p-6 text-center text-sm">Full Access</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Speaking Practice</td>
+<td class="p-6 text-center text-sm">AI Solo</td>
+<td class="p-6 text-center text-sm font-bold bg-primary/5">AI Solo</td>
+<td class="p-6 text-center text-sm font-bold">1-on-1 Sessions</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">Study Planner</td>
+<td class="p-6 text-center"><span class="material-symbols-outlined text-gray-400">remove</span></td>
+<td class="p-6 text-center bg-primary/5"><span class="material-symbols-outlined text-primary">check_circle</span></td>
+<td class="p-6 text-center text-sm font-bold">Personalized</td>
+</tr>
+<tr>
+<td class="p-6 text-sm font-medium">24/7 Support</td>
+<td class="p-6 text-center text-sm">Standard</td>
+<td class="p-6 text-center text-sm font-bold bg-primary/5">Priority</td>
+<td class="p-6 text-center text-sm font-bold">VIP Concierge</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Guarantee Section -->
+<div class="mt-20 flex flex-col items-center gap-6 p-10 rounded-2xl bg-primary/5 border border-dashed border-primary/20">
+<div class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold mb-2">30-Day Money-Back Guarantee</h3>
+<p class="text-[#896161] dark:text-white/60 max-w-lg mx-auto">
+                        We're confident in our methods. If you don't see progress or aren't satisfied with our platform within 30 days, we'll refund your payment—no questions asked.
+                    </p>
+</div>
+</div>
+<!-- FAQ Mini -->
+<div class="mt-20">
+<h3 class="text-2xl font-black mb-8 text-center">Frequently Asked Questions</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<h4 class="font-bold">Can I switch plans later?</h4>
+<p class="text-sm text-[#896161] dark:text-white/60">Yes, you can upgrade or downgrade your plan at any time from your account settings.</p>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold">What is the AI Writing Grader?</h4>
+<p class="text-sm text-[#896161] dark:text-white/60">Our proprietary AI model evaluates your essays against official IELTS criteria (0-9 scale) in seconds.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-[#e6dbdb] dark:border-white/10 py-12 px-6 lg:px-40 bg-white dark:bg-background-dark">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path></svg>
+</div>
+<span class="font-bold text-lg">F-IELTS</span>
+</div>
+<div class="flex gap-8 text-sm text-[#896161] dark:text-white/40">
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+<p class="text-xs text-[#896161] dark:text-white/40">© 2024 F-IELTS. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>

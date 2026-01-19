@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F-IELTS | Reading Practice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #3f3f46; }
+        .split-pane { height: calc(100vh - 140px); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#181111] dark:text-gray-100 overflow-hidden font-display">
+<!-- Header Section -->
+<header class="flex items-center justify-between border-b border-solid border-[#e5e7eb] dark:border-gray-800 bg-white dark:bg-zinc-900 px-6 py-3 z-50">
+<div class="flex items-center gap-4 text-[#181111] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">F-IELTS</h2>
+</div>
+<!-- Timer Integration -->
+<div class="flex items-center gap-2">
+<div class="flex gap-1">
+<div class="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded">
+<p class="text-sm font-bold leading-none">00</p>
+<p class="text-[10px] uppercase opacity-60">Hr</p>
+</div>
+<div class="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded border-b-2 border-primary">
+<p class="text-sm font-bold leading-none text-primary">54</p>
+<p class="text-[10px] uppercase opacity-60 text-primary">Min</p>
+</div>
+<div class="flex flex-col items-center bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded">
+<p class="text-sm font-bold leading-none">12</p>
+<p class="text-[10px] uppercase opacity-60">Sec</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg text-xs font-semibold">
+<span class="size-2 bg-green-500 rounded-full animate-pulse"></span>
+                24 / 40 Answered
+            </div>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-red-700 transition-colors">
+                Submit
+            </button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20" data-alt="Student profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGuyk8VanWgXXRGNSuSA1bu7wcCkHhaUDzdX1McfQQdaQFUNWD3quIfPhuWELDAHwzDpnqit0FfkuzK3_b6-TmW7dlQE83JnckrSckz2mJwlXpZ6OwAMMu_8vDgF1fdyft0KdHf6UBnbzLPO6HUyng6o-pDvGF1dd90k1i3rbFLTZPteaMJWyJtKVFp_ycpZ75pkizUV6Ny7xPwwzl2Z_4Utm2xiDHyr_3zLnSapPPrt7n2L2bP6dcRsMyCy-odHGz-j_TZi__405o");'></div>
+</div>
+</header>
+<!-- Question Pagination Bar -->
+<div class="bg-white dark:bg-zinc-900 border-b border-[#e5e7eb] dark:border-gray-800 px-4 py-2 overflow-x-auto">
+<div class="flex items-center gap-1.5 min-w-max mx-auto justify-center">
+<a class="flex size-8 items-center justify-center rounded bg-primary text-white text-xs font-bold" href="#">1</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">2</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">3</a>
+<a class="flex size-8 items-center justify-center rounded bg-primary/10 text-primary border border-primary/30 text-xs font-bold" href="#">4</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">5</a>
+<div class="w-px h-6 bg-zinc-200 dark:bg-zinc-700 mx-1"></div>
+<!-- Repeat dots/pattern for 40 questions simplified for UI -->
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">6</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">7</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">8</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">9</a>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">10</a>
+<span class="text-zinc-400 px-1">...</span>
+<a class="flex size-8 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-800 text-xs hover:bg-zinc-200" href="#">40</a>
+</div>
+</div>
+<!-- Main Content Split Screen -->
+<main class="flex w-full split-pane">
+<!-- Left Side: Reading Passage -->
+<section class="w-1/2 flex flex-col border-r border-[#e5e7eb] dark:border-gray-800 bg-white dark:bg-zinc-900 relative">
+<!-- Toolbar for Annotation -->
+<div class="flex justify-between items-center px-8 py-3 bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-100 dark:border-zinc-800">
+<span class="text-xs font-semibold uppercase tracking-wider text-zinc-500">Reading Passage 1</span>
+<div class="flex gap-1">
+<button class="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300" title="Highlight">
+<span class="material-symbols-outlined text-[20px]">highlighter_size_3</span>
+</button>
+<button class="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300" title="Text Size">
+<span class="material-symbols-outlined text-[20px]">text_fields</span>
+</button>
+<button class="p-1.5 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-300" title="Clear All">
+<span class="material-symbols-outlined text-[20px]">ink_eraser</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto custom-scrollbar px-10 py-8">
+<h1 class="text-3xl font-bold leading-tight mb-8 text-zinc-900 dark:text-white">The History of Sustainable Architecture</h1>
+<div class="prose prose-zinc dark:prose-invert max-w-none space-y-6 text-lg leading-relaxed text-zinc-800 dark:text-zinc-300">
+<p>
+                        The origins of sustainable architecture can be traced back to the ancient civilizations that built structures in harmony with their environment. The Anasazi in the American Southwest, for example, designed their dwellings to take advantage of solar orientation. During the winter, the low sun would reach deep into the rock-sheltered homes, providing warmth. In the summer, the overhangs provided shade, keeping the interiors cool.
+                    </p>
+<p>
+<mark class="bg-yellow-200 dark:bg-yellow-900/50 rounded-sm px-1">Modern sustainable architecture emerged in the late 1960s</mark> as a response to the growing environmental movement. Architects began to experiment with energy-efficient designs and renewable energy sources. One of the pioneers in this field was Buckminster Fuller, who developed the geodesic dome, a structure that uses minimal materials to enclose a large volume of space.
+                    </p>
+<p>
+                        The 1970s energy crisis further accelerated the development of sustainable architecture. With oil prices skyrocketing, there was a surge in interest in solar power and energy conservation. This period saw the construction of many passive solar homes, which used the sun's energy for heating and cooling without the need for mechanical systems.
+                    </p>
+<p>
+                        By the 1990s, sustainable architecture had become more mainstream. The United States Green Building Council (USGBC) was founded in 1993, and its Leadership in Energy and Environmental Design (LEED) rating system became the standard for evaluating the sustainability of buildings.
+                    </p>
+<p>
+                        Today, sustainable architecture is more important than ever as the world faces the challenges of climate change and resource depletion. Architects are now using advanced technology and materials to create buildings that are not only energy-efficient but also produce their own energy and recycle their own waste.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Right Side: Questions -->
+<section class="w-1/2 flex flex-col bg-background-light dark:bg-background-dark overflow-hidden">
+<div class="flex-1 overflow-y-auto custom-scrollbar px-10 py-8">
+<div class="mb-10">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Questions 1-4</h3>
+<p class="text-sm italic text-zinc-600 dark:text-zinc-400 mb-6 border-l-4 border-zinc-200 dark:border-zinc-700 pl-4">
+                        Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE or NOT GIVEN.
+                    </p>
+<div class="space-y-8">
+<!-- Question 1: Fill in the blank -->
+<div class="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+<div class="flex gap-4">
+<span class="flex-shrink-0 size-7 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-full flex items-center justify-center font-bold text-sm">1</span>
+<div class="space-y-3 flex-1">
+<p class="font-medium text-zinc-900 dark:text-zinc-100">
+                                        The Anasazi people used solar energy primarily for cooking food in the winter.
+                                    </p>
+<div class="flex gap-3">
+<input class="w-full max-w-xs h-10 px-3 rounded-lg border-zinc-300 dark:border-zinc-600 dark:bg-zinc-900 focus:border-primary focus:ring-1 focus:ring-primary text-sm" placeholder="Your answer (e.g. FALSE)" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Question 2: Multiple Choice -->
+<div class="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border-2 border-primary/20 ring-1 ring-primary/10">
+<div class="flex gap-4">
+<span class="flex-shrink-0 size-7 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
+<div class="space-y-4 flex-1">
+<p class="font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
+                                        Which architect is credited with developing the geodesic dome structure?
+                                    </p>
+<div class="grid gap-2">
+<label class="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+<input class="text-primary focus:ring-primary h-4 w-4" name="q2" type="radio"/>
+<span class="text-sm">Frank Lloyd Wright</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-primary/40 bg-primary/5 dark:bg-primary/10 cursor-pointer transition-colors">
+<input checked="" class="text-primary focus:ring-primary h-4 w-4" name="q2" type="radio"/>
+<span class="text-sm font-medium">Buckminster Fuller</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+<input class="text-primary focus:ring-primary h-4 w-4" name="q2" type="radio"/>
+<span class="text-sm">Le Corbusier</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 cursor-pointer transition-colors">
+<input class="text-primary focus:ring-primary h-4 w-4" name="q2" type="radio"/>
+<span class="text-sm">Zaha Hadid</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Question 3 -->
+<div class="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+<div class="flex gap-4">
+<span class="flex-shrink-0 size-7 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+<div class="space-y-3 flex-1">
+<p class="font-medium text-zinc-900 dark:text-zinc-100 leading-snug">
+                                        The LEED rating system was established in 1993 to encourage green building practices.
+                                    </p>
+<div class="flex gap-4 mt-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="q3" type="radio"/>
+<span class="text-sm">True</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="q3" type="radio"/>
+<span class="text-sm">False</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary" name="q3" type="radio"/>
+<span class="text-sm">Not Given</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Question Panel Footer -->
+<div class="p-4 border-t border-zinc-200 dark:border-zinc-700 flex justify-between items-center bg-white dark:bg-zinc-900">
+<button class="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="text-sm font-semibold">Previous Passage</span>
+</button>
+<div class="flex gap-2">
+<button class="px-5 py-2 rounded-lg border border-zinc-300 dark:border-zinc-600 text-sm font-bold hover:bg-zinc-50 dark:hover:bg-zinc-800">
+                        Review Later
+                    </button>
+<button class="px-5 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-red-700 shadow-lg shadow-red-500/20">
+                        Next Passage
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Overlay (Floating small mobile indicator) -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden">
+<button class="bg-primary text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 font-bold">
+<span class="material-symbols-outlined">quiz</span>
+            Show Questions
+        </button>
+</div>
+</body></html>

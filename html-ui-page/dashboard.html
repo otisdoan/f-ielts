@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Learning Dashboard - F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">database</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-black tracking-tight">F-IELTS</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary text-sm font-semibold leading-normal" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Practice Tests</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Study Material</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-1.5 gap-2 border border-transparent focus-within:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 p-0 placeholder:text-slate-500" placeholder="Search lessons..." type="text"/>
+</div>
+<div class="h-10 w-10 rounded-full border-2 border-primary/20 p-0.5">
+<div class="h-full w-full rounded-full bg-cover bg-center" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBo7B2AjdDjcpRLbIpSG8TTvQgLffRmRtbif5lIPQ1nIUUW1wX0AKIzBO_z9N8A9T5j6H-E35fUVXmBu81JdgbPe-NAt0FDwGZdTXdO-cpIAL8q9bxhb4kwnrJMLFkATxtSr2QdaH5mpBtTPBDUBjwUJjRQbWN0EKG_iH7PY09i_HVgDYTAKksqhiW-n6KsFi-8mzOfHqJb4wi-hLZ-n2kIC3wtjAk0_l43wS8aClbUR8-IM2ESB3J3YfLwaLu5mm9J7iP-it4wE4tL')"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto py-8 px-4 sm:px-6 lg:px-8">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-3xl font-black tracking-tight">Welcome back, Alex!</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">You're currently on track for an estimated <span class="text-primary font-bold">Band 7.5</span>. Keep it up!</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold text-sm tracking-wide transition-all shadow-lg shadow-primary/20 flex items-center gap-2 w-fit">
+<span class="material-symbols-outlined">play_circle</span>
+                Continue Learning
+            </button>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+<span class="material-symbols-outlined text-blue-600">schedule</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold">+12% this week</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Total Study Time</p>
+<p class="text-slate-900 dark:text-white text-2xl font-black">42h 15m</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+<span class="material-symbols-outlined text-purple-600">task_alt</span>
+</div>
+<span class="text-emerald-500 text-xs font-bold">+3 new</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Tests Completed</p>
+<p class="text-slate-900 dark:text-white text-2xl font-black">12</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+<span class="material-symbols-outlined text-orange-600">menu_book</span>
+</div>
+<span class="text-slate-400 text-xs font-bold">Top 5%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Vocabulary Mastery</p>
+<p class="text-slate-900 dark:text-white text-2xl font-black">85%</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-red-50 dark:bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<span class="text-primary text-xs font-bold">On Track</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Target Score</p>
+<p class="text-slate-900 dark:text-white text-2xl font-black">Band 8.0</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Progress & Charts -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Skill Progress -->
+<section>
+<div class="flex items-center justify-between mb-4 px-2">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">Skill Progress</h2>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View Detailed Analysis</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Reading -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">import_contacts</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Reading</h3>
+<p class="text-xs text-slate-500">Mastered 14/18 topics</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold">8.0 Avg</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-500">Overall Completion</span>
+<span class="text-slate-900 dark:text-white">85%</span>
+</div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Listening -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">headphones</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Listening</h3>
+<p class="text-xs text-slate-500">Mastered 10/18 topics</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold">7.5 Avg</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-500">Overall Completion</span>
+<span class="text-slate-900 dark:text-white">70%</span>
+</div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<!-- Writing -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">edit_note</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Writing</h3>
+<p class="text-xs text-slate-500">Mastered 5/18 topics</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold">6.5 Avg</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-500">Overall Completion</span>
+<span class="text-slate-900 dark:text-white">45%</span>
+</div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<!-- Speaking -->
+<div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">mic</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Speaking</h3>
+<p class="text-xs text-slate-500">Mastered 8/18 topics</p>
+</div>
+</div>
+<div class="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-bold">7.0 Avg</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-500">Overall Completion</span>
+<span class="text-slate-900 dark:text-white">60%</span>
+</div>
+<div class="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Performance Trends -->
+<section>
+<div class="flex items-center justify-between mb-4 px-2">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold">Score Trends</h2>
+<div class="flex gap-2">
+<button class="text-xs font-bold px-3 py-1 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">1W</button>
+<button class="text-xs font-bold px-3 py-1 bg-primary text-white rounded-lg">1M</button>
+<button class="text-xs font-bold px-3 py-1 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800">3M</button>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 min-h-[300px] flex flex-col items-center justify-center text-center relative overflow-hidden">
+<!-- Abstract Visual Trend Representation -->
+<div class="absolute inset-0 opacity-10 flex items-end">
+<div class="w-full h-48 bg-gradient-to-t from-primary to-transparent" style="clip-path: polygon(0 80%, 15% 70%, 30% 75%, 45% 60%, 60% 50%, 75% 55%, 90% 40%, 100% 35%, 100% 100%, 0 100%);"></div>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-6xl mb-4">insights</span>
+<p class="text-slate-500 max-w-sm relative z-10 font-medium">Your score has improved by 0.5 bands in the last 30 days. Most growth seen in Reading and Speaking.</p>
+<div class="mt-6 flex gap-8 relative z-10">
+<div>
+<p class="text-2xl font-black text-slate-900 dark:text-white">7.0</p>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Start</p>
+</div>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-slate-800"></div>
+<div>
+<p class="text-2xl font-black text-primary">7.5</p>
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Current</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Recent Activity & Recommended -->
+<div class="space-y-8">
+<!-- Recent Activity -->
+<section>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold mb-4 px-2">Recent Activity</h2>
+<div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600">done_all</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Reading Practice #4</p>
+<p class="text-xs text-slate-500">Score: 8.5 • 2 hours ago</p>
+</div>
+</div>
+<div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600">visibility</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Video: Essay Structures</p>
+<p class="text-xs text-slate-500">Watched 80% • 5 hours ago</p>
+</div>
+</div>
+<div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-amber-600">edit_square</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Writing Task 2 Draft</p>
+<p class="text-xs text-slate-500">Submitted for Review • Yesterday</p>
+</div>
+</div>
+<div class="p-4 flex gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<div class="w-10 h-10 shrink-0 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400">timer</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-slate-900 dark:text-white">Vocabulary Drill</p>
+<p class="text-xs text-slate-500">Completed 50 words • 2 days ago</p>
+</div>
+</div>
+</div>
+<button class="w-full p-4 text-xs font-bold text-slate-500 hover:text-primary transition-colors bg-slate-50/50 dark:bg-slate-800/30">View All History</button>
+</div>
+</section>
+<!-- Recommendation Card -->
+<section>
+<div class="bg-slate-900 dark:bg-primary/10 rounded-2xl p-6 text-white dark:text-primary border border-slate-800 dark:border-primary/20 relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-8xl">bolt</span>
+</div>
+<p class="text-xs font-black uppercase tracking-widest mb-2 opacity-70">Recommended Next</p>
+<h3 class="text-xl font-black mb-4">Writing Task 2: Advanced Cohesion</h3>
+<p class="text-sm opacity-80 mb-6 leading-relaxed">Boost your Writing score by focusing on linking words and complex paragraph structures.</p>
+<button class="w-full bg-white dark:bg-primary text-slate-900 dark:text-white font-bold py-3 rounded-xl text-sm hover:scale-[1.02] transition-transform">Start Lesson</button>
+</div>
+</section>
+<!-- Gamification / Daily Goal -->
+<section class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+<h3 class="font-bold text-slate-900 dark:text-white">Daily Goal</h3>
+</div>
+<div class="flex items-end justify-between mb-2">
+<p class="text-2xl font-black">45<span class="text-slate-400 text-sm font-medium">/60 mins</span></p>
+<span class="text-xs font-bold text-primary">75%</span>
+</div>
+<div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-orange-500" style="width: 75%"></div>
+</div>
+<p class="mt-4 text-xs text-slate-500 font-medium">15 more minutes to keep your 5-day streak alive!</p>
+</section>
+</div>
+</div>
+</main>
+<!-- Simple Footer for Context -->
+<footer class="max-w-[1280px] mx-auto py-12 px-4 border-t border-slate-200 dark:border-slate-800 mt-12 flex flex-col md:flex-row justify-between items-center gap-6 opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">database</span>
+<p class="text-xs font-bold">© 2024 F-IELTS EdTech. All rights reserved.</p>
+</div>
+<div class="flex gap-6 text-xs font-bold">
+<a class="hover:text-primary" href="#">Support</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+</div>
+</footer>
+</body></html>

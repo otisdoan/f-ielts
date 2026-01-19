@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Learning Analytics Insights - F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white min-h-screen">
+<div class="flex h-full min-h-screen">
+<!-- Side Navigation -->
+<aside class="w-64 border-r border-[#e6dbdb] dark:border-[#3d2424] bg-white dark:bg-background-dark hidden lg:flex flex-col fixed h-full">
+<div class="p-6 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary rounded-lg size-10 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-tight">F-IELTS</h1>
+<p class="text-[#896161] dark:text-[#c4a1a1] text-xs font-medium">Premium Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 flex-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#896161] hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#896161] hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] transition-colors" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-sm font-semibold">Practice Tests</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">leaderboard</span>
+<span class="text-sm font-semibold">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#896161] hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-sm font-semibold">Study Materials</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#896161] hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] transition-colors" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-sm font-semibold">Study Plan</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-[#e6dbdb] dark:border-[#3d2424] pt-6 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#896161] hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold">Settings</span>
+</a>
+<div class="flex items-center gap-3 px-3 py-4 mt-4 bg-[#f4f0f0] dark:bg-[#3d2424] rounded-xl">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="User profile avatar smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBiNKfkg_F9MjX0xBnTCeULDDPhVEs06KcpIm3dk8ZBzkmwitGHfdhk-wDFvAhSVMSHCTlFiw3aDLM53v7b4gaES4zUWW55StC-lZG-vDBAha0VZ_TKJ5-ltGwCUK8sEtcR-KEW64oIQIMDBMoUsWjV9lurL0Iv_SbkA_k6luU7mk1L6fnAqpobVNGrdl-6z0E8C4BQGrMrvP9QtpIa_L6CBJI4Pqg2MPSozDk6aHECnVA7WOTl6atT0F-urACf3cIvuWv8huSv8ep0')"></div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Johnson</p>
+<p class="text-xs text-[#896161] dark:text-[#c4a1a1]">Target Band: 7.5</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 flex flex-col">
+<!-- Header -->
+<header class="h-16 border-b border-[#e6dbdb] dark:border-[#3d2424] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold tracking-tight">Analytics Dashboard</h2>
+<div class="h-4 w-[1px] bg-[#e6dbdb] dark:bg-[#3d2424]"></div>
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1]">Overview of your IELTS journey</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#896161] text-lg">search</span>
+<input class="pl-10 pr-4 py-2 bg-[#f4f0f0] dark:bg-[#3d2424] border-none rounded-lg text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search insights..." type="text"/>
+</div>
+<button class="p-2 rounded-lg hover:bg-[#f4f0f0] dark:hover:bg-[#3d2424] text-[#896161] transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-primary rounded-full"></span>
+</button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Report
+                    </button>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<!-- Page Heading -->
+<div class="flex flex-col gap-1">
+<h3 class="text-3xl font-black tracking-tight">Your Progress Insights</h3>
+<p class="text-[#896161] dark:text-[#c4a1a1]">Personalized data and deep dive analysis to help you reach Band 7.5+</p>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">Current Est. Band</p>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black">6.5</p>
+<p class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_upward</span> 0.5</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">Weekly Study Time</p>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black">12h 45m</p>
+<p class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_upward</span> 15%</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">Accuracy Rate</p>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black">72%</p>
+<p class="text-red-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_downward</span> 2%</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#3d2424] p-6 rounded-xl border border-[#e6dbdb] dark:border-none shadow-sm flex flex-col gap-1">
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1] font-semibold uppercase tracking-wider">Test Completed</p>
+<div class="flex items-baseline gap-2">
+<p class="text-3xl font-black">24</p>
+<p class="text-[#896161] text-sm font-bold">tests</p>
+</div>
+</div>
+</div>
+<!-- Main Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Band Score Line Chart -->
+<div class="lg:col-span-2 bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h4 class="text-lg font-bold">Band Score Improvement</h4>
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1]">Historical performance vs. Target (7.5)</p>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1.5 text-xs font-bold text-[#896161]"><span class="size-2 rounded-full bg-primary"></span> Actual</span>
+<span class="flex items-center gap-1.5 text-xs font-bold text-[#896161]"><span class="size-2 rounded-full bg-[#e6dbdb] dark:bg-[#5a3a3a]"></span> Goal</span>
+</div>
+</div>
+<div class="h-64 relative mt-4">
+<!-- SVG Placeholder for Line Chart -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ec1313" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#ec1313" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Goal line -->
+<line stroke="#e6dbdb" stroke-dasharray="8 4" stroke-width="2" x1="0" x2="800" y1="40" y2="40"></line>
+<!-- Progress path -->
+<path d="M0,180 Q100,160 200,140 T400,100 T600,60 T800,50" fill="none" stroke="#ec1313" stroke-linecap="round" stroke-width="4"></path>
+<path d="M0,180 Q100,160 200,140 T400,100 T600,60 T800,50 V200 H0 Z" fill="url(#chartGradient)"></path>
+<!-- Points -->
+<circle cx="200" cy="140" fill="#ec1313" r="4"></circle>
+<circle cx="400" cy="100" fill="#ec1313" r="4"></circle>
+<circle cx="600" cy="60" fill="#ec1313" r="4"></circle>
+<circle cx="800" cy="50" fill="#ec1313" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-xs font-bold text-[#896161] uppercase">Jan</span>
+<span class="text-xs font-bold text-[#896161] uppercase">Feb</span>
+<span class="text-xs font-bold text-[#896161] uppercase">Mar</span>
+<span class="text-xs font-bold text-[#896161] uppercase">Apr</span>
+<span class="text-xs font-bold text-[#896161] uppercase">May</span>
+<span class="text-xs font-bold text-[#896161] uppercase text-primary">Jun</span>
+</div>
+</div>
+<!-- Skill Radar -->
+<div class="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm flex flex-col items-center">
+<div class="w-full text-left mb-4">
+<h4 class="text-lg font-bold">Skill Proficiency</h4>
+<p class="text-sm text-[#896161] dark:text-[#c4a1a1]">Balance across four sections</p>
+</div>
+<div class="relative w-full aspect-square flex items-center justify-center">
+<!-- Radar Chart Placeholder -->
+<div class="absolute inset-0 flex items-center justify-center">
+<svg class="w-full h-full opacity-20 stroke-current text-[#896161]" viewbox="0 0 200 200">
+<circle cx="100" cy="100" fill="none" r="80"></circle>
+<circle cx="100" cy="100" fill="none" r="60"></circle>
+<circle cx="100" cy="100" fill="none" r="40"></circle>
+<line x1="100" x2="100" y1="20" y2="180"></line>
+<line x1="20" x2="180" y1="100" y2="100"></line>
+</svg>
+<!-- Skill polygon -->
+<svg class="absolute w-full h-full" viewbox="0 0 200 200">
+<polygon fill="#ec1313" fill-opacity="0.3" points="100,40 160,100 100,170 30,100" stroke="#ec1313" stroke-width="2"></polygon>
+</svg>
+</div>
+<!-- Labels -->
+<div class="absolute top-0 text-xs font-bold uppercase">Listening (7.5)</div>
+<div class="absolute bottom-0 text-xs font-bold uppercase">Speaking (6.0)</div>
+<div class="absolute left-0 text-xs font-bold uppercase -rotate-90 origin-center -translate-x-8">Writing (5.5)</div>
+<div class="absolute right-0 text-xs font-bold uppercase rotate-90 origin-center translate-x-8">Reading (7.0)</div>
+</div>
+</div>
+</div>
+<!-- Lower Insights Row -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Heatmap & Question Breakdown -->
+<div class="xl:col-span-2 space-y-8">
+<!-- Heatmap -->
+<div class="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+<h4 class="text-lg font-bold mb-4">Weekly Study Consistency</h4>
+<div class="flex flex-col gap-2">
+<div class="grid grid-cols-7 gap-2">
+<!-- Simple representation of a heatmap grid -->
+<div class="space-y-2">
+<div class="aspect-square bg-primary/20 rounded-sm" title="2 hours"></div>
+<div class="aspect-square bg-primary/60 rounded-sm" title="4 hours"></div>
+<div class="aspect-square bg-primary/10 rounded-sm" title="0.5 hours"></div>
+<div class="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">MON</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-primary/80 rounded-sm" title="6 hours"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary rounded-sm" title="8 hours"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">TUE</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">WED</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-primary/60 rounded-sm"></div>
+<div class="aspect-square bg-primary/90 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">THU</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-primary/80 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">FRI</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-primary rounded-sm"></div>
+<div class="aspect-square bg-primary/80 rounded-sm"></div>
+<div class="aspect-square bg-primary/60 rounded-sm"></div>
+<div class="aspect-square bg-primary/40 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">SAT</div>
+</div>
+<div class="space-y-2">
+<div class="aspect-square bg-primary/10 rounded-sm"></div>
+<div class="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="aspect-square bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="aspect-square bg-primary/20 rounded-sm"></div>
+<div class="text-[10px] text-center font-bold text-[#896161]">SUN</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 mt-2">
+<span class="text-[10px] text-[#896161]">Less</span>
+<div class="flex gap-1">
+<div class="size-3 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-sm"></div>
+<div class="size-3 bg-primary/20 rounded-sm"></div>
+<div class="size-3 bg-primary/50 rounded-sm"></div>
+<div class="size-3 bg-primary rounded-sm"></div>
+</div>
+<span class="text-[10px] text-[#896161]">More</span>
+</div>
+</div>
+</div>
+<!-- Accuracy Breakdown -->
+<div class="bg-white dark:bg-[#3d2424] rounded-xl border border-[#e6dbdb] dark:border-none p-6 shadow-sm">
+<h4 class="text-lg font-bold mb-6">Accuracy by Question Type</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+<div class="space-y-4">
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">Multiple Choice</span>
+<span class="font-bold">85%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">Matching Headings</span>
+<span class="font-bold text-primary">42%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">Map Labeling</span>
+<span class="font-bold">68%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 68%"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">Sentence Completion</span>
+<span class="font-bold">78%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">True/False/Not Given</span>
+<span class="font-bold">59%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 59%"></div>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between text-sm">
+<span class="font-semibold">Short Answer</span>
+<span class="font-bold">92%</span>
+</div>
+<div class="h-2 bg-[#f4f0f0] dark:bg-[#4a2b2b] rounded-full overflow-hidden">
+<div class="h-full bg-green-600 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insights Text Box -->
+<div class="bg-primary text-white rounded-xl p-8 shadow-xl shadow-primary/30 flex flex-col h-full relative overflow-hidden">
+<!-- Abstract pattern background -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-black/10 rounded-full -ml-8 -mb-8 blur-xl"></div>
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined fill-1">auto_awesome</span>
+<h4 class="text-xl font-bold tracking-tight">AI Skill Insights</h4>
+</div>
+<div class="space-y-6 flex-1">
+<div>
+<p class="text-white/80 text-xs font-bold uppercase tracking-widest mb-2">Priority Focus</p>
+<h5 class="text-xl font-bold mb-2">Matching Headings</h5>
+<p class="text-sm leading-relaxed text-white/90">
+                                        Your current accuracy for "Matching Headings" is 42%, which is significantly lower than your target. This is usually due to skimming too fast or missing contextual links between paragraphs.
+                                    </p>
+</div>
+<div class="bg-white/10 p-4 rounded-lg border border-white/20">
+<p class="text-xs font-bold uppercase mb-2">Recommended Action</p>
+<p class="text-sm italic">
+                                        "Try the 'Contextual Cues' video lesson in Module 3. We've also unlocked 5 targeted practice sets focused on heading logic for you."
+                                    </p>
+</div>
+</div>
+<button class="mt-8 w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-white/90 transition-colors flex items-center justify-center gap-2">
+                                Start Suggested Lesson
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer-like padding -->
+<footer class="mt-auto p-8 text-center">
+<p class="text-xs text-[#896161] dark:text-[#c4a1a1]">© 2024 F-IELTS Learning Systems. All data is updated every 24 hours.</p>
+</footer>
+</main>
+</div>
+</body></html>
