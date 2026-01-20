@@ -4,6 +4,7 @@ create table profiles (
   id uuid references auth.users(id) on delete cascade not null primary key,
   full_name text,
   avatar_url text,
+  role text default 'student', -- 'student', 'admin', 'tutor'
   target_band numeric,
   created_at timestamptz default now()
 );

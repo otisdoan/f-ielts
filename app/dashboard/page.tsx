@@ -1,4 +1,3 @@
-
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 
 export default function Dashboard() {
@@ -39,7 +38,7 @@ export default function Dashboard() {
             <p className="text-slate-500 -slate-400 text-sm font-medium mb-1">
               Total Study Time
             </p>
-            <p className="text-slate-900 -white text-2xl font-black">
+            <p className="text-slate-900 -white  text-2xl font-black">
               42h 15m
             </p>
           </div>
@@ -50,16 +49,12 @@ export default function Dashboard() {
                   task_alt
                 </span>
               </div>
-              <span className="text-emerald-500 text-xs font-bold">
-                +3 new
-              </span>
+              <span className="text-emerald-500 text-xs font-bold">+3 new</span>
             </div>
             <p className="text-slate-500 -slate-400 text-sm font-medium mb-1">
               Tests Completed
             </p>
-            <p className="text-slate-900 -white text-2xl font-black">
-              12
-            </p>
+            <p className="text-slate-900 -white text-2xl font-black">12</p>
           </div>
           <div className="bg-white -slate-900 p-6 rounded-2xl border border-slate-200 -slate-800 shadow-sm">
             <div className="flex justify-between items-start mb-4">
@@ -73,9 +68,7 @@ export default function Dashboard() {
             <p className="text-slate-500 -slate-400 text-sm font-medium mb-1">
               Vocabulary Mastery
             </p>
-            <p className="text-slate-900 -white text-2xl font-black">
-              85%
-            </p>
+            <p className="text-slate-900 -white text-2xl font-black">85%</p>
           </div>
           <div className="bg-white -slate-900 p-6 rounded-2xl border border-slate-200 -slate-800 shadow-sm border-l-4 border-l-primary">
             <div className="flex justify-between items-start mb-4">
@@ -136,9 +129,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-medium">
                       <span className="text-slate-500">Overall Completion</span>
-                      <span className="text-slate-900 -white">
-                        85%
-                      </span>
+                      <span className="text-slate-900 -white">85%</span>
                     </div>
                     <div className="h-2 bg-slate-100 -slate-800 rounded-full overflow-hidden">
                       <div
@@ -173,9 +164,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-medium">
                       <span className="text-slate-500">Overall Completion</span>
-                      <span className="text-slate-900 -white">
-                        70%
-                      </span>
+                      <span className="text-slate-900 -white">70%</span>
                     </div>
                     <div className="h-2 bg-slate-100 -slate-800 rounded-full overflow-hidden">
                       <div
@@ -210,9 +199,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-medium">
                       <span className="text-slate-500">Overall Completion</span>
-                      <span className="text-slate-900 -white">
-                        45%
-                      </span>
+                      <span className="text-slate-900 -white">45%</span>
                     </div>
                     <div className="h-2 bg-slate-100 -slate-800 rounded-full overflow-hidden">
                       <div
@@ -247,9 +234,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-medium">
                       <span className="text-slate-500">Overall Completion</span>
-                      <span className="text-slate-900 -white">
-                        60%
-                      </span>
+                      <span className="text-slate-900 -white">60%</span>
                     </div>
                     <div className="h-2 bg-slate-100 -slate-800 rounded-full overflow-hidden">
                       <div
@@ -407,8 +392,8 @@ export default function Dashboard() {
                   Writing Task 2: Advanced Cohesion
                 </h3>
                 <p className="text-sm opacity-80 mb-6 leading-relaxed">
-                  Boost your Writing score by focusing on linking words and complex
-                  paragraph structures.
+                  Boost your Writing score by focusing on linking words and
+                  complex paragraph structures.
                 </p>
                 <button className="w-full bg-white -primary text-slate-900 -white font-bold py-3 rounded-xl text-sm hover:scale-[1.02] transition-transform cursor-pointer">
                   Start Lesson
@@ -421,13 +406,14 @@ export default function Dashboard() {
                 <span className="material-symbols-outlined text-primary">
                   local_fire_department
                 </span>
-                <h3 className="font-bold text-slate-900 -white">
-                  Daily Goal
-                </h3>
+                <h3 className="font-bold text-slate-900 -white">Daily Goal</h3>
               </div>
               <div className="flex items-end justify-between mb-2">
                 <p className="text-2xl font-black">
-                  45<span className="text-slate-400 text-sm font-medium">/60 mins</span>
+                  45
+                  <span className="text-slate-400 text-sm font-medium">
+                    /60 mins
+                  </span>
                 </p>
                 <span className="text-xs font-bold text-primary">75%</span>
               </div>

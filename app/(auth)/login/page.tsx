@@ -32,8 +32,25 @@ export default function LoginPage() {
         throw error;
       }
 
-      router.push("/dashboard");
-      router.refresh(); // Ensure the middleware re-runs and updates session
+      // Check user role for redirection
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      let targetRoute = "/dashboard";
+      
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+          
+        if (profile?.role === 'admin') {
+          targetRoute = "/admin";
+        }
+      }
+
+      router.push(targetRoute);
+      router.refresh();
     } catch (err: any) {
       setError(err.message || "Invalid login credentials");
     } finally {
