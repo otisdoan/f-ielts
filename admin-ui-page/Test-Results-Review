@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Test Results Review Log | F-IELTS Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">F-IELTS</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-slate-200 dark:border-slate-700">
+<div class="text-slate-500 flex bg-slate-50 dark:bg-slate-800 items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4 text-sm font-normal" placeholder="Search students or tests..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors border-b-2 border-primary py-4" href="#">Tests</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Students</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Administrator user profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDe_sWCoW1xz-HiqAqnuqSpIkUBgg2RZ9CXax62ExpwyZyjsGYfneaSAtrZDzihAsHFCzxtm_w_e_PeLDqYH9O6rp_VDKW1g5f7Ic9nfMtIU_MdhgV5fLUoEnDPWFMjaIz9HPjj_xzRfFcGBpeDrYMT1gEqBkhV5K-ZrMds7ac46ugB3A6Mp0_Zf8X02q1EJvW3ToyEJUH9_VRUWA052CUhbEhC4leUHyf8AU7wCAf48PHMLsvybl0GG1DhfCrVgrkZ3MLJgWQwrvQo");'></div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto py-8 px-10">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-4">
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:underline" href="#">Dashboard</a>
+<span class="text-slate-400 dark:text-slate-500 text-sm font-medium">/</span>
+<span class="text-slate-900 dark:text-slate-100 text-sm font-medium">Test Results Review Log</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-3 mb-8">
+<div class="flex min-w-72 flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tight">Test Results Review Log</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">Manage and analyze student performance across all test attempts.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Export CSV
+                </button>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+                    Generate Quarterly Report
+                </button>
+</div>
+</div>
+<!-- Toolbar & Filters -->
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-2 mb-6">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap gap-2 p-2">
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4">
+<p class="text-sm font-medium">All Types</p>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-4 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Listening</p>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-4 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Reading</p>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-4 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Writing</p>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 px-4 transition-colors">
+<p class="text-slate-700 dark:text-slate-200 text-sm font-medium">Speaking</p>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-3 px-4">
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700"></div>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" title="Date Range Filter">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" title="More Filters">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">User</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Test Name</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Completion Date</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Overall Score</th>
+<th class="px-6 py-4 w-10"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-700/50">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Student avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKIsI7NiHOuJlSuoQkjPEWkAHMqnXIn7tp3NKW-EscW-2u6YQDtC1qYS8RVAPdf26k688lHE-hu2IdTPEzR-vseEhMM6vC9WbdnveBzJTUPE09RFWbklYMGUTBiNuRyNuT84DKL6pwC9yzOhUm6i66-jfM0IB4uIhclpUTkgo_BTkVH39yLD_NvfVzX0MJoeNyp8NPZZ4EZhG0Ne3nC5lXU0_XZm14_fQJ5ISgMCRJ4eA0hAwAiiqFZdOKdwyfo4lUgCMOobYpVENo');"></div>
+<div>
+<p class="font-semibold text-sm text-slate-900 dark:text-white">Alex Johnson</p>
+<p class="text-xs text-slate-500">alex.j@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">IELTS Academic Mock #12</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-500">Oct 26, 2023, 14:20</span>
+</td>
+<td class="px-6 py-4">
+<div class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-sm font-bold">
+                                8.0
+                            </div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-slate-600">expand_more</span>
+</td>
+</tr>
+<!-- Expanded Content for Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors border-l-4 border-primary bg-slate-50/50 dark:bg-slate-700/20">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Student avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC82ILsKmQL0JutGyzE7SycztRVU1KeUi2GD3XhsEilogX_DC_6pT4aHNu3ajIlxA1soSZlt-9wJM_6EHJD6m6v_KcRepOXJgCpDtmtmwB0g5L3QlfTn_vzPpAESNnqAQXttYePzI5k_5Ym3n3yiKvkdPJgKgMgJGwIf0XlWjz8eL6R074pj0h7Sjy6XD_4Jy_ZQ-7o1mSOzxWdCN7ZWar1tG45Molt2ikd1oCN_7JOCQOmYhP0RgV5kq-vA3CVVgkIeYnAPLQTVPgB');"></div>
+<div>
+<p class="font-semibold text-sm text-slate-900 dark:text-white">Sarah Williams</p>
+<p class="text-xs text-slate-500">sarah.w@icloud.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Writing Sectional - Task 2</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-500">Oct 25, 2023, 09:15</span>
+</td>
+<td class="px-6 py-4">
+<div class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary text-sm font-bold">
+                                6.5
+                            </div>
+</td>
+<td class="px-6 py-4 text-primary">
+<span class="material-symbols-outlined cursor-pointer">expand_less</span>
+</td>
+</tr>
+<!-- Performance Summary Card Expansion -->
+<tr>
+<td class="px-6 py-0" colspan="5">
+<div class="bg-white dark:bg-slate-800/50 border-x border-b border-slate-200 dark:border-slate-700 mx-4 mb-4 rounded-b-xl overflow-hidden animate-in fade-in slide-in-from-top-2">
+<div class="p-6">
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Listening</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">7.5</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Reading</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">6.0</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Writing</p>
+<p class="text-2xl font-black text-primary">6.5</p>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-400 uppercase mb-1">Speaking</p>
+<p class="text-2xl font-black text-slate-900 dark:text-white">N/A</p>
+</div>
+</div>
+<div class="flex justify-between items-start gap-8">
+<div class="flex-1">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Performance Summary</h4>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                                Sarah showed strong coherence in Task 2 but struggled with advanced vocabulary. Grammar accuracy was consistent at 85%. Reading score was impacted by time management in Section 3. Recommended focus: Lexical Resource and Skimming techniques.
+                                            </p>
+</div>
+<div class="flex flex-col gap-2 min-w-[160px]">
+<button class="w-full bg-primary text-white px-4 py-2.5 rounded-lg text-sm font-bold shadow-md shadow-primary/20 hover:scale-[1.02] transition-transform">
+                                                View Full Report
+                                            </button>
+<button class="w-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                                                Assign Tutor
+                                            </button>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Student avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBj5whDTy5Su6fA_8CGhFl-X8XyKn39LQ8bZ7eJWJ487XctlM5Vmj_ckJ2sBD19A7SEnhm47RCkdv7ndOkA6nDr2QgSdA_ov7gr74DQXfw6IxkB161AC8qiku0RF4QI5zus2Tx0E7ugnVcg-lZgsNWdkPGVc07cxpkvLR27u2-Go7U5wmbFZ0k_wtbO-EJnb-JQn1qASXz3IOegOqFrtWb1kpE4591xtDD5zrlVTJm_cdVKePIYf7c4uzVYwAWL_qwmYueRjJITNQqf');"></div>
+<div>
+<p class="font-semibold text-sm text-slate-900 dark:text-white">Michael Chen</p>
+<p class="text-xs text-slate-500">m.chen@university.edu</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Full Mock Simulation G2</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-500">Oct 24, 2023, 11:00</span>
+</td>
+<td class="px-6 py-4">
+<div class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-400 text-sm font-bold">
+                                5.5
+                            </div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-slate-600">expand_more</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-slate-200 bg-cover bg-center" data-alt="Student avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbwybkXy0gSWmfkzOT2xI677LJE4X4g-5ekh3RpgXc8AH37oGzaaURS8bcceRY-F7kI4gUvLpQh2FJJjUAvTruQt3C_4cJiMTxyxo46RVGjYD5wOzQGQnFe8FZIWwhvDVdZ9kIdmb9kACiBP7cSTdZcAo3ro4O_PcFcja8d8-jyrxBz72AXv1f0AtjNy9VY1aoRtdz2r40IkR-gtLlJoKh4EaVbk_fCycVrvLHOjd6wpTJThm5jNZBMx-k8Mn7vwt5z2wBvqNiEOpv');"></div>
+<div>
+<p class="font-semibold text-sm text-slate-900 dark:text-white">Emily Davis</p>
+<p class="text-xs text-slate-500">emily.d@testprep.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Listening Masterclass Test</span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm text-slate-500">Oct 24, 2023, 08:30</span>
+</td>
+<td class="px-6 py-4">
+<div class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-sm font-bold">
+                                9.0
+                            </div>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-slate-600">expand_more</span>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between bg-slate-50/30 dark:bg-slate-900/30">
+<p class="text-sm text-slate-500">Showing 1 to 4 of 124 results</p>
+<div class="flex gap-2">
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-4 py-2 border border-primary bg-primary text-white rounded-lg text-sm font-bold">1</button>
+<button class="px-4 py-2 border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 rounded-lg text-sm font-medium">2</button>
+<button class="px-4 py-2 border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 rounded-lg text-sm font-medium">3</button>
+<button class="p-2 border border-slate-200 dark:border-slate-700 rounded-lg hover:bg-white dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Stats (Floating for visibility) -->
+<div class="fixed bottom-6 right-6 flex gap-4">
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center gap-4">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase text-slate-400">Avg. Score</p>
+<p class="text-lg font-black text-slate-900 dark:text-white">6.85</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 flex items-center gap-4">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+</div>
+<div>
+<p class="text-[10px] font-bold uppercase text-slate-400">Tests Today</p>
+<p class="text-lg font-black text-slate-900 dark:text-white">42</p>
+</div>
+</div>
+</div>
+</body></html>

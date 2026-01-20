@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>F-IELTS Course Management</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .active-sidebar-item {
+            background-color: rgba(236, 19, 19, 0.1);
+            color: #ec1313;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside
+            class="w-64 flex-shrink-0 bg-white dark:bg-zinc-900 border-r border-[#f4f0f0] dark:border-zinc-800 flex flex-col">
+            <div class="p-6 flex flex-col gap-8 h-full">
+                <!-- Logo Section -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-primary rounded-lg p-2 text-white flex items-center justify-center">
+                        <span class="material-symbols-outlined">menu_book</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <h1 class="text-[#181111] dark:text-white text-lg font-bold leading-tight">F-IELTS</h1>
+                        <p class="text-[#896161] dark:text-zinc-400 text-xs font-normal">Admin Portal</p>
+                    </div>
+                </div>
+                <!-- Navigation Menu -->
+                <nav class="flex flex-col gap-2 flex-1">
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-[#f4f0f0] dark:hover:bg-zinc-800 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">dashboard</span>
+                        <span class="text-sm font-medium">Dashboard</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg active-sidebar-item" href="#">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">book_2</span>
+                        <span class="text-sm font-semibold">Courses</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-[#f4f0f0] dark:hover:bg-zinc-800 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">group</span>
+                        <span class="text-sm font-medium">Users</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-[#f4f0f0] dark:hover:bg-zinc-800 transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">bar_chart</span>
+                        <span class="text-sm font-medium">Analytics</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-[#f4f0f0] dark:hover:bg-zinc-800 transition-colors mt-auto"
+                        href="#">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="text-sm font-medium">Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-y-auto">
+            <!-- Top Navigation Bar -->
+            <header
+                class="sticky top-0 z-10 flex items-center justify-between bg-white dark:bg-zinc-900 border-b border-[#f4f0f0] dark:border-zinc-800 px-8 py-3">
+                <div class="flex items-center gap-6">
+                    <!-- Search -->
+                    <div class="relative min-w-80">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#896161] dark:text-zinc-400 text-xl">search</span>
+                        <input
+                            class="w-full bg-[#f4f0f0] dark:bg-zinc-800 border-none rounded-lg py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary/50 text-[#181111] dark:text-white"
+                            placeholder="Search courses, lessons, or tags..." type="text" />
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full">
+                        <span class="material-symbols-outlined">notifications</span>
+                    </button>
+                    <div class="h-8 w-px bg-zinc-200 dark:bg-zinc-700 mx-2"></div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-right">
+                            <p class="text-sm font-bold text-[#181111] dark:text-white">Admin User</p>
+                            <p class="text-xs text-[#896161] dark:text-zinc-400">Content Manager</p>
+                        </div>
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20"
+                            data-alt="Avatar of the admin user"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAUjE4uJus8l-1lvnmM_FcWmN4eSEcommJo74KWG5Y2rSeMfnbwcaA2uVSnHA4lNkbI85HuFwNE0B4N1tS4wdrdGJ3hcBaWZH9hPWtXS3XWpSN2I7zVcu8v_JIqlHJ-1pktGmPM-piVxNpgCbp9NfpptnuYY8NXE5vZ4ih6OBAE3OFIlNV14tf3Lw_19datXYrVw50hL8_4KFz2SNoIOdwV9LivpBxj3ROquAWd4kaJsYsmubK7yT3l1z0iiX92b3YLRG93RuD2GKU2");'>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Breadcrumbs -->
+            <div class="px-8 py-4 flex items-center gap-2 text-sm">
+                <a class="text-[#896161] dark:text-zinc-400 hover:text-primary transition-colors" href="#">Home</a>
+                <span class="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
+                <span class="text-[#181111] dark:text-white font-medium">Course Management</span>
+            </div>
+            <!-- Page Heading & Controls -->
+            <div class="px-8 py-2 flex flex-col gap-6">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h2 class="text-3xl font-black tracking-tight text-[#181111] dark:text-white">Course Management
+                        </h2>
+                        <p class="text-[#896161] dark:text-zinc-400 mt-1">Design and publish your IELTS curriculum</p>
+                    </div>
+                    <button
+                        class="bg-primary hover:bg-red-700 transition-colors text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-bold shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined">add</span>
+                        <span>Add New Course</span>
+                    </button>
+                </div>
+                <!-- Filters/Chips -->
+                <div
+                    class="flex items-center justify-between bg-white dark:bg-zinc-900 p-2 rounded-xl border border-[#f4f0f0] dark:border-zinc-800">
+                    <div class="flex gap-2">
+                        <button class="px-4 py-1.5 rounded-lg bg-primary text-white text-sm font-medium">All
+                            Courses</button>
+                        <button
+                            class="px-4 py-1.5 rounded-lg bg-[#f4f0f0] dark:bg-zinc-800 text-[#181111] dark:text-zinc-300 text-sm font-medium hover:bg-zinc-200 transition-colors">Published</button>
+                        <button
+                            class="px-4 py-1.5 rounded-lg bg-[#f4f0f0] dark:bg-zinc-800 text-[#181111] dark:text-zinc-300 text-sm font-medium hover:bg-zinc-200 transition-colors">Draft</button>
+                        <button
+                            class="px-4 py-1.5 rounded-lg bg-[#f4f0f0] dark:bg-zinc-800 text-[#181111] dark:text-zinc-300 text-sm font-medium hover:bg-zinc-200 transition-colors">Archived</button>
+                    </div>
+                    <button class="flex items-center gap-2 text-sm text-[#896161] dark:text-zinc-400 px-4">
+                        <span class="material-symbols-outlined text-lg">filter_list</span>
+                        <span>Advanced Filters</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Course Table Section -->
+            <div class="px-8 py-6">
+                <div
+                    class="bg-white dark:bg-zinc-900 rounded-xl border border-[#f4f0f0] dark:border-zinc-800 overflow-hidden shadow-sm">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-zinc-50 dark:bg-zinc-800/50 border-b border-[#f4f0f0] dark:border-zinc-800">
+                                <th
+                                    class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#896161] dark:text-zinc-400">
+                                    Course Detail</th>
+                                <th
+                                    class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#896161] dark:text-zinc-400">
+                                    Target Band</th>
+                                <th
+                                    class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#896161] dark:text-zinc-400">
+                                    Lessons</th>
+                                <th
+                                    class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#896161] dark:text-zinc-400">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#896161] dark:text-zinc-400 text-right">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#f4f0f0] dark:divide-zinc-800">
+                            <!-- Course Row 1 -->
+                            <tr class="hover:bg-[#f8f6f6] dark:hover:bg-zinc-800/40 transition-colors group">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-16 rounded-md bg-zinc-100 dark:bg-zinc-800 flex-shrink-0 bg-cover bg-center border border-zinc-200 dark:border-zinc-700"
+                                            data-alt="IELTS Academic Reading course thumbnail"
+                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOIdbj4pUiC_YTdwjp9_kv678wQiJHXAXDzOQ-NDIkI_8NgTbKMZGzq3Z93eAjhSv3FZJFza6HL8W5PUvSbp9jmIxIPTHfsdYiOlil3bf1pKyno3vMJ4KTkmFOeUQ_DU30Vqbb5Hjp1SRQjSMteOo1_B2HFlb61ZNLm_oljWq3LkFDRbP2NWnmNnXceVWPIMw1eeyII4ctiU0z8WiUD2em0jjxHiMfHpNXYhUC5Eia1pteQBfKvlghaPwuegjBYDt6alT8SI1gFzUV')">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-[#181111] dark:text-white">Academic Reading
+                                                Masterclass</p>
+                                            <p class="text-xs text-[#896161] dark:text-zinc-400">Last updated: 2 days
+                                                ago</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                                        Band 7.5+
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                                    24 Lessons
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="size-2 rounded-full bg-emerald-500"></span>
+                                        <span
+                                            class="text-sm font-medium text-emerald-600 dark:text-emerald-400">Published</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Edit Course">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Delete Course">
+                                            <span class="material-symbols-outlined text-xl">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Course Row 2 -->
+                            <tr class="hover:bg-[#f8f6f6] dark:hover:bg-zinc-800/40 transition-colors group">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-16 rounded-md bg-zinc-100 dark:bg-zinc-800 flex-shrink-0 bg-cover bg-center border border-zinc-200 dark:border-zinc-700"
+                                            data-alt="Speaking Intensive course thumbnail"
+                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD16_TM3xLINAqPoHAcAZIlV0YVpvhl8-KEhddpwakiuaybf6Nyvvd-PffFh-hd_i49vFbZ6C8aCOL542AIdamIWh9Q4-P0P5DUZPl2c31gtCZ3m3TNIhhUPY2JST9Zbh8QMoG5Cn0Sw3sCI0-9Q3KqD2X2viParZomKee_UIo7gicnAT6TkokJQiD_CcurAx1StpR3l_EasMxU-egrrYYvGsav6XbyhQFyX1FIfdm4pwQ2YL4Sw-tqxbXCDOyQsVUTWBAZ2rmaUBc_')">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-[#181111] dark:text-white">Speaking Intensive: Part
+                                                1 &amp; 2</p>
+                                            <p class="text-xs text-[#896161] dark:text-zinc-400">Last updated: 5 hours
+                                                ago</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                                        Band 6.0
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                                    12 Lessons
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="size-2 rounded-full bg-amber-500"></span>
+                                        <span
+                                            class="text-sm font-medium text-amber-600 dark:text-amber-400">Draft</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Edit Course">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Delete Course">
+                                            <span class="material-symbols-outlined text-xl">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Course Row 3 -->
+                            <tr class="hover:bg-[#f8f6f6] dark:hover:bg-zinc-800/40 transition-colors group">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-16 rounded-md bg-zinc-100 dark:bg-zinc-800 flex-shrink-0 bg-cover bg-center border border-zinc-200 dark:border-zinc-700"
+                                            data-alt="General Writing course thumbnail"
+                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChOnTWHS2DmaBkuhZO5l7pwDNGb0x5Q69c1QT9GrFKzfisOyz_tmlodjzLiSnTH7sZO0gk77M0TM9ba9w_vBhyTiMqzpoe8voMUZKKe-kcm3beYz14fBj4h1zZ4aM5gEwdpw3jB-62UfcPCFrB9EBexf7O8cmlmdKczG6j7X0fQAd7MINBrufmKTk7t9r0XOJ8boEKUJokiP7lTe7SEW0d51QvDS1cvSb8-iE6tg6phTI3n-eTgJtHmRjA7SwOtAiZNwRBBKtitZvB')">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-[#181111] dark:text-white">General Writing Task 1:
+                                                Letters</p>
+                                            <p class="text-xs text-[#896161] dark:text-zinc-400">Last updated: 1 week
+                                                ago</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                                        Band 6.5+
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                                    18 Lessons
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="size-2 rounded-full bg-emerald-500"></span>
+                                        <span
+                                            class="text-sm font-medium text-emerald-600 dark:text-emerald-400">Published</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Edit Course">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Delete Course">
+                                            <span class="material-symbols-outlined text-xl">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Course Row 4 -->
+                            <tr class="hover:bg-[#f8f6f6] dark:hover:bg-zinc-800/40 transition-colors group">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="h-12 w-16 rounded-md bg-zinc-100 dark:bg-zinc-800 flex-shrink-0 bg-cover bg-center border border-zinc-200 dark:border-zinc-700"
+                                            data-alt="Vocabulary Booster course thumbnail"
+                                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJSRe-I2T9goC2OzUhmRWCsYNxz2Cwu97kSMZZiEt8wBrKKzrCAQ4Q5WMrMk8e2F3tXEO1zaXYBOfCdkWHohlryfKfn07zYu9_8WHp2WTf_kkuWIzNgstNQVgcB38OrBeYynHEzt5KtTXqNgtpiZr6ZxJ1pAd0irRqHcrl4ltYjA1XtWo4A2y6zwFXKiIODKVAhD3cau7VrWzjGfOAmGD5gkTbKhFLgLObRy690vCL-k4ZDM8kNyqPCNT-RygA-dUgABvQdgVeiwzs')">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-[#181111] dark:text-white">Ultimate Vocabulary
+                                                Booster</p>
+                                            <p class="text-xs text-[#896161] dark:text-zinc-400">Last updated: 3 weeks
+                                                ago</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
+                                        Band 8.0+
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                                    40 Lessons
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="size-2 rounded-full bg-emerald-500"></span>
+                                        <span
+                                            class="text-sm font-medium text-emerald-600 dark:text-emerald-400">Published</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <div
+                                        class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Edit Course">
+                                            <span class="material-symbols-outlined text-xl">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-zinc-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors"
+                                            title="Delete Course">
+                                            <span class="material-symbols-outlined text-xl">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pagination -->
+                    <div
+                        class="px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 flex items-center justify-between border-t border-[#f4f0f0] dark:border-zinc-800">
+                        <p class="text-sm text-[#896161] dark:text-zinc-400">Showing 1 to 4 of 24 courses</p>
+                        <div class="flex gap-2">
+                            <button
+                                class="p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 hover:bg-white dark:hover:bg-zinc-700 disabled:opacity-50"
+                                disabled="">
+                                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                            </button>
+                            <button
+                                class="px-3 py-1 rounded-lg border border-primary bg-primary text-white text-sm font-bold">1</button>
+                            <button
+                                class="px-3 py-1 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-700 text-sm font-medium">2</button>
+                            <button
+                                class="px-3 py-1 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-white dark:hover:bg-zinc-700 text-sm font-medium">3</button>
+                            <button
+                                class="p-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 hover:bg-white dark:hover:bg-zinc-700">
+                                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

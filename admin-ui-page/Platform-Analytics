@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Analytics &amp; Reports | F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#181111] dark:text-white transition-colors duration-200">
+<div class="flex flex-col min-h-screen">
+<!-- TopNavBar Component -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#181111] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-[#181111] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">F-IELTS Admin</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#896161] flex border-none bg-gray-100 dark:bg-zinc-800 items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-gray-100 dark:bg-zinc-800 text-[#181111] dark:text-white focus:ring-0 h-full placeholder:text-[#896161] px-4 rounded-r-lg text-base font-normal" placeholder="Search data points..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Users</a>
+<a class="text-primary text-sm font-semibold leading-normal underline underline-offset-8" href="#">Analytics</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</nav>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-md hover:bg-red-700 transition-colors">
+<span class="truncate">Download PDF Report</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPzqpJzzgVPFn471nGRs3mCAyAu3FiQX3IL383qP9Xk0oGN7ZoG07kSV6Du9PjFWuI_38o-6_ZXqK1f_RhT1996nQTpVjRl6oKkzqvGSdAHoDNTLAbld2vUpFA-DcIbW0BGFHT1H4Ba0gdbwtE7z_D7jnH3Jhuyf3m5bIKWHY18tX3E6eXOFg7QT2Cnp54QAnXnsB79byaMxXg7pv5Ed9vBJi0haClbjQzIoUqdrxDlFHkCvHv_9CLl3_-X1ZHxHOe2HQKWkJRqYXU");'></div>
+</div>
+</header>
+<main class="flex flex-1 gap-6 p-8 max-w-[1440px] mx-auto w-full">
+<!-- SideNavBar Component (Adapted) -->
+<aside class="w-64 flex flex-col gap-6 shrink-0">
+<div class="flex flex-col gap-4 bg-white dark:bg-zinc-900 p-4 rounded-xl border border-gray-200 dark:border-zinc-800 h-fit">
+<div class="flex flex-col mb-2">
+<h1 class="text-[#181111] dark:text-white text-base font-bold">Data Navigation</h1>
+<p class="text-[#896161] dark:text-gray-400 text-xs font-normal">Reports Filter</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg">
+<span class="material-symbols-outlined text-gray-500">grid_view</span>
+<p class="text-[#181111] dark:text-gray-200 text-sm font-medium">Overview</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg">
+<span class="material-symbols-outlined text-gray-500">group</span>
+<p class="text-[#181111] dark:text-gray-200 text-sm font-medium">User Demographics</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer bg-primary/10 text-primary rounded-lg">
+<span class="material-symbols-outlined">trending_up</span>
+<p class="text-sm font-bold">Progress Trends</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg">
+<span class="material-symbols-outlined text-gray-500">book</span>
+<p class="text-[#181111] dark:text-gray-200 text-sm font-medium">Skill Performance</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 rounded-lg">
+<span class="material-symbols-outlined text-gray-500">monetization_on</span>
+<p class="text-[#181111] dark:text-gray-200 text-sm font-medium">Revenue Analysis</p>
+</div>
+</div>
+</div>
+<!-- CalendarPicker Integration -->
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-xl border border-gray-200 dark:border-zinc-800">
+<div class="flex items-center justify-between mb-2">
+<button class="p-1"><span class="material-symbols-outlined text-lg">chevron_left</span></button>
+<p class="text-sm font-bold">Oct 2023 - Mar 2024</p>
+<button class="p-1"><span class="material-symbols-outlined text-lg">chevron_right</span></button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-[10px] text-center text-gray-400 font-bold mb-1">
+<span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-[11px] text-center">
+<div class="py-1 text-gray-300">28</div>
+<div class="py-1 text-gray-300">29</div>
+<div class="py-1 text-gray-300">30</div>
+<div class="py-1 bg-primary text-white rounded-full font-bold">1</div>
+<div class="py-1 bg-primary/20 dark:bg-primary/30">2</div>
+<div class="py-1 bg-primary/20 dark:bg-primary/30">3</div>
+<div class="py-1 bg-primary/20 dark:bg-primary/30">4</div>
+<!-- simplified date range -->
+<div class="py-1 bg-primary/20 dark:bg-primary/30 col-span-7 rounded-full text-xs font-medium">Active Analysis Range</div>
+</div>
+<p class="text-[10px] text-gray-500 mt-4 italic text-center">Comparing with previous 6 months</p>
+</div>
+</aside>
+<!-- Dashboard Content -->
+<section class="flex-1 flex flex-col gap-6">
+<!-- PageHeading Component -->
+<div class="flex flex-wrap justify-between items-end gap-3 bg-white dark:bg-zinc-900 p-6 rounded-xl border border-gray-200 dark:border-zinc-800">
+<div class="flex flex-col gap-1">
+<p class="text-[#181111] dark:text-white text-3xl font-black leading-tight tracking-tight">Analytics &amp; Reports</p>
+<p class="text-[#896161] dark:text-gray-400 text-sm font-normal">Detailed performance insights for the last 6 months across all user cohorts.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-zinc-800 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                            Filter View
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-zinc-800 rounded-lg text-sm font-bold hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-lg">ios_share</span>
+                            Export Data
+                        </button>
+</div>
+</div>
+<!-- Stats Component -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Total Active Users</p>
+<div class="flex items-baseline gap-2">
+<p class="text-[#181111] dark:text-white tracking-tight text-2xl font-black">12,450</p>
+<p class="text-[#078807] text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span>12%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Avg. Band Score</p>
+<div class="flex items-baseline gap-2">
+<p class="text-[#181111] dark:text-white tracking-tight text-2xl font-black">6.5</p>
+<p class="text-[#078807] text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span>0.2</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Completion Rate</p>
+<div class="flex items-baseline gap-2">
+<p class="text-[#181111] dark:text-white tracking-tight text-2xl font-black">78%</p>
+<p class="text-primary text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">arrow_downward</span>5%</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Active Sessions</p>
+<div class="flex items-baseline gap-2">
+<p class="text-[#181111] dark:text-white tracking-tight text-2xl font-black">3,200</p>
+<p class="text-[#078807] text-xs font-bold flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span>8%</p>
+</div>
+</div>
+</div>
+<!-- Main Charts Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Average Band Score Trend (Large Chart) -->
+<div class="lg:col-span-2 bg-white dark:bg-zinc-900 p-6 rounded-xl border border-gray-200 dark:border-zinc-800">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-lg font-bold">Average Band Score Trends</h3>
+<p class="text-xs text-gray-500">6-Month progression history</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold uppercase text-gray-400">Target: 7.5</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-gray-300"></div>
+<span class="text-[10px] font-bold uppercase text-gray-400">Current Average</span>
+</div>
+</div>
+</div>
+<!-- Simulated Line Chart -->
+<div class="h-64 relative mt-4 border-l border-b border-gray-100 dark:border-zinc-800">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
+<div class="border-t border-gray-900"></div>
+<div class="border-t border-gray-900"></div>
+<div class="border-t border-gray-900"></div>
+<div class="border-t border-gray-900"></div>
+</div>
+<!-- Trend Line (SVG) -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,80 Q10,75 20,60 T40,65 T60,50 T80,45 T100,40" fill="none" stroke="#ec1313" stroke-width="2"></path>
+<path d="M0,80 Q10,75 20,60 T40,65 T60,50 T80,45 T100,40 L100,100 L0,100 Z" fill="url(#grad1)" opacity="0.1"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#ec1313;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#ec1313;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Data points -->
+<circle cx="20" cy="60" fill="#ec1313" r="1.5"></circle>
+<circle cx="40" cy="65" fill="#ec1313" r="1.5"></circle>
+<circle cx="60" cy="50" fill="#ec1313" r="1.5"></circle>
+<circle cx="80" cy="45" fill="#ec1313" r="1.5"></circle>
+<circle cx="100" cy="40" fill="#ec1313" r="1.5"></circle>
+</svg>
+<!-- X Axis Labels -->
+<div class="absolute -bottom-8 w-full flex justify-between px-2 text-[10px] font-bold text-gray-400">
+<span>OCT</span><span>NOV</span><span>DEC</span><span>JAN</span><span>FEB</span><span>MAR</span>
+</div>
+<!-- Y Axis Labels -->
+<div class="absolute -left-8 h-full flex flex-col-reverse justify-between py-1 text-[10px] font-bold text-gray-400">
+<span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>9</span>
+</div>
+</div>
+</div>
+<!-- User Engagement by Skill (Pie Chart) -->
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-gray-200 dark:border-zinc-800">
+<div class="mb-6">
+<h3 class="text-lg font-bold">Skill Engagement</h3>
+<p class="text-xs text-gray-500">Time spent per module</p>
+</div>
+<div class="relative flex justify-center items-center h-48 mb-6">
+<!-- Simple Conic Gradient Donut -->
+<div class="size-40 rounded-full flex items-center justify-center relative" style="background: conic-gradient(#ec1313 0% 35%, #fca5a5 35% 60%, #fee2e2 60% 85%, #7f1d1d 85% 100%);">
+<div class="size-24 bg-white dark:bg-zinc-900 rounded-full flex flex-col items-center justify-center">
+<span class="text-xs font-bold text-gray-400">Total</span>
+<span class="text-lg font-black">100%</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-primary"></div><span>Writing</span></div>
+<span class="font-bold">35%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-red-300"></div><span>Speaking</span></div>
+<span class="font-bold">25%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-red-100"></div><span>Reading</span></div>
+<span class="font-bold">25%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2"><div class="size-2 rounded-full bg-red-900"></div><span>Listening</span></div>
+<span class="font-bold">15%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Top Performing Users -->
+<div class="bg-white dark:bg-zinc-900 rounded-xl border border-gray-200 dark:border-zinc-800 overflow-hidden">
+<div class="p-6 border-b border-gray-100 dark:border-zinc-800 flex justify-between items-center">
+<div>
+<h3 class="text-lg font-bold">Top Performing Users</h3>
+<p class="text-xs text-gray-500">Highest scores and improvement rates this month</p>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">View All Users</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-gray-50 dark:bg-zinc-800 text-[10px] font-bold uppercase text-gray-500 tracking-wider">
+<tr>
+<th class="px-6 py-4">User</th>
+<th class="px-6 py-4">Current Band</th>
+<th class="px-6 py-4">Skill Focus</th>
+<th class="px-6 py-4">Completion</th>
+<th class="px-6 py-4">Progress</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-zinc-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Student profile photo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6AOUyNP0bg_fz9mNLkBw5e9RG8LyDTQIDdhG07BL655CyGbWA9h_vlpYT8IwLQAtZjrl9xjou0wdH_uoXaiU3_8fJ_jLCn87siMsZanFNmhFTRFvB7hrqwFAGCmEj5Txa-86M4OVqcvcmXuZp0rCz4LjZ2sXED5aU68fGSP0N9iWq27R-5pr1uoIkxMTfwROTc-UOociZa_PWZYY1aAWo60w6oCngjqOmYY4yqsKeXgHiF-_v44LHePoIwfhNyifA_YkmoEG6PdbM');"></div>
+<div>
+<p class="text-sm font-bold">Alex Rivers</p>
+<p class="text-[10px] text-gray-400">alex.r@student.com</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-black">8.5 BAND</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-zinc-700 rounded text-[10px]">Writing</span>
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-zinc-700 rounded text-[10px]">Speaking</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 h-1.5 bg-gray-100 dark:bg-zinc-700 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 92%"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-green-600 text-xs font-bold">+1.5 Band</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Student profile photo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDAJOOBhqxEz0xhdlI82Ittg1xQfP0CkMJmiuhKg1GXATHq1dcYVy0tWgk5Q1Z62O_rx8QW1fw3w4SlIBAxHQIzllpKbh0d2x-MN1d048ct_OtZVkw_6nvlRjG3k-RFsWl4BDx4FrvvZ-DOw4gWCh34VnPES63dTlEZnu55lLNVg98tOpAQ_xaSmxaS8UmkdiyotYXtQdlo9_xxREpo5ueKEOaaJXEPuwMEyC8gE9rq3PLVG9zJ8wihrMD54Gm0m3x6QlsVix-hOy43');"></div>
+<div>
+<p class="text-sm font-bold">Sarah Chen</p>
+<p class="text-[10px] text-gray-400">sarah.c@student.com</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-[10px] font-black">8.0 BAND</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-zinc-700 rounded text-[10px]">Listening</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 h-1.5 bg-gray-100 dark:bg-zinc-700 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 76%"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-green-600 text-xs font-bold">+0.5 Band</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-4 flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Student profile photo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbD_vMhK6wtxbgeEtbCcxhjqIQx8E2R1Mdfo10VIGSvMksq2I4o_8dIKXNVzpPjCgKU9koTG_u8MElc9y4sWlLEwI2TBGBUQQPEvFrwXNRAcNC7fys7JY0K8oadhsgff6gby7ObGwK7ViuhYaRREaWH26bR3umLSRwHqcAc5B1o3QfE1gmT_m8gjK3HbVd4T5Gz8BCg76cgVc0Uxy0mahTzNi_UA0ss2U3YAZJ_wZKkcLjhRWnXmgE_ZzoDfvhD6ENwaCSXnymXgmm');"></div>
+<div>
+<p class="text-sm font-bold">Marcus Thorne</p>
+<p class="text-[10px] text-gray-400">m.thorne@student.com</p>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-[10px] font-black">7.5 BAND</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1">
+<span class="px-2 py-0.5 bg-gray-100 dark:bg-zinc-700 rounded text-[10px]">General</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="w-24 h-1.5 bg-gray-100 dark:bg-zinc-700 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 100%"></div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-green-600 text-xs font-bold">+2.0 Band</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
