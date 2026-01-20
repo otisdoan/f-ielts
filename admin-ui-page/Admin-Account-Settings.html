@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Account Settings | F-IELTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-200">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark flex flex-col fixed h-full">
+<div class="p-6 flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-primary rounded-lg size-10 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#181111] dark:text-white text-base font-bold leading-normal">F-IELTS Admin</h1>
+<p class="text-[#896161] dark:text-slate-400 text-xs font-normal leading-normal text-nowrap">SaaS Management</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 mt-6">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">dashboard</span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">group</span>
+<p class="text-sm font-medium">Students</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">book</span>
+<p class="text-sm font-medium">Courses</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">description</span>
+<p class="text-sm font-medium">Reports</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-600 dark:text-gray-400">bar_chart</span>
+<p class="text-sm font-medium">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden" data-alt="Admin user profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfhM5My09hskP33uoI2AZsnEd7CRjKZDTXNHoE_retL-bKFiHalIEO_BwjIJEJRZhStwTZQoIrVXWIcO_-i02dwND-jUWV6tZc3qw74rrWp_U1mqdiLliellnBpJ1jck7CnAjS2TUGfNb9QqHMn9ijFICWzlYlT-xcyquWZwn8QcdWgh8fb1Q_TMj7Tajte6X1qyx8k1unjAvKs-O4Xs8hUkL6CVB8jDEpd108Ncs3ZlYnkPJJ-g0kTH3KBL1Bg-Ak6dMmL-LHVFQl"); background-size: cover;'></div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-semibold truncate">Alex Johnson</p>
+<p class="text-[10px] text-gray-500 truncate">alex@f-ielts.com</p>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-sm">logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-64 overflow-y-auto pb-12">
+<!-- Breadcrumbs -->
+<div class="px-8 py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark/50 flex items-center gap-2">
+<a class="text-[#896161] dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Admin</a>
+<span class="text-[#896161] dark:text-slate-600 text-sm font-medium">/</span>
+<span class="text-[#181111] dark:text-slate-100 text-sm font-medium">Settings</span>
+</div>
+<!-- Page Heading -->
+<div class="px-8 py-8 flex flex-wrap justify-between items-end gap-3">
+<div class="flex min-w-72 flex-col gap-2">
+<h1 class="text-[#181111] dark:text-white text-3xl font-black leading-tight tracking-tight">Account Settings</h1>
+<p class="text-[#896161] dark:text-slate-400 text-base font-normal">Manage your profile, security, and global system configurations.</p>
+</div>
+</div>
+<div class="px-8 flex flex-col gap-8 max-w-5xl">
+<!-- Section 1: Profile Information -->
+<section>
+<h2 class="text-[#181111] dark:text-white text-xl font-bold px-1 pb-4">Profile Information</h2>
+<div class="bg-white dark:bg-background-dark/40 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="p-6">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex flex-col items-center gap-3">
+<div class="size-32 rounded-full border-4 border-white dark:border-gray-800 shadow-md bg-center bg-no-repeat bg-cover" data-alt="Profile picture of the admin user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9sfjzVbnsN8oe7nM9vvz9IHGTWiQNtjQxpbnbOd-zZBnR9G290Oev7IY901ZdxWBDs3GeutjrT5cIeSqrJdTN62XmV8rewYPpFyaGSL1-ueVD6A_vulx-iljnqtBLnP-QmQ69ePbdMvarKnjbUbexyD0lzbvitdO8H8INYgM6JQMhQslMw2r8TKQfrZVqzgGjVI0hTNos2bdfn7NsUcfVWDUGxFmJ5CEcpkkIN0JbpL0nlSkI6PQesOC_gleT7L6OqV5PdqdnqylX");'></div>
+<button class="text-primary text-sm font-semibold hover:underline">Change Avatar</button>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Full Name</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary w-full" type="text" value="Alex Johnson"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email Address</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary w-full" type="email" value="alex@f-ielts.com"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Phone Number</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary w-full" placeholder="+1 (555) 000-0000" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Role</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-500 w-full" disabled="" type="text" value="Super Admin"/>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-gray-50 dark:bg-gray-800/30 border-t border-gray-200 dark:border-gray-800 flex justify-end">
+<button class="bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors">Update Profile</button>
+</div>
+</div>
+</section>
+<!-- Section 2: Security -->
+<section>
+<h2 class="text-[#181111] dark:text-white text-xl font-bold px-1 pb-4">Security Settings</h2>
+<div class="bg-white dark:bg-background-dark/40 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<h3 class="text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">lock</span>
+                                    Change Password
+                                </h3>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase">Current Password</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase">New Password</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<h3 class="text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400">verified_user</span>
+                                    Two-Factor Authentication
+                                </h3>
+<div class="p-4 rounded-lg bg-primary/5 border border-primary/20 flex items-center justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-sm font-bold text-primary">Enable 2FA</p>
+<p class="text-xs text-gray-600 dark:text-gray-400 leading-snug">Add an extra layer of security to your admin account.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-gray-50 dark:bg-gray-800/30 border-t border-gray-200 dark:border-gray-800 flex justify-end">
+<button class="bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors">Save Security Changes</button>
+</div>
+</div>
+</section>
+<!-- Section 3: System Configuration -->
+<section>
+<h2 class="text-[#181111] dark:text-white text-xl font-bold px-1 pb-4">System Configuration</h2>
+<div class="bg-white dark:bg-background-dark/40 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 overflow-hidden">
+<div class="p-6 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Platform Name</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary w-full" type="text" value="F-IELTS Learning Hub"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">System Support Email</label>
+<input class="rounded-lg border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark/60 text-sm focus:border-primary focus:ring-primary w-full" type="email" value="support@f-ielts.com"/>
+</div>
+</div>
+<hr class="border-gray-100 dark:border-gray-800"/>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold">Maintenance Mode</p>
+<p class="text-xs text-gray-500">Temporarily disable the platform for all users except admins.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold">User Registrations</p>
+<p class="text-xs text-gray-500">Allow new students to sign up via the public homepage.</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-gray-50 dark:bg-gray-800/30 border-t border-gray-200 dark:border-gray-800 flex justify-end">
+<button class="bg-primary hover:bg-red-700 text-white px-5 py-2 rounded-lg text-sm font-bold transition-colors">Update Configuration</button>
+</div>
+</div>
+</section>
+<div class="bg-primary/10 border border-primary/20 rounded-xl p-4 flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-primary font-medium">Changes to system configuration may take up to 5 minutes to propagate across all global servers.</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

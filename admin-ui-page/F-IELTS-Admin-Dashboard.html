@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F-IELTS Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#181111] dark:text-white">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-[#2d1818] flex flex-col h-full shrink-0">
+<div class="p-6 flex flex-col gap-8 h-full">
+<!-- Logo -->
+<div class="flex items-center gap-3">
+<div class="bg-primary size-10 rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-3xl">school</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#181111] dark:text-white text-lg font-bold leading-tight">F-IELTS</h1>
+<p class="text-[#896161] dark:text-[#a38c8c] text-xs font-normal">Admin Panel</p>
+</div>
+</div>
+<!-- Nav Links -->
+<nav class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="dashboard" data-size="24px">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] dark:text-[#f4f0f0] hover:bg-background-light dark:hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="group" data-size="24px">group</span>
+<p class="text-sm font-medium">Users</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] dark:text-[#f4f0f0] hover:bg-background-light dark:hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="menu_book" data-size="24px">menu_book</span>
+<p class="text-sm font-medium">Courses</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] dark:text-[#f4f0f0] hover:bg-background-light dark:hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="bar_chart" data-size="24px">bar_chart</span>
+<p class="text-sm font-medium">Reports</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] dark:text-[#f4f0f0] hover:bg-background-light dark:hover:bg-primary/10 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings" data-size="24px">settings</span>
+<p class="text-sm font-medium">Settings</p>
+</div>
+</nav>
+<!-- Footer Nav -->
+<div class="pt-4 border-t border-[#e6dbdb] dark:border-[#3d2a2a]">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] dark:text-[#f4f0f0] hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="logout" data-size="24px">logout</span>
+<p class="text-sm font-medium group-hover:text-primary">Logout</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Top Navigation Bar -->
+<header class="h-16 flex items-center justify-between border-b border-[#e6dbdb] dark:border-[#3d2a2a] bg-white dark:bg-[#2d1818] px-8 sticky top-0 z-10 shrink-0">
+<div class="flex items-center gap-8">
+<h2 class="text-xl font-bold tracking-tight">Dashboard Overview</h2>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#896161] !text-lg">search</span>
+<input class="w-full bg-background-light dark:bg-[#3d2a2a] border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary h-9" placeholder="Search data..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#896161] hover:bg-background-light dark:hover:bg-[#3d2a2a] rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2.5 size-2 bg-primary rounded-full border-2 border-white dark:border-[#2d1818]"></span>
+</button>
+<div class="h-8 w-[1px] bg-[#e6dbdb] dark:bg-[#3d2a2a] mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold leading-none">Alex Rivera</p>
+<p class="text-[10px] text-[#896161] uppercase tracking-wider font-bold">Administrator</p>
+</div>
+<div class="size-10 rounded-full bg-center bg-cover border border-[#e6dbdb]" data-alt="User profile avatar of admin" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDT-NarT6fPXsl_hLNioig9c5oUTrWPEp_STXMRMehVoalNP2GzMsfKl1q3U0Io8bCNgmErFGrCGnCNnH7w4AFfzl_lPaAfMerL2kn_gAewN5SBK02MstguTnRKvdzb2dq8dajPrYYKHkt1eQYRDmI_xgqUQv2UNQt4N1dTQQ_43YftrJFrpLlFi8Tmc2C8dCwlo8P7DTfW8jLqC_u323qDJMcAyg7a8rrQdrMmPvZUjlu6wH8LBnUQ2jzXIvyA36vPWs6fa_FvgY4U')"></div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-7xl mx-auto w-full flex flex-col gap-6">
+<!-- Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-[#896161] dark:text-[#a38c8c]">Total Users</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg !text-xl">group</span>
+</div>
+<p class="text-3xl font-bold">12,450</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_up</span> +5.2%</span>
+<span class="text-xs text-[#896161]">from last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-[#896161] dark:text-[#a38c8c]">Active Users</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg !text-xl">bolt</span>
+</div>
+<p class="text-3xl font-bold">3,210</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_up</span> +2.1%</span>
+<span class="text-xs text-[#896161]">currently online</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-[#896161] dark:text-[#a38c8c]">Total Tests</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg !text-xl">assignment_turned_in</span>
+</div>
+<p class="text-3xl font-bold">45,800</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-green-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_up</span> +12%</span>
+<span class="text-xs text-[#896161]">all categories</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-sm font-medium text-[#896161] dark:text-[#a38c8c]">Avg Band Score</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg !text-xl">grade</span>
+</div>
+<p class="text-3xl font-bold">6.5</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="text-red-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined !text-sm">trending_down</span> -0.1</span>
+<span class="text-xs text-[#896161]">platform average</span>
+</div>
+</div>
+</div>
+<!-- Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- User Growth Chart -->
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-lg font-bold">User Growth</h3>
+<p class="text-xs text-[#896161]">User acquisitions over the last 6 months</p>
+</div>
+<select class="bg-background-light dark:bg-[#3d2a2a] border-none rounded-lg text-xs font-semibold py-1.5 pl-3 pr-8 focus:ring-1 focus:ring-primary">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+</select>
+</div>
+<div class="flex-1 flex flex-col justify-end min-h-[220px]">
+<svg class="w-full h-auto overflow-visible" preserveaspectratio="none" viewbox="0 0 500 150">
+<defs>
+<lineargradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color: #ec1313; stop-opacity: 0.2"></stop>
+<stop offset="100%" style="stop-color: #ec1313; stop-opacity: 0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,40 T320,70 T400,20 T500,50 L500,150 L0,150 Z" fill="url(#gradient)"></path>
+<path d="M0,120 Q50,110 80,60 T160,80 T240,40 T320,70 T400,20 T500,50" fill="none" stroke="#ec1313" stroke-width="3"></path>
+</svg>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-[#896161] uppercase tracking-wider">
+<span>Jan</span>
+<span>Feb</span>
+<span>Mar</span>
+<span>Apr</span>
+<span>May</span>
+<span>Jun</span>
+</div>
+</div>
+</div>
+<!-- Test Skills Bar Chart -->
+<div class="bg-white dark:bg-[#2d1818] p-6 rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div>
+<h3 class="text-lg font-bold">Attempts by Skill</h3>
+<p class="text-xs text-[#896161]">Most practiced IELTS modules</p>
+</div>
+<span class="text-primary text-xs font-bold px-2 py-1 bg-primary/10 rounded">Live Data</span>
+</div>
+<div class="flex-1 flex items-end justify-between gap-4 px-2 min-h-[220px]">
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="w-full bg-background-light dark:bg-[#3d2a2a] rounded-t-lg relative h-32 group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/80 rounded-t-lg transition-all h-[40%]" title="40%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#896161] uppercase">Listening</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="w-full bg-background-light dark:bg-[#3d2a2a] rounded-t-lg relative h-32 group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/80 rounded-t-lg transition-all h-[65%]" title="65%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#896161] uppercase">Reading</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="w-full bg-background-light dark:bg-[#3d2a2a] rounded-t-lg relative h-32 group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary rounded-t-lg transition-all h-[95%]" title="95%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#896161] uppercase">Writing</span>
+</div>
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="w-full bg-background-light dark:bg-[#3d2a2a] rounded-t-lg relative h-32 group">
+<div class="absolute bottom-0 left-0 right-0 bg-primary/80 rounded-t-lg transition-all h-[30%]" title="30%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#896161] uppercase">Speaking</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="bg-white dark:bg-[#2d1818] rounded-xl border border-[#e6dbdb] dark:border-[#3d2a2a] shadow-sm overflow-hidden mb-8">
+<div class="px-6 py-4 border-b border-[#e6dbdb] dark:border-[#3d2a2a] flex justify-between items-center">
+<h3 class="text-lg font-bold">Recent Test Activity</h3>
+<button class="text-primary text-sm font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-background-light/50 dark:bg-[#3d2a2a]/50 text-[#896161] font-bold uppercase text-[11px] tracking-wider">
+<tr>
+<th class="px-6 py-3">Student Name</th>
+<th class="px-6 py-3">Test Module</th>
+<th class="px-6 py-3">Date Completed</th>
+<th class="px-6 py-3">Band Score</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e6dbdb] dark:divide-[#3d2a2a]">
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200" data-alt="Student profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEhk5wMvSHc6OG85Aye1i_aIoF_MBj-by3qEIGwi_skjce4NTTnr2kX1P2fIrE00UTRMepvqbunZ_zVv8QLs7HcVwYPd826C2w3PWXHXuwTuw70jXetHMCgolwkll8EnSbxhOGkB2MbAY1r4mBH0yA4ozveeFICr4vK5fRvsu57sbNZ52uEulUQnHEqTJGsBhX2gKTo-thpbGqreV6wtJbNs6GHSDLRmVdbXBPiOsq0CT05P29T9zo1QlCUALxoDTyNw5H9B6PiDkl')"></div>
+<span class="font-semibold">Siddharth Varma</span>
+</div>
+</td>
+<td class="px-6 py-4">Academic Writing #12</td>
+<td class="px-6 py-4 text-[#896161]">Oct 24, 2023 - 14:20</td>
+<td class="px-6 py-4 font-bold text-primary">7.5</td>
+<td class="px-6 py-4">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Evaluated</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#896161] hover:text-primary"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200" data-alt="Student profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0fqHQxjzG7J3CVpa5OKlupw3xz8v5-ps1m6vGMLwF6HPi5fpnqDqJAlinqsejAoSEyOSc-Oh4ZX94faFve5qTuJ-e8n4qBZLIRSDpFk2QQT2nWJ3hBYaW_X7LK69e2gQnY1CZEB2E_W9SfDolu6sXd8elntL-bJDY1nORlpcx2goDdp8D0B-ukDFTps-gRuA3uEARWPCrUGqzZ1BIMfd9YnhGYyOyZ_QIUVWINurmhegaZL0qAetmnpUs6oO2HEZ-M2nj3n1D2ONO')"></div>
+<span class="font-semibold">Emma Thompson</span>
+</div>
+</td>
+<td class="px-6 py-4">General Reading #4</td>
+<td class="px-6 py-4 text-[#896161]">Oct 24, 2023 - 11:05</td>
+<td class="px-6 py-4 font-bold text-primary">6.0</td>
+<td class="px-6 py-4">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Evaluated</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#896161] hover:text-primary"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200" data-alt="Student profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCN-A-GoSKI9354HZCwEJRtlu5LtXdAcY7ogmDoVcUTH5z2ckIpcHHX7WIzfREaUk6e7jl1Ds2MH3VZXFSoXhaZdVIvuHNpvi3qxBAmXwZmOFqwZ4HkyYv637bUcVbY8s6AvqDiRR_TyP4Oez8ZnIiSKInd-VHWa1vjhE5HmOOavtHI_mxWC1Hxpgh3S3S1TGa2g0WT7MoQsOKHDFrPSRZc1AdnewMKpVHJDMUgL58-dxe4tLgypnOMwNNmHLEFUNZFuR-3i0eeoRro')"></div>
+<span class="font-semibold">Li Wei</span>
+</div>
+</td>
+<td class="px-6 py-4">Speaking Simulation B</td>
+<td class="px-6 py-4 text-[#896161]">Oct 24, 2023 - 09:45</td>
+<td class="px-6 py-4 font-bold text-primary">--</td>
+<td class="px-6 py-4">
+<span class="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">In Review</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#896161] hover:text-primary"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200" data-alt="Student profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBR-sPgmSFKgY5BZggfQAiiBLZVnZzBtHQpmulzt6PubJTpkOvM_K5PDRosMRUBsKp4qft3XjRf8ECmn8I7IlNoEsshXMR8fbuZtZSJSvIPpe5ssG3ZrPCfZoYLlts0gWac1hRx_wkLtxPv0Mhpx0HCIQMg3uWmdLnHP3cjB0ptFbAf_HPlmrQLXdH87CDDQJN_TZPEuNkSUu2WbkyWjLIIHk9r3SEzBim8bLteUUbdlwhfNJaXnJfd1BAlogCDqXmhKCBsnCh1geeA')"></div>
+<span class="font-semibold">Yusuf Mansoor</span>
+</div>
+</td>
+<td class="px-6 py-4">Listening Practice 1</td>
+<td class="px-6 py-4 text-[#896161]">Oct 23, 2023 - 18:30</td>
+<td class="px-6 py-4 font-bold text-primary">8.5</td>
+<td class="px-6 py-4">
+<span class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Evaluated</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#896161] hover:text-primary"><span class="material-symbols-outlined !text-xl">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

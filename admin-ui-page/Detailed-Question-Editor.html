@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detailed Question Editor - F-IELTS Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h1 class="text-[#111418] dark:text-white text-lg font-bold">F-IELTS Admin</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium hover:text-primary" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary h-16 flex items-center" href="#">Content Library</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium hover:text-primary" href="#">Students</a>
+<a class="text-gray-600 dark:text-gray-300 text-sm font-medium hover:text-primary" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 text-sm font-bold rounded-lg hover:bg-gray-200">
+                    Save Draft
+                </button>
+<button class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-blue-600">
+                    Publish
+                </button>
+<div class="size-10 rounded-full bg-cover bg-center ml-2 border border-gray-200" data-alt="User avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeZbLiqe2G__JMQBshxpZoZHfBxx1JR1cQEs6HOVvhKFbaR3yB0B7Ihikogd90lbJ_du8Y0TsGqMqxYigOp52H1svFKKhQikAJVhsUJC9kBIEZ6rBAFhxAECKo1eSocJz2I6WiSxbN_VYY1H7w3jtcX7bdmKQ9zZSswUOiad1tXmN4Kn8w0yAPpXfTCroRgkBSWIUMArxk-AcjEmTcimpTmAzq1QdYjGI6iE3za6QH81VCvw0MER1HpyU9WpD9TZ-dpQJLtzWG2ogB')"></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto flex flex-col lg:flex-row min-h-[calc(100vh-64px)]">
+<!-- Editor Column (Left) -->
+<div class="flex-1 p-6 lg:p-10 bg-white dark:bg-slate-900 overflow-y-auto border-r border-gray-200 dark:border-slate-800">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+<a class="hover:text-primary" href="#">Content Library</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">IELTS Reading</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-gray-900 dark:text-white font-medium">New Question</span>
+</div>
+<!-- Page Heading -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Question Editor</h2>
+<p class="text-gray-500 dark:text-gray-400 mt-1">Design a multiple-choice question for Reading Section 1</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined text-lg">devices</span>
+                    Preview Mobile
+                </button>
+</div>
+<div class="space-y-8">
+<!-- Question Content Section -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="size-6 bg-primary/10 text-primary flex items-center justify-center rounded text-sm font-bold">1</span>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Question Content</h3>
+</div>
+<div class="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden">
+<!-- Simulated RTF Toolbar -->
+<div class="bg-gray-50 dark:bg-slate-800 px-4 py-2 flex items-center gap-4 border-b border-gray-200 dark:border-slate-700">
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">format_bold</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">format_italic</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">format_underlined</button>
+<div class="w-[1px] h-4 bg-gray-300 dark:bg-slate-600"></div>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">format_list_bulleted</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">link</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-primary">image</button>
+</div>
+<textarea class="w-full min-h-[160px] p-4 text-gray-800 dark:text-gray-200 bg-transparent border-none focus:ring-0 text-lg leading-relaxed placeholder:text-gray-400" placeholder="According to the passage, what was the primary reason for the architectural change in the 19th century?"></textarea>
+</div>
+</section>
+<!-- Answer Choices Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="size-6 bg-primary/10 text-primary flex items-center justify-center rounded text-sm font-bold">2</span>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Answer Choices</h3>
+</div>
+<p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Correct Answer</p>
+</div>
+<div class="space-y-3">
+<!-- Option Row 1 -->
+<div class="flex items-center gap-3 group">
+<div class="material-symbols-outlined text-gray-300 cursor-move">drag_indicator</div>
+<div class="flex-1 relative">
+<input class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" type="text" value="The introduction of reinforced concrete structures"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">delete</button>
+</div>
+<input checked="" class="size-6 text-primary focus:ring-primary border-gray-300 dark:bg-slate-800" name="correct_answer" type="radio"/>
+</div>
+<!-- Option Row 2 -->
+<div class="flex items-center gap-3 group">
+<div class="material-symbols-outlined text-gray-300 cursor-move">drag_indicator</div>
+<div class="flex-1 relative">
+<input class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" type="text" value="A sudden increase in urban population"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">delete</button>
+</div>
+<input class="size-6 text-primary focus:ring-primary border-gray-300 dark:bg-slate-800" name="correct_answer" type="radio"/>
+</div>
+<!-- Option Row 3 -->
+<div class="flex items-center gap-3 group">
+<div class="material-symbols-outlined text-gray-300 cursor-move">drag_indicator</div>
+<div class="flex-1 relative">
+<input class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" type="text" value="The widespread availability of imported timber"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">delete</button>
+</div>
+<input class="size-6 text-primary focus:ring-primary border-gray-300 dark:bg-slate-800" name="correct_answer" type="radio"/>
+</div>
+</div>
+<button class="mt-4 flex items-center gap-2 text-primary font-bold hover:bg-primary/5 px-4 py-2 rounded-lg border border-dashed border-primary/40 w-full justify-center transition-colors">
+<span class="material-symbols-outlined">add</span>
+                        Add Option
+                    </button>
+</section>
+<!-- Explanation Section -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="size-6 bg-primary/10 text-primary flex items-center justify-center rounded text-sm font-bold">3</span>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Explanation &amp; Rationale</h3>
+</div>
+<textarea class="w-full min-h-[100px] p-4 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white focus:ring-primary focus:border-primary" placeholder="Explain why the correct answer is right and why others are wrong..."></textarea>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<label class="block">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Difficulty Level</span>
+<select class="mt-1 block w-full rounded-lg border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white">
+<option>Easy</option>
+<option selected="">Medium</option>
+<option>Hard</option>
+</select>
+</label>
+<label class="block">
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">Question Tag</span>
+<input class="mt-1 block w-full rounded-lg border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white" placeholder="e.g. Architecture, History" type="text"/>
+</label>
+</div>
+</section>
+</div>
+</div>
+<!-- Preview Column (Right) -->
+<div class="hidden lg:block w-[480px] bg-background-light dark:bg-slate-950 p-10 overflow-y-auto">
+<div class="sticky top-10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest">Live Student Preview</h3>
+<div class="flex gap-2">
+<span class="size-3 rounded-full bg-red-400"></span>
+<span class="size-3 rounded-full bg-yellow-400"></span>
+<span class="size-3 rounded-full bg-green-400"></span>
+</div>
+</div>
+<!-- Simulated IELTS App Interface -->
+<div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-slate-800">
+<div class="p-4 bg-primary/5 border-b border-primary/10 flex justify-between items-center">
+<span class="text-xs font-bold text-primary">Reading Test / Section 1</span>
+<span class="text-xs font-mono text-gray-500">Timer: 19:45</span>
+</div>
+<div class="p-8">
+<p class="text-xs text-primary font-bold mb-2">QUESTION 4</p>
+<h4 class="text-xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+                            According to the passage, what was the primary reason for the architectural change in the 19th century?
+                        </h4>
+<div class="space-y-4">
+<label class="flex items-start gap-3 p-4 border border-primary bg-primary/5 rounded-xl cursor-pointer">
+<div class="size-5 rounded-full border-2 border-primary flex items-center justify-center mt-1">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+<span class="text-gray-800 dark:text-gray-200 leading-snug">The introduction of reinforced concrete structures</span>
+</label>
+<label class="flex items-start gap-3 p-4 border border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50 rounded-xl cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+<div class="size-5 rounded-full border-2 border-gray-300 mt-1"></div>
+<span class="text-gray-800 dark:text-gray-200 leading-snug">A sudden increase in urban population</span>
+</label>
+<label class="flex items-start gap-3 p-4 border border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-800/50 rounded-xl cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+<div class="size-5 rounded-full border-2 border-gray-300 mt-1"></div>
+<span class="text-gray-800 dark:text-gray-200 leading-snug">The widespread availability of imported timber</span>
+</label>
+</div>
+<button class="w-full mt-8 py-3 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                            Check Answer
+                        </button>
+</div>
+<div class="p-4 bg-gray-50 dark:bg-slate-800/50 border-t border-gray-100 dark:border-slate-800 flex justify-between">
+<button class="text-sm font-bold text-gray-400 flex items-center gap-1">
+<span class="material-symbols-outlined">chevron_left</span> Previous
+                        </button>
+<button class="text-sm font-bold text-primary flex items-center gap-1">
+                            Next <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Tooltip / Hint -->
+<div class="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 p-4 rounded-xl flex gap-3">
+<span class="material-symbols-outlined text-blue-500">info</span>
+<p class="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">
+                        Changes you make in the editor are updated here in real-time. Students will see the exact layout shown above.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Mobile Actions -->
+<div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t p-4 flex gap-4">
+<button class="flex-1 py-3 bg-gray-100 text-gray-900 font-bold rounded-lg">Save Draft</button>
+<button class="flex-1 py-3 bg-primary text-white font-bold rounded-lg">Publish</button>
+</div>
+</body></html>

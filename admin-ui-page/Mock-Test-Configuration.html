@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>F-IELTS Admin - Mock Test Configuration</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-[#dbe0e6] dark:border-gray-800 bg-white dark:bg-background-dark flex flex-col sticky top-0 h-screen">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h1 class="text-base font-bold leading-none">F-IELTS Admin</h1>
+<p class="text-[#617289] text-xs font-normal">EdTech SaaS</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="flex items-center gap-3 px-3 py-2 text-[#617289] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#617289] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">database</span>
+<span class="text-sm font-medium">Question Bank</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">description</span>
+<span class="text-sm font-medium">Mock Tests</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#617289] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Student Results</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#617289] hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</div>
+</nav>
+<div class="p-4 border-t border-[#dbe0e6] dark:border-gray-800">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+<img alt="Admin user profile picture" class="w-full h-full object-cover" data-alt="Avatar profile of the administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMFMlhO3hGlINp02vzfhSkKbusay8qOe_y4NxAbFzImvM6bzoFHcCCn9Qfv6hp98S5IcilAylrGYJvCJN0RXAAJP-CPYDjwd8t39962PrZkZamCxpHdYNQrSkq2xmH0q4uu2ylg0sq-pYXNEpc4LeqZfhi7BoE6KkWKbPgc9zS34yPkDmYz0E5RQ2639BoiOp34_D7GOAguWL6nBw7mtHjHRlAh9-G8JN0tKN9P3VV31n8ClSwGJKa9Q7nUcRmia9ohvKMHpVCCuOo"/>
+</div>
+<div>
+<p class="text-sm font-medium">Alex Johnson</p>
+<p class="text-[#617289] text-xs">Admin Role</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="h-16 border-b border-[#dbe0e6] dark:border-gray-800 bg-white dark:bg-background-dark flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4 flex-1">
+<h2 class="text-lg font-bold">Mock Test Management</h2>
+<div class="max-w-md w-full ml-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#617289]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-[#f0f2f4] dark:bg-gray-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search mock tests..." type="text"/>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                        Create Mock Test
+                    </button>
+<button class="p-2 rounded-lg bg-[#f0f2f4] dark:bg-gray-800 text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Stats -->
+<div class="p-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-background-dark border border-[#dbe0e6] dark:border-gray-800 p-6 rounded-xl flex flex-col gap-2">
+<p class="text-[#617289] text-sm font-medium">Total Mock Tests</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">42</span>
+<span class="text-green-500 text-xs font-medium pb-1 mb-1">+5 this month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark border border-[#dbe0e6] dark:border-gray-800 p-6 rounded-xl flex flex-col gap-2">
+<p class="text-[#617289] text-sm font-medium">Active Tests</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">38</span>
+<div class="flex -space-x-2 ml-4">
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 bg-blue-100 flex items-center justify-center text-[10px] text-blue-600 font-bold">L</div>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 bg-green-100 flex items-center justify-center text-[10px] text-green-600 font-bold">R</div>
+<div class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 bg-yellow-100 flex items-center justify-center text-[10px] text-yellow-600 font-bold">W</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark border border-[#dbe0e6] dark:border-gray-800 p-6 rounded-xl flex flex-col gap-2">
+<p class="text-[#617289] text-sm font-medium">Pending Drafts</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold">4</span>
+<span class="text-[#617289] text-xs font-normal pb-1 mb-1">Requires review</span>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-background-dark border border-[#dbe0e6] dark:border-gray-800 rounded-xl overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-[#dbe0e6] dark:border-gray-800 flex justify-between items-center">
+<h3 class="font-bold text-lg">Active Test List</h3>
+<div class="flex gap-2">
+<button class="text-xs font-medium px-3 py-1.5 rounded bg-gray-100 dark:bg-gray-800 hover:bg-gray-200">Filter</button>
+<button class="text-xs font-medium px-3 py-1.5 rounded bg-gray-100 dark:bg-gray-800 hover:bg-gray-200">Export</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-gray-50 dark:bg-gray-900/50">
+<tr>
+<th class="px-6 py-4 text-xs font-semibold text-[#617289] uppercase tracking-wider">Test Name</th>
+<th class="px-6 py-4 text-xs font-semibold text-[#617289] uppercase tracking-wider">Modules Included</th>
+<th class="px-6 py-4 text-xs font-semibold text-[#617289] uppercase tracking-wider">Duration</th>
+<th class="px-6 py-4 text-xs font-semibold text-[#617289] uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-semibold text-[#617289] uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">IELTS Academic Vol. 15</span>
+<span class="text-xs text-[#617289]">ID: MOCK-2024-001</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">L</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">R</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">W</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">S</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617289]">2h 45m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">General Training Vol. 2</span>
+<span class="text-xs text-[#617289]">ID: MOCK-2024-002</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">L</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">R</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">W</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617289]">2h 30m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">New Batch Mock Test A</span>
+<span class="text-xs text-[#617289]">ID: MOCK-2024-008</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">L</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">R</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617289]">1h 40m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-orange-50 text-orange-700 dark:bg-orange-900/20 dark:text-orange-400">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Draft
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Speaking Practice Set 05</span>
+<span class="text-xs text-[#617289]">ID: MOCK-2023-094</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">S</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#617289]">15m</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> Archived
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-[#617289]">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 border-t border-[#dbe0e6] dark:border-gray-800 flex items-center justify-between">
+<span class="text-sm text-[#617289]">Showing 1-4 of 42 results</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-sm border border-[#dbe0e6] dark:border-gray-800 rounded hover:bg-gray-50 disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 text-sm border border-[#dbe0e6] dark:border-gray-800 rounded bg-primary text-white">1</button>
+<button class="px-3 py-1 text-sm border border-[#dbe0e6] dark:border-gray-800 rounded hover:bg-gray-50">2</button>
+<button class="px-3 py-1 text-sm border border-[#dbe0e6] dark:border-gray-800 rounded hover:bg-gray-50">3</button>
+<button class="px-3 py-1 text-sm border border-[#dbe0e6] dark:border-gray-800 rounded hover:bg-gray-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Create Mock Test Wizard (Overlay/Modal Preview) -->
+<!-- This shows the state when "Create Mock Test" is clicked -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 hidden">
+<div class="bg-white dark:bg-background-dark w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+<div class="px-8 py-6 border-b border-[#dbe0e6] dark:border-gray-800 flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold">Assemble New Mock Test</h2>
+<p class="text-[#617289] text-sm">Select sections from the question bank to build a full exam.</p>
+</div>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Step Progress -->
+<div class="flex items-center justify-center mb-8 gap-4">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</div>
+<span class="text-sm font-semibold">General Info</span>
+</div>
+<div class="w-12 h-px bg-[#dbe0e6]"></div>
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-sm">2</div>
+<span class="text-sm font-medium text-[#617289]">Select Modules</span>
+</div>
+<div class="w-12 h-px bg-[#dbe0e6]"></div>
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-sm">3</div>
+<span class="text-sm font-medium text-[#617289]">Review &amp; Publish</span>
+</div>
+</div>
+<!-- Form content -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-bold mb-2">Test Name</label>
+<input class="w-full rounded-lg border-[#dbe0e6] dark:border-gray-700 dark:bg-gray-800 focus:ring-primary focus:border-primary" placeholder="e.g. IELTS Academic Vol. 16" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Category</label>
+<select class="w-full rounded-lg border-[#dbe0e6] dark:border-gray-700 dark:bg-gray-800 focus:ring-primary">
+<option>Academic</option>
+<option>General Training</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Difficulty</label>
+<div class="flex gap-4">
+<label class="flex-1 border rounded-lg p-3 text-center cursor-pointer hover:border-primary transition-colors">
+<input class="hidden" name="diff" type="radio"/>
+<span class="text-sm font-medium">Beginner</span>
+</label>
+<label class="flex-1 border border-primary bg-primary/5 rounded-lg p-3 text-center cursor-pointer">
+<input checked="" class="hidden" name="diff" type="radio"/>
+<span class="text-sm font-bold text-primary">Standard</span>
+</label>
+<label class="flex-1 border rounded-lg p-3 text-center cursor-pointer hover:border-primary transition-colors">
+<input class="hidden" name="diff" type="radio"/>
+<span class="text-sm font-medium">Advanced</span>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-900/40 rounded-xl p-6 border border-dashed border-[#dbe0e6] dark:border-gray-800 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-4xl text-[#617289] mb-4">image</span>
+<p class="text-sm font-medium mb-1">Upload Cover Image</p>
+<p class="text-xs text-[#617289] mb-4">Recommended 1200 x 630px</p>
+<button class="px-4 py-2 bg-white dark:bg-gray-800 border border-[#dbe0e6] dark:border-gray-700 rounded-lg text-sm font-bold">Browse Files</button>
+</div>
+</div>
+</div>
+<div class="px-8 py-6 border-t border-[#dbe0e6] dark:border-gray-800 bg-gray-50 dark:bg-gray-900/20 flex justify-between items-center">
+<button class="px-6 py-2 text-sm font-bold text-[#617289] hover:text-[#111418]">Cancel</button>
+<button class="px-8 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20">Next: Select Modules</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
