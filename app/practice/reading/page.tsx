@@ -28,7 +28,7 @@ export default function ReadingPracticePage() {
     <div className="bg-background-light min-h-screen">
       <DashboardHeader />
 
-      <main className="max-w-[1280px] mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         {/* Page Heading */}
         <div className="mb-8">
           <h1 className="text-3xl font-black tracking-tight text-slate-900 mb-2">

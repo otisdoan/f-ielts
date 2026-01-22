@@ -174,7 +174,9 @@ export default function ReadingTestPage() {
                       <LegacyQuestionRenderer
                         question={item}
                         answer={answers[item.id]}
-                        onChange={(val) => handleAnswerChange(item.id, val)}
+                        onChange={(val: string) =>
+                          handleAnswerChange(item.id, val)
+                        }
                       />
                     </div>
                   );
@@ -284,6 +286,7 @@ function GroupRenderer({
                   value={answers[question.id] || ""}
                   onChange={(e) => onAnswer(question.id, e.target.value)}
                   placeholder={`${question.questionNumber}`}
+                  aria-label={`Answer for question ${question.questionNumber}`}
                   autoComplete="off"
                 />
               </span>
@@ -326,6 +329,8 @@ function GroupRenderer({
                       className="border p-2 rounded w-full max-w-sm"
                       value={answers[q.id] || ""}
                       onChange={(e) => onAnswer(q.id, e.target.value)}
+                      aria-label={`Answer for question ${q.questionNumber}`}
+                      placeholder="Type your answer"
                     />
                   </div>
                 ))}
@@ -350,6 +355,7 @@ function GroupRenderer({
                   className="border border-gray-300 rounded px-3 py-1.5 text-sm min-w-[120px]"
                   value={answers[q.id] || ""}
                   onChange={(e) => onAnswer(q.id, e.target.value)}
+                  aria-label={`Answer for question ${q.questionNumber}`}
                 >
                   <option value="">Select...</option>
                   <option value="True">True</option>
@@ -394,6 +400,8 @@ function LegacyQuestionRenderer({ question, answer, onChange }: any) {
         className="border p-2 rounded w-full"
         value={answer || ""}
         onChange={(e) => onChange(e.target.value)}
+        aria-label={`Answer for question ${question.questionNumber}`}
+        placeholder="Type your answer"
       />
     </div>
   );
