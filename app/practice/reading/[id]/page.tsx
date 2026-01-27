@@ -139,14 +139,26 @@ export default function ReadingTestPage() {
       <div className="flex-1 max-w-[1800px] mx-auto w-full overflow-hidden">
         <div className="grid grid-cols-2 gap-0 h-[calc(100vh-64px)]">
           {/* Passage Panel */}
-          <div className="bg-white border-r border-[#e6dbdb] overflow-y-auto p-8">
-            <h2 className="text-xl font-bold text-[#181111] mb-6 pb-4 border-b border-[#e6dbdb]">
-              Reading Passage
-            </h2>
-            <div
-              className="max-w-3xl mx-auto prose"
-              dangerouslySetInnerHTML={{ __html: test.passageContent }}
-            ></div>
+          {/* Passage Panel */}
+          <div className="bg-white border-r border-[#e6dbdb] overflow-y-auto flex flex-col h-full scroll-smooth">
+            <div className="px-8 py-6 pb-4 bg-white sticky top-0 z-10 border-b border-gray-50/50 backdrop-blur-sm bg-white/95">
+              <div className="flex items-start justify-between gap-4">
+                <h2 className="text-2xl font-bold text-[#181111] leading-tight">
+                  <span className="text-gray-800">[YouPass Collect]</span> -{" "}
+                  {test.title}
+                </h2>
+                <button className="flex-none px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold text-gray-700 hover:bg-gray-50 hover:text-primary hover:border-red-100 bg-white shadow-sm transition-all whitespace-nowrap">
+                  Xem tóm tắt bài đọc
+                </button>
+              </div>
+            </div>
+
+            <div className="px-8 py-6 flex-1">
+              <div
+                className="max-w-none prose prose-lg prose-slate prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-loose prose-a:text-primary font-medium"
+                dangerouslySetInnerHTML={{ __html: test.passageContent }}
+              ></div>
+            </div>
           </div>
 
           {/* Questions Panel */}
