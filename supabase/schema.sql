@@ -1,4 +1,6 @@
 
+
+--schema.sql
 -- Profiles table
 create table profiles (
   id uuid references auth.users(id) on delete cascade not null primary key,
@@ -63,6 +65,8 @@ create table test_attempts (
   answers jsonb, -- User's answers
   submitted_at timestamptz default now()
 );
+
+
 
 -- Progress Tracking
 create table progress (
