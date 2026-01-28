@@ -19,6 +19,7 @@ export default function AdminSidebar() {
       href: "/admin/reading-tests",
       icon: "description",
     },
+    { name: "Listening Management", href: "/admin/listening", icon: "headphones" },
 
     { name: "Reports", href: "/admin/reports", icon: "bar_chart" },
     { name: "Settings", href: "/admin/settings", icon: "settings" },
