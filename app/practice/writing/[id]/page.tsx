@@ -1,10 +1,57 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { WritingService, WritingPrompt } from "@/services/writing.service";
+
+// WritingSection Component - shows sample in textarea when enabled
+function WritingSection({
+  label,
+  sampleText,
+  value,
+  onChange,
+  showSample,
+  placeholder,
+  minHeight = "200px"
+}: {
+  label: string;
+  sampleText?: string;
+  value: string;
+  onChange: (value: string) => void;
+  showSample: boolean;
+  placeholder?: string;
+  minHeight?: string;
+}) {
+  // When showSample is true, display sample text and make readonly
+  // When showSample is false, display user content and allow editing
+  const displayValue = showSample && sampleText ? sampleText : value;
+  const isReadonly = showSample && sampleText;
+
+  return (
+    <div className="transition-all duration-300 ease-in-out">
+      <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
+        {label}
+        {isReadonly && (
+          <span className="ml-2 text-blue-600 font-normal normal-case">(Sample Answer - Read Only)</span>
+        )}
+      </label>
+      <textarea
+        value={displayValue}
+        onChange={(e) => !isReadonly && onChange(e.target.value)}
+        readOnly={isReadonly}
+        disabled={isReadonly}
+        placeholder={isReadonly ? "" : placeholder}
+        className={`w-full p-6 rounded-lg border text-lg leading-relaxed focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none shadow-sm placeholder:text-slate-400 transition-all duration-300 ${
+          isReadonly
+            ? "bg-blue-50 text-blue-900 border-blue-200 cursor-not-allowed font-serif"
+            : "bg-white text-[#181111] border-slate-200"
+        }`}
+        style={{ minHeight }}
+      />
+    </div>
+  );
+}
 
 export default function WritingPracticeInterface() {
   const params = useParams();
@@ -13,7 +60,12 @@ export default function WritingPracticeInterface() {
   
   const [prompt, setPrompt] = useState<WritingPrompt | null>(null);
   const [loading, setLoading] = useState(true);
-  const [content, setContent] = useState("");
+  const [contentParts, setContentParts] = useState({
+    intro: "",
+    overview: "",
+    body_1: "",
+    body_2: ""
+  });
   const [wordCount, setWordCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSample, setShowSample] = useState(false);
@@ -31,13 +83,20 @@ export default function WritingPracticeInterface() {
     loadPrompt();
   }, [promptId]);
 
+  // Calculate word count from all content parts (only when not showing sample)
   useEffect(() => {
-    const words = content.trim().split(/\s+/).filter(w => w.length > 0).length;
-    setWordCount(words);
-  }, [content]);
+    if (showSample) {
+      // Don't count sample words
+      setWordCount(0);
+    } else {
+      const allContent = Object.values(contentParts).join(" ");
+      const words = allContent.trim().split(/\s+/).filter(w => w.length > 0).length;
+      setWordCount(words);
+    }
+  }, [contentParts, showSample]);
 
   // Logic condition to view sample
-  const canViewSample = wordCount >= 100 || isSubmitting; // Or isSubmitted if we had that state
+  const canViewSample = wordCount >= 100 || isSubmitting;
 
   const toggleSample = () => {
     if (canViewSample) {
@@ -47,16 +106,34 @@ export default function WritingPracticeInterface() {
     }
   };
 
+  const updateContentPart = (part: keyof typeof contentParts, value: string) => {
+    if (!showSample) {
+      setContentParts(prev => ({ ...prev, [part]: value }));
+    }
+  };
+
+  // Combine content parts for save/submit
+  const getCombinedContent = () => {
+    const parts = [];
+    if (contentParts.intro) parts.push(contentParts.intro);
+    if (contentParts.overview) parts.push(contentParts.overview);
+    if (contentParts.body_1) parts.push(contentParts.body_1);
+    if (contentParts.body_2) parts.push(contentParts.body_2);
+    return parts.join("\n\n");
+  };
+
   // Handle Save / Submit
   const handleSaveDraft = async () => {
     // TODO: Supabase Update
-    console.log("Saving draft...", content);
+    const combinedContent = getCombinedContent();
+    console.log("Saving draft...", combinedContent);
     alert("Draft saved!");
   };
 
   const handleSubmit = async () => {
     // TODO: Supabase Insert/Update -> Trigger AI
     setIsSubmitting(true);
+    const combinedContent = getCombinedContent();
     setTimeout(() => {
         setIsSubmitting(false);
         alert("Submitted for evaluation! (Mock)");
@@ -140,7 +217,8 @@ export default function WritingPracticeInterface() {
           <div className="flex gap-3">
             <button 
                 onClick={handleSaveDraft}
-                className="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-slate-100 text-[#181111] text-sm font-bold hover:bg-slate-200 transition-colors"
+                disabled={showSample}
+                className="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-slate-100 text-[#181111] text-sm font-bold hover:bg-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
              >
               <span>Save Draft</span>
             </button>
@@ -192,89 +270,50 @@ export default function WritingPracticeInterface() {
         
         {/* Right Panel: Text Editor */}
         <div className="w-1/2 flex flex-col bg-slate-50 p-8 overflow-hidden">
-          <div className="max-w-2xl flex-1 flex flex-col">
+          <div className="max-w-2xl flex-1 flex flex-col overflow-y-auto">
           
             {/* Sample Answer Toggle */}
-            <div className="flex items-center space-x-3 mb-4">
-              <span className="text-sm font-bold text-gray-700">Show YouPass Sample</span>
+            <div className="flex items-center space-x-3 mb-6 sticky top-0 bg-slate-50 z-10 py-2">
+              <span className="text-sm font-bold text-gray-700">Show Sample Answer</span>
               <button
                 onClick={toggleSample}
                 disabled={!canViewSample && !showSample}
                 title={canViewSample ? "Toggle Sample Answer" : "Write at least 100 words to view sample"}
                 className={`${
                   showSample ? 'bg-primary' : (canViewSample ? 'bg-gray-300 hover:bg-gray-400' : 'bg-gray-200 opacity-50 cursor-not-allowed')
-                } relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none`}
+                } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 focus:outline-none`}
               >
                 <span
                   className={`${
                     showSample ? 'translate-x-6' : 'translate-x-1'
-                  } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+                  } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300`}
                 />
               </button>
-              {!canViewSample && (
+              {!canViewSample && !showSample && (
                   <span className="text-xs text-red-500 font-medium animate-pulse">
                       (Write {100 - wordCount > 0 ? 100 - wordCount : 0} more words to unlock)
                   </span>
               )}
+              {showSample && (
+                  <span className="text-xs text-blue-600 font-medium">
+                      (Sample answer is displayed - toggle off to continue writing)
+                  </span>
+              )}
             </div>
 
-            {/* Sample Answer Box */}
-            {showSample && (
-              <div className="mb-6 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg shadow-sm animate-in zoom-in-95 duration-200 overflow-y-auto max-h-[60vh]">
-                <h3 className="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2 sticky top-0 bg-blue-50 py-2">
-                    <span className="material-symbols-outlined">school</span>
-                    IELTS Band 9.0 Sample Answer
-                </h3>
-                
-                {prompt.sample_answer_json ? (
-                    <div className="space-y-4 text-gray-700 leading-relaxed font-serif text-lg">
-                        {prompt.sample_answer_json.intro && (
-                            <div>
-                                <span className="text-xs font-sans font-bold text-blue-600 uppercase tracking-wider block mb-1">Introduction</span>
-                                <p>{prompt.sample_answer_json.intro}</p>
-                            </div>
-                        )}
-                        {prompt.sample_answer_json.overview && (
-                            <div>
-                                <span className="text-xs font-sans font-bold text-blue-600 uppercase tracking-wider block mb-1">Overview</span>
-                                <p>{prompt.sample_answer_json.overview}</p>
-                            </div>
-                        )}
-                        {prompt.sample_answer_json.body_1 && (
-                            <div>
-                                <span className="text-xs font-sans font-bold text-blue-600 uppercase tracking-wider block mb-1">Body Paragraph 1</span>
-                                <p>{prompt.sample_answer_json.body_1}</p>
-                            </div>
-                        )}
-                        {prompt.sample_answer_json.body_2 && (
-                            <div>
-                                <span className="text-xs font-sans font-bold text-blue-600 uppercase tracking-wider block mb-1">Body Paragraph 2</span>
-                                <p>{prompt.sample_answer_json.body_2}</p>
-                            </div>
-                        )}
-                    </div>
-                ) : (
-                     <div className="prose prose-blue max-w-none whitespace-pre-wrap text-gray-700 leading-relaxed font-serif text-lg">
-                        {/* Fallback for old textual sample answer if any */}
-                         No structured sample answer available.
-                    </div>
-                )}
-              </div>
-            )}
-
             {/* Editor Toolbar */}
-            <div className="flex items-center gap-2 mb-4">
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600">
+            <div className={`flex items-center gap-2 mb-4 ${showSample ? 'opacity-50 pointer-events-none' : ''}`}>
+              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
                 <span className="material-symbols-outlined">undo</span>
               </button>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600">
+              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
                 <span className="material-symbols-outlined">redo</span>
               </button>
               <div className="h-6 w-[1px] bg-slate-300 mx-1"></div>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600">
+              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
                 <span className="material-symbols-outlined">format_bold</span>
               </button>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600">
+              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
                 <span className="material-symbols-outlined">format_italic</span>
               </button>
               <div className="ml-auto flex items-center gap-2 text-xs font-medium text-slate-500">
@@ -282,27 +321,76 @@ export default function WritingPracticeInterface() {
                 Auto-saved
               </div>
             </div>
-            {/* Text Area */}
-            <div className="flex-1 relative">
-              <textarea 
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                className="w-full h-full p-8 rounded-xl border border-slate-200 bg-white text-[#181111] text-lg leading-relaxed focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none shadow-sm placeholder:text-slate-400" 
-                placeholder="Start typing your response here..."
-              ></textarea>
+
+            {/* Writing Sections */}
+            <div className="space-y-6 flex-1 transition-all duration-300 ease-in-out">
+              {/* Introduction Section */}
+              <WritingSection
+                label="Introduction"
+                sampleText={prompt.sample_answer_json?.intro}
+                value={contentParts.intro}
+                onChange={(val) => updateContentPart('intro', val)}
+                showSample={showSample}
+                placeholder="Write your introduction here..."
+                minHeight="150px"
+              />
+
+              {/* Overview Section (Only for Task 1) */}
+              {prompt.task_type === 'task1' && (
+                <WritingSection
+                  label="Overview"
+                  sampleText={prompt.sample_answer_json?.overview}
+                  value={contentParts.overview}
+                  onChange={(val) => updateContentPart('overview', val)}
+                  showSample={showSample}
+                  placeholder="Write your overview here..."
+                  minHeight="120px"
+                />
+              )}
+
+              {/* Body Paragraph 1 */}
+              <WritingSection
+                label="Body Paragraph 1"
+                sampleText={prompt.sample_answer_json?.body_1}
+                value={contentParts.body_1}
+                onChange={(val) => updateContentPart('body_1', val)}
+                showSample={showSample}
+                placeholder="Write your first body paragraph here..."
+                minHeight="200px"
+              />
+
+              {/* Body Paragraph 2 */}
+              <WritingSection
+                label="Body Paragraph 2"
+                sampleText={prompt.sample_answer_json?.body_2}
+                value={contentParts.body_2}
+                onChange={(val) => updateContentPart('body_2', val)}
+                showSample={showSample}
+                placeholder="Write your second body paragraph here..."
+                minHeight="200px"
+              />
             </div>
+
             {/* Bottom Bar Actions */}
-            <div className="mt-6 flex items-center justify-between">
+            <div className="mt-6 flex items-center justify-between sticky bottom-0 bg-slate-50 pt-4 border-t border-slate-200">
               <div className="flex items-center gap-6">
                 <div className="flex flex-col">
                   <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Word Count</span>
-                  <span className="text-xl font-bold text-[#181111]">{wordCount}<span className="text-slate-400 text-sm font-normal"> / {150} min</span></span>
+                  <span className="text-xl font-bold text-[#181111]">
+                    {showSample ? (
+                      <span className="text-slate-400">Sample Mode</span>
+                    ) : (
+                      <>
+                        {wordCount}<span className="text-slate-400 text-sm font-normal"> / {prompt.task_type === 'task1' ? 150 : 250} min</span>
+                      </>
+                    )}
+                  </span>
                 </div>
               </div>
               <div className="flex gap-4">
                 <button 
                     onClick={handleSubmit} 
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || showSample}
                     className="flex items-center gap-2 px-8 h-12 rounded-xl bg-primary text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
