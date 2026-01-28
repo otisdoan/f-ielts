@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -13,6 +12,13 @@ export default function AdminSidebar() {
     { name: "Users", href: "/admin/users", icon: "group" },
     { name: "Courses", href: "/admin/courses", icon: "menu_book" },
     { name: "Writing Management", href: "/admin/writing", icon: "edit_note" },
+
+
+    {
+      name: "Reading Tests",
+      href: "/admin/reading-tests",
+      icon: "description",
+    },
 
     { name: "Reports", href: "/admin/reports", icon: "bar_chart" },
     { name: "Settings", href: "/admin/settings", icon: "settings" },
@@ -46,7 +52,7 @@ export default function AdminSidebar() {
                   "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors cursor-pointer",
                   isActive
                     ? "bg-primary/10 text-primary"
-                    : "text-[#181111] hover:bg-background-light"
+                    : "text-[#181111] hover:bg-background-light",
                 )}
               >
                 <span
@@ -55,7 +61,12 @@ export default function AdminSidebar() {
                 >
                   {item.icon}
                 </span>
-                <p className={cn("text-sm", isActive ? "font-semibold" : "font-medium")}>
+                <p
+                  className={cn(
+                    "text-sm",
+                    isActive ? "font-semibold" : "font-medium",
+                  )}
+                >
                   {item.name}
                 </p>
               </Link>
@@ -69,10 +80,15 @@ export default function AdminSidebar() {
             href="/logout" // Logic to be refined
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#181111] hover:bg-red-50 transition-colors cursor-pointer group"
           >
-            <span className="material-symbols-outlined group-hover:text-primary" style={{ fontSize: "24px" }}>
+            <span
+              className="material-symbols-outlined group-hover:text-primary"
+              style={{ fontSize: "24px" }}
+            >
               logout
             </span>
-            <p className="text-sm font-medium group-hover:text-primary">Logout</p>
+            <p className="text-sm font-medium group-hover:text-primary">
+              Logout
+            </p>
           </Link>
         </div>
       </div>
