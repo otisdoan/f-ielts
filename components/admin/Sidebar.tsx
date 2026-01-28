@@ -11,11 +11,15 @@ export default function AdminSidebar() {
     { name: "Dashboard", href: "/admin", icon: "dashboard" },
     { name: "Users", href: "/admin/users", icon: "group" },
     { name: "Courses", href: "/admin/courses", icon: "menu_book" },
+    { name: "Writing Management", href: "/admin/writing", icon: "edit_note" },
+
+
     {
       name: "Reading Tests",
       href: "/admin/reading-tests",
       icon: "description",
     },
+
     { name: "Reports", href: "/admin/reports", icon: "bar_chart" },
     { name: "Settings", href: "/admin/settings", icon: "settings" },
   ];
@@ -39,7 +43,7 @@ export default function AdminSidebar() {
         {/* Nav Links */}
         <nav className="flex flex-col gap-2 flex-1">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}

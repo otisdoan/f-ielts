@@ -1,4 +1,6 @@
 
+
+--schema.sql
 -- Profiles table
 create table profiles
 (
@@ -133,6 +135,8 @@ create table test_attempts
   -- User's answers
   submitted_at timestamptz default now()
 );
+
+
 
 -- Progress Tracking
 create table progress
