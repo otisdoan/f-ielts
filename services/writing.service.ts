@@ -24,6 +24,15 @@ export type WritingPrompt = {
 
 const TABLE_NAME = "writing_prompts"; 
 
+// Helper function to map category to task_type for backward compatibility
+function mapCategoryToTaskType(category: "task1" | "task2" | "builder"): "task1" | "task2" {
+  // builder maps to task1 (since builder is for Task 1)
+  if (category === "builder" || category === "task1") {
+    return "task1";
+  }
+  return "task2";
+}
+
 export const WritingService = {
   // Fetch a single prompt by ID
   async getPromptById(id: string) {
@@ -97,9 +106,11 @@ export const WritingService = {
     const supabase = createClient();
     
     // Explicitly construct payload
+    // Include both category and task_type for backward compatibility
     const payload: any = {
         title: prompt.title,
         category: prompt.category,
+        task_type: mapCategoryToTaskType(prompt.category), // Map category to task_type
         instruction: prompt.instruction,
         question_text: prompt.question_text || null,
         image_url: prompt.image_url || null,
@@ -132,7 +143,11 @@ export const WritingService = {
     
     const updates: any = {};
     if (prompt.title !== undefined) updates.title = prompt.title;
-    if (prompt.category !== undefined) updates.category = prompt.category;
+    if (prompt.category !== undefined) {
+      updates.category = prompt.category;
+      // Also update task_type for backward compatibility
+      updates.task_type = mapCategoryToTaskType(prompt.category);
+    }
     if (prompt.source !== undefined) updates.source = prompt.source;
     if (prompt.sub_type !== undefined) updates.sub_type = prompt.sub_type;
     if (prompt.instruction !== undefined) updates.instruction = prompt.instruction;

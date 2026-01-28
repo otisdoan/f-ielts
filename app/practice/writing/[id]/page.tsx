@@ -147,11 +147,34 @@ export default function WritingPracticeInterface() {
 
   // Loading State
   if (loading) {
-      return <div className="min-h-screen flex items-center justify-center bg-background-light">Loading prompt...</div>;
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-background-light">
+          <div className="text-center">
+            <span className="material-symbols-outlined text-5xl text-gray-400 animate-spin mb-4 block">progress_activity</span>
+            <p className="text-gray-500 font-medium">Loading prompt...</p>
+          </div>
+        </div>
+      );
   }
 
   if (!prompt) {
-       return <div className="min-h-screen flex items-center justify-center bg-background-light">Prompt not found.</div>;
+       return (
+         <div className="min-h-screen flex items-center justify-center bg-background-light">
+           <div className="text-center">
+             <div className="size-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
+               <span className="material-symbols-outlined text-4xl text-red-400">error</span>
+             </div>
+             <p className="text-lg font-bold text-[#181111] mb-2">Prompt not found</p>
+             <p className="text-sm text-[#896161] mb-6">The prompt you're looking for doesn't exist.</p>
+             <Link href="/practice/writing">
+               <button className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white font-bold hover:bg-red-700 transition-colors shadow-lg shadow-primary/20">
+                 <span className="material-symbols-outlined">arrow_back</span>
+                 <span>Back to Writing Practice</span>
+               </button>
+             </Link>
+           </div>
+         </div>
+       );
   }
 
   // Render "Review" mode (Result View)
@@ -184,50 +207,47 @@ export default function WritingPracticeInterface() {
   return (
     <div className="bg-background-light text-[#181111] min-h-screen flex flex-col font-sans">
       {/* Top Navigation Bar */}
-      <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white px-6 py-3 sticky top-0 z-50">
+      <header className="flex items-center justify-between border-b border-[#f4f0f0] bg-white px-6 py-4 sticky top-0 z-50 shadow-sm">
         <div className="flex items-center gap-4">
-          <div className="size-8 text-primary">
-            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-              <path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"></path>
-              <path clipRule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fillRule="evenodd"></path>
-            </svg>
-          </div>
-          <h2 className="text-[#181111] text-lg font-bold leading-tight tracking-[-0.015em] hidden sm:block">F-IELTS</h2>
-          <div className="h-6 w-[1px] bg-slate-200 mx-2 hidden sm:block"></div>
-          <div className="flex flex-wrap gap-2 text-sm font-medium">
-            <Link className="text-[#896161] hover:text-primary transition-colors" href="/practice/writing">Writing Practice</Link>
-            <span className="text-[#896161]">/</span>
-            <span className="text-[#181111]">{prompt.task_type === 'task1' ? 'Task 1' : 'Task 2'}</span>
+          <Link href="/practice/writing" className="p-2 hover:bg-[#f8f6f6] rounded-lg transition-colors">
+            <span className="material-symbols-outlined text-xl">arrow_back</span>
+          </Link>
+          <div className="h-8 w-px bg-[#f4f0f0]"></div>
+          <div className="flex items-center gap-2 text-sm">
+            <Link className="text-[#896161] hover:text-primary transition-colors font-medium" href="/practice/writing">
+              Writing Practice
+            </Link>
+            <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
+            <span className="text-[#181111] font-bold">
+              {(prompt.category || prompt.task_type) === 'task1' ? 'Task 1' : 'Task 2'}
+            </span>
           </div>
         </div>
-        <div className="flex items-center gap-10">
-          {/* Timer Component (Static for now) */}
-          <div className="flex gap-2 items-center bg-slate-100 px-4 py-1.5 rounded-lg border border-slate-200">
+        <div className="flex items-center gap-4">
+          {/* Timer Component */}
+          <div className="flex gap-2 items-center bg-[#f8f6f6] px-4 py-2 rounded-lg border border-[#f4f0f0]">
             <span className="material-symbols-outlined text-primary text-lg">timer</span>
-            <div className="flex gap-1.5">
-              <div className="flex flex-col items-center">
-                <p className="text-[#181111] text-sm font-bold font-mono">00</p>
-              </div>
+            <div className="flex gap-1.5 font-mono">
+              <span className="text-[#181111] text-sm font-bold">00</span>
               <span className="text-[#181111] text-sm font-bold">:</span>
-              <div className="flex flex-col items-center">
-                <p className="text-[#181111] text-sm font-bold font-mono">20</p>
-              </div>
+              <span className="text-[#181111] text-sm font-bold">20</span>
               <span className="text-[#181111] text-sm font-bold">:</span>
-              <div className="flex flex-col items-center">
-                <p className="text-[#181111] text-sm font-bold font-mono">00</p>
-              </div>
+              <span className="text-[#181111] text-sm font-bold">00</span>
             </div>
           </div>
+          <div className="h-8 w-px bg-[#f4f0f0]"></div>
           <div className="flex gap-3">
             <button 
-                onClick={handleSaveDraft}
-                disabled={showSample}
-                className="flex min-w-[100px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-slate-100 text-[#181111] text-sm font-bold hover:bg-slate-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-             >
+              onClick={handleSaveDraft}
+              disabled={showSample}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#f4f0f0] text-[#181111] text-sm font-bold hover:bg-[#f8f6f6] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span className="material-symbols-outlined text-lg">save</span>
               <span>Save Draft</span>
             </button>
             <Link href="/practice/writing">
-              <button className="flex min-w-[80px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-red-700 transition-colors">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-red-700 transition-colors shadow-lg shadow-primary/20">
+                <span className="material-symbols-outlined text-lg">close</span>
                 <span>Exit</span>
               </button>
             </Link>
@@ -237,34 +257,65 @@ export default function WritingPracticeInterface() {
       
       <main className="flex-1 flex overflow-hidden">
         {/* Left Panel: Task Description */}
-        <div className="w-1/2 border-r border-slate-200 overflow-y-auto bg-white p-8 hide-scrollbar">
+        <div className="w-1/2 border-r border-[#f4f0f0] overflow-y-auto bg-white p-8">
           <div className="max-w-2xl ml-auto">
-            <div className="mb-6">
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">Academic Writing</span>
-              <h2 className="text-[#181111] text-2xl font-bold mt-3">{prompt.task_type === 'task1' ? 'Task 1' : 'Task 2'}</h2>
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-primary/10 text-primary border border-primary/20">
+                  Academic Writing
+                </span>
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${
+                  (prompt.category || prompt.task_type) === 'task1' 
+                    ? 'bg-blue-50 text-blue-700 border-blue-200' 
+                    : 'bg-purple-50 text-purple-700 border-purple-200'
+                }`}>
+                  {(prompt.category || prompt.task_type) === 'task1' ? 'Task 1' : 'Task 2'}
+                </span>
+              </div>
+              <h2 className="text-3xl font-black text-[#181111] mb-2">
+                {(prompt.category || prompt.task_type) === 'task1' ? 'Task 1' : 'Task 2'}
+              </h2>
+              {prompt.sub_type && (
+                <p className="text-sm text-[#896161] font-medium">{prompt.sub_type}</p>
+              )}
             </div>
             <div className="space-y-6">
               {/* Question Text */}
               {prompt.question_text && (
-                  <div className="text-[#181111] text-lg font-medium leading-relaxed italic border-l-4 border-primary/20 pl-4 py-1">
-                    {prompt.question_text}
+                <div className="bg-[#f8f6f6] rounded-xl border border-[#f4f0f0] p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="material-symbols-outlined text-primary">description</span>
+                    <span className="text-xs font-bold text-[#896161] uppercase tracking-wider">Question</span>
                   </div>
+                  <p className="text-[#181111] text-lg font-medium leading-relaxed">
+                    {prompt.question_text}
+                  </p>
+                </div>
               )}
 
               {/* Image */}
               {prompt.image_url && (
-                  <div className="rounded-xl border border-slate-200 p-4 bg-white overflow-hidden shadow-sm">
-                    <img src={prompt.image_url} alt="Task visualization" className="w-full h-auto rounded-lg" />
-                  </div>
+                <div className="rounded-xl border border-[#f4f0f0] p-4 bg-white overflow-hidden shadow-sm">
+                  <img 
+                    src={prompt.image_url} 
+                    alt="Task visualization" 
+                    className="w-full h-auto rounded-lg"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
               )}
               
               {/* Instruction Note */}
-              <div className="flex items-start gap-3 p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-yellow-800">
-                <span className="material-symbols-outlined mt-0.5">lightbulb</span>
-                <div className="text-sm">
-                  <p className="font-bold mb-1">Instructions:</p>
-                  <div className="whitespace-pre-wrap leading-relaxed">
-                      {prompt.instruction}
+              <div className="flex items-start gap-4 p-5 bg-yellow-50 rounded-xl border border-yellow-200">
+                <div className="size-10 rounded-lg bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-yellow-700">lightbulb</span>
+                </div>
+                <div className="flex-1">
+                  <p className="font-black text-yellow-900 mb-2 text-sm uppercase tracking-wider">Instructions</p>
+                  <div className="text-yellow-800 leading-relaxed whitespace-pre-wrap">
+                    {prompt.instruction}
                   </div>
                 </div>
               </div>
@@ -273,58 +324,65 @@ export default function WritingPracticeInterface() {
         </div>
         
         {/* Right Panel: Text Editor */}
-        <div className="w-1/2 flex flex-col bg-slate-50 p-8 overflow-hidden">
+        <div className="w-1/2 flex flex-col bg-[#f8f6f6] p-8 overflow-hidden">
           <div className="max-w-2xl flex-1 flex flex-col overflow-y-auto">
           
             {/* Sample Answer Toggle */}
-            <div className="flex items-center space-x-3 mb-6 sticky top-0 bg-slate-50 z-10 py-2">
-              <span className="text-sm font-bold text-gray-700">Show Sample Answer</span>
-              <button
-                onClick={toggleSample}
-                disabled={!canViewSample && !showSample}
-                title={canViewSample ? "Toggle Sample Answer" : "Write at least 100 words to view sample"}
-                className={`${
-                  showSample ? 'bg-primary' : (canViewSample ? 'bg-gray-300 hover:bg-gray-400' : 'bg-gray-200 opacity-50 cursor-not-allowed')
-                } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 focus:outline-none`}
-              >
-                <span
+            <div className="flex items-center justify-between mb-6 sticky top-0 bg-[#f8f6f6] z-10 py-3 px-4 rounded-xl border border-[#f4f0f0] bg-white">
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-primary">menu_book</span>
+                <span className="text-sm font-bold text-[#181111]">Show Sample Answer</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={toggleSample}
+                  disabled={!canViewSample && !showSample}
+                  title={canViewSample ? "Toggle Sample Answer" : "Write at least 100 words to view sample"}
                   className={`${
-                    showSample ? 'translate-x-6' : 'translate-x-1'
-                  } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300`}
-                />
-              </button>
-              {!canViewSample && !showSample && (
-                  <span className="text-xs text-red-500 font-medium animate-pulse">
-                      (Write {100 - wordCount > 0 ? 100 - wordCount : 0} more words to unlock)
+                    showSample ? 'bg-primary' : (canViewSample ? 'bg-gray-300 hover:bg-gray-400' : 'bg-gray-200 opacity-50 cursor-not-allowed')
+                  } relative inline-flex h-6 w-11 items-center rounded-full transition-all duration-300 focus:outline-none`}
+                >
+                  <span
+                    className={`${
+                      showSample ? 'translate-x-6' : 'translate-x-1'
+                    } inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-300 shadow-sm`}
+                  />
+                </button>
+                {!canViewSample && !showSample && (
+                  <span className="text-xs text-red-600 font-medium">
+                    Write {100 - wordCount > 0 ? 100 - wordCount : 0} more words
                   </span>
-              )}
-              {showSample && (
+                )}
+                {showSample && (
                   <span className="text-xs text-blue-600 font-medium">
-                      (Sample answer is displayed - toggle off to continue writing)
+                    Sample Mode
                   </span>
-              )}
+                )}
+              </div>
             </div>
 
             {/* Editor Toolbar */}
-            <div className={`flex items-center gap-2 mb-4 ${showSample ? 'opacity-50 pointer-events-none' : ''}`}>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">undo</span>
-              </button>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">redo</span>
-              </button>
-              <div className="h-6 w-[1px] bg-slate-300 mx-1"></div>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">format_bold</span>
-              </button>
-              <button className="p-2 hover:bg-slate-200 rounded-lg text-slate-600 transition-colors">
-                <span className="material-symbols-outlined">format_italic</span>
-              </button>
-              <div className="ml-auto flex items-center gap-2 text-xs font-medium text-slate-500">
-                <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                Auto-saved
+            {!showSample && (
+              <div className="flex items-center gap-2 mb-4 px-4 py-2 bg-white rounded-lg border border-[#f4f0f0]">
+                <button className="p-2 hover:bg-[#f8f6f6] rounded-lg text-[#896161] transition-colors" title="Undo">
+                  <span className="material-symbols-outlined text-lg">undo</span>
+                </button>
+                <button className="p-2 hover:bg-[#f8f6f6] rounded-lg text-[#896161] transition-colors" title="Redo">
+                  <span className="material-symbols-outlined text-lg">redo</span>
+                </button>
+                <div className="h-6 w-px bg-[#f4f0f0] mx-1"></div>
+                <button className="p-2 hover:bg-[#f8f6f6] rounded-lg text-[#896161] transition-colors" title="Bold">
+                  <span className="material-symbols-outlined text-lg">format_bold</span>
+                </button>
+                <button className="p-2 hover:bg-[#f8f6f6] rounded-lg text-[#896161] transition-colors" title="Italic">
+                  <span className="material-symbols-outlined text-lg">format_italic</span>
+                </button>
+                <div className="ml-auto flex items-center gap-2 text-xs font-medium text-[#896161]">
+                  <span className="flex h-2 w-2 rounded-full bg-green-500"></span>
+                  <span>Auto-saved</span>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Writing Sections */}
             <div className="space-y-6 flex-1 transition-all duration-300 ease-in-out">
@@ -376,37 +434,42 @@ export default function WritingPracticeInterface() {
             </div>
 
             {/* Bottom Bar Actions */}
-            <div className="mt-6 flex items-center justify-between sticky bottom-0 bg-slate-50 pt-4 border-t border-slate-200">
+            <div className="mt-6 flex items-center justify-between sticky bottom-0 bg-[#f8f6f6] pt-4 pb-2 border-t border-[#f4f0f0]">
               <div className="flex items-center gap-6">
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Word Count</span>
-                  <span className="text-xl font-bold text-[#181111]">
-                    {showSample ? (
-                      <span className="text-slate-400">Sample Mode</span>
-                    ) : (
-                      <>
-                        {wordCount}<span className="text-slate-400 text-sm font-normal"> / {prompt.task_type === 'task1' ? 150 : 250} min</span>
-                      </>
+                  <span className="text-[10px] uppercase tracking-wider text-[#896161] font-bold mb-1">Word Count</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-black text-[#181111]">
+                      {showSample ? (
+                        <span className="text-gray-400">Sample Mode</span>
+                      ) : (
+                        wordCount
+                      )}
+                    </span>
+                    {!showSample && (
+                      <span className="text-sm text-[#896161] font-medium">
+                        / {(prompt.category || prompt.task_type) === 'task1' ? 150 : 250} min
+                      </span>
                     )}
-                  </span>
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-3">
                 <button 
-                    onClick={handleSubmit} 
-                    disabled={isSubmitting || showSample}
-                    className="flex items-center gap-2 px-8 h-12 rounded-xl bg-primary text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                  onClick={handleSubmit} 
+                  disabled={isSubmitting || showSample}
+                  className="flex items-center gap-2 px-8 h-12 rounded-xl bg-primary text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-primary/20 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                      <>
-                        <span className="material-symbols-outlined text-xl animate-spin">progress_activity</span>
-                        <span>Submitting...</span>
-                      </>
+                    <>
+                      <span className="material-symbols-outlined text-xl animate-spin">progress_activity</span>
+                      <span>Submitting...</span>
+                    </>
                   ) : (
-                      <>
-                        <span className="material-symbols-outlined text-xl">smart_toy</span>
-                        <span>Submit for AI Evaluation</span>
-                      </>
+                    <>
+                      <span className="material-symbols-outlined text-xl">smart_toy</span>
+                      <span>Submit for AI Evaluation</span>
+                    </>
                   )}
                 </button>
               </div>
