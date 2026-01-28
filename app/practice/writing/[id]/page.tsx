@@ -26,7 +26,7 @@ function WritingSection({
   // When showSample is true, display sample text and make readonly
   // When showSample is false, display user content and allow editing
   const displayValue = showSample && sampleText ? sampleText : value;
-  const isReadonly = showSample && sampleText;
+  const isReadonly: boolean = Boolean(showSample && sampleText);
 
   return (
     <div className="transition-all duration-300 ease-in-out">
@@ -38,7 +38,11 @@ function WritingSection({
       </label>
       <textarea
         value={displayValue}
-        onChange={(e) => !isReadonly && onChange(e.target.value)}
+        onChange={(e) => {
+          if (!isReadonly) {
+            onChange(e.target.value);
+          }
+        }}
         readOnly={isReadonly}
         disabled={isReadonly}
         placeholder={isReadonly ? "" : placeholder}
