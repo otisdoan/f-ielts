@@ -155,7 +155,7 @@ export default function WritingPromptDetailPage() {
       await WritingService.updatePrompt(promptId, payload);
       showToast("Prompt updated successfully!", "success");
       setTimeout(() => {
-        router.push("/admin/writing");
+        router.push("/admin/writing?updated=true");
       }, 1500);
     } catch (error) {
       console.error("Failed to update prompt:", error);
@@ -180,13 +180,27 @@ export default function WritingPromptDetailPage() {
     }
   };
 
+  const getCategoryBadgeColor = () => {
+    if (formData.category === "task1") return "bg-blue-50 text-blue-700 border-blue-200";
+    if (formData.category === "task2") return "bg-purple-50 text-purple-700 border-purple-200";
+    if (formData.category === "builder") return "bg-orange-50 text-orange-700 border-orange-200";
+    return "bg-gray-50 text-gray-700 border-gray-200";
+  };
+
+  const getCategoryLabel = () => {
+    if (formData.category === "task1") return "Task 1";
+    if (formData.category === "task2") return "Task 2";
+    if (formData.category === "builder") return "Task 1 Builder";
+    return "Task 1";
+  };
+
   if (loading) {
     return (
-      <div className="p-8 w-full max-w-7xl mx-auto">
+      <div className="flex-1 flex flex-col overflow-y-auto">
         <div className="flex items-center justify-center min-h-[400px]">
           <div className="text-center">
-            <span className="material-symbols-outlined text-4xl text-gray-400 animate-spin mb-4">progress_activity</span>
-            <p className="text-gray-500">Loading prompt...</p>
+            <span className="material-symbols-outlined text-5xl text-gray-400 animate-spin mb-4 block">progress_activity</span>
+            <p className="text-gray-500 font-medium">Loading prompt...</p>
           </div>
         </div>
       </div>
@@ -195,24 +209,33 @@ export default function WritingPromptDetailPage() {
 
   if (!prompt) {
     return (
-      <div className="p-8 w-full max-w-7xl mx-auto">
-        <div className="text-center py-20">
-          <span className="material-symbols-outlined text-6xl text-gray-300 mb-4">error</span>
-          <p className="text-gray-500 mb-4">Prompt not found.</p>
-          <Link href="/admin/writing" className="text-primary hover:underline">
-            Back to Writing Management
-          </Link>
+      <div className="flex-1 flex flex-col overflow-y-auto">
+        <div className="px-8 py-16">
+          <div className="text-center py-20">
+            <div className="h-20 w-20 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-4">
+              <span className="material-symbols-outlined text-4xl text-red-400">error</span>
+            </div>
+            <p className="text-lg font-bold text-[#181111] mb-2">Prompt not found</p>
+            <p className="text-sm text-[#896161] mb-6">The prompt you're looking for doesn't exist or has been deleted.</p>
+            <Link 
+              href="/admin/writing" 
+              className="inline-flex items-center gap-2 bg-primary hover:bg-red-700 transition-colors text-white px-5 py-2.5 rounded-lg font-bold shadow-lg shadow-primary/20"
+            >
+              <span className="material-symbols-outlined">arrow_back</span>
+              <span>Back to Writing Management</span>
+            </Link>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="p-8 w-full max-w-7xl mx-auto">
+    <div className="flex-1 flex flex-col overflow-y-auto">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       
-      {/* Breadcrumb */}
-      <div className="mb-6 flex items-center gap-2 text-sm">
+      {/* Breadcrumbs */}
+      <div className="px-8 py-4 flex items-center gap-2 text-sm">
         <Link href="/admin" className="text-[#896161] hover:text-primary transition-colors">
           Admin
         </Link>
@@ -224,45 +247,54 @@ export default function WritingPromptDetailPage() {
         <span className="text-[#181111] font-medium">{prompt.title}</span>
       </div>
 
-      {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <div className="flex items-center gap-4">
-          <Link
-            href="/admin/writing"
-            className="p-2 hover:bg-background-light rounded-lg transition-colors"
-          >
-            <span className="material-symbols-outlined">arrow_back</span>
-          </Link>
-          <div>
-            <h1 className="text-2xl font-bold text-[#181111]">Edit Prompt</h1>
-            <p className="text-[#896161]">Update writing prompt details</p>
+      {/* Page Heading & Controls */}
+      <div className="px-8 py-2 flex flex-col gap-6">
+        <div className="flex justify-between items-end">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/admin/writing"
+              className="p-2 hover:bg-[#f8f6f6] rounded-lg transition-colors"
+            >
+              <span className="material-symbols-outlined text-xl">arrow_back</span>
+            </Link>
+            <div>
+              <h2 className="text-3xl font-black tracking-tight text-[#181111]">Edit Writing Prompt</h2>
+              <p className="text-[#896161] mt-1">Update prompt details and content</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor()}`}>
+              {getCategoryLabel()}
+            </span>
+            <button
+              onClick={handleDelete}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-600 font-bold hover:bg-red-50 transition-all"
+            >
+              <span className="material-symbols-outlined">delete</span>
+              <span>Delete</span>
+            </button>
           </div>
         </div>
-        <button
-          onClick={handleDelete}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-600 font-bold hover:bg-red-50 transition-all"
-        >
-          <span className="material-symbols-outlined">delete</span>
-          Delete
-        </button>
       </div>
 
-      {/* Form */}
-      <div className="bg-white rounded-xl border border-[#e6dbdb] shadow-sm p-8">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+      {/* Form Content */}
+      <div className="px-8 py-6 flex-1">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           
           {/* Section 1: Categorization */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="font-bold text-lg text-primary mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined">category</span>
-              <span>Categorization</span>
-            </h3>
+          <div className="bg-white rounded-xl border border-[#f4f0f0] shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-primary">category</span>
+              </div>
+              <h3 className="text-lg font-black text-[#181111]">Categorization</h3>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">Category *</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Category *</label>
                 <select
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white"
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium"
                   value={formData.category}
                   onChange={(e) => handleCategoryChange(e.target.value as "task1" | "task2" | "builder")}
                 >
@@ -273,9 +305,9 @@ export default function WritingPromptDetailPage() {
               </div>
               
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">Source</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Source</label>
                 <select
-                  className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white"
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium"
                   value={formData.source}
                   onChange={(e) => setFormData({...formData, source: e.target.value})}
                 >
@@ -287,9 +319,9 @@ export default function WritingPromptDetailPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">Sub Type</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Sub Type</label>
                 <select
-                  className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white"
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium disabled:bg-gray-50 disabled:text-gray-400"
                   value={formData.sub_type}
                   onChange={(e) => setFormData({...formData, sub_type: e.target.value})}
                   disabled={!formData.category}
@@ -304,19 +336,39 @@ export default function WritingPromptDetailPage() {
           </div>
 
           {/* Section 2: Content */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="font-bold text-lg text-primary mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined">description</span>
-              <span>Content</span>
-            </h3>
+          <div className="bg-white rounded-xl border border-[#f4f0f0] shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="h-10 w-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                <span className="material-symbols-outlined text-blue-600">description</span>
+              </div>
+              <h3 className="text-lg font-black text-[#181111]">Content</h3>
+            </div>
+            
+            {/* Image Preview */}
+            {formData.image_url && (
+              <div className="mb-6 p-4 bg-gray-50 rounded-lg border border-[#f4f0f0]">
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Image Preview</label>
+                <div className="relative rounded-lg overflow-hidden border border-[#f4f0f0] bg-white">
+                  <img 
+                    src={formData.image_url} 
+                    alt="Prompt image" 
+                    className="w-full h-auto max-h-64 object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Title *</label>
+                  <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Title *</label>
                   <input 
                     type="text"
                     required
-                    className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium"
                     placeholder="e.g. The Impact of Technology"
                     value={formData.title}
                     onChange={(e) => setFormData({...formData, title: e.target.value})}
@@ -324,24 +376,25 @@ export default function WritingPromptDetailPage() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Image URL</label>
+                  <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Image URL</label>
                   <input 
                     type="text"
-                    className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium"
                     placeholder="https://example.com/chart.png"
                     value={formData.image_url}
                     onChange={(e) => setFormData({...formData, image_url: e.target.value})}
                   />
+                  <p className="text-xs text-[#896161] mt-1">Enter a valid image URL to display above</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-5">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Question Text *</label>
+                  <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Question Text *</label>
                   <textarea 
                     required
-                    rows={4}
-                    className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                    rows={5}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium"
                     placeholder="The charts below show..."
                     value={formData.question_text}
                     onChange={(e) => setFormData({...formData, question_text: e.target.value})}
@@ -349,11 +402,11 @@ export default function WritingPromptDetailPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">Instructions *</label>
+                  <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Instructions *</label>
                   <textarea 
                     required
-                    rows={3}
-                    className="w-full px-4 py-2 rounded-lg border border-[#e6dbdb] focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
+                    rows={4}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium"
                     placeholder="Write at least 150 words..."
                     value={formData.instruction}
                     onChange={(e) => setFormData({...formData, instruction: e.target.value})}
@@ -364,47 +417,49 @@ export default function WritingPromptDetailPage() {
           </div>
 
           {/* Section 3: Sample Answer */}
-          <div className="border-b border-gray-200 pb-6">
-            <h3 className="font-bold text-lg text-primary mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined">menu_book</span>
-              <span>Writing Content & Sample</span>
-            </h3>
+          <div className="bg-white rounded-xl border border-[#f4f0f0] shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-5">
+              <div className="h-10 w-10 rounded-lg bg-purple-50 flex items-center justify-center">
+                <span className="material-symbols-outlined text-purple-600">menu_book</span>
+              </div>
+              <h3 className="text-lg font-black text-[#181111]">Sample Answer</h3>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Sample Introduction</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Introduction</label>
                 <textarea 
-                  rows={3}
-                  className="w-full px-3 py-2 rounded-lg border border-[#e6dbdb] text-sm focus:border-primary outline-none resize-none font-serif text-gray-800"
+                  rows={4}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
                   placeholder="Enter sample introduction..."
                   value={formData.sample_intro}
                   onChange={(e) => setFormData({...formData, sample_intro: e.target.value})}
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Sample Overview</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Overview</label>
                 <textarea 
-                  rows={3}
-                  className="w-full px-3 py-2 rounded-lg border border-[#e6dbdb] text-sm focus:border-primary outline-none resize-none font-serif text-gray-800"
+                  rows={4}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
                   placeholder="Enter sample overview..."
                   value={formData.sample_overview}
                   onChange={(e) => setFormData({...formData, sample_overview: e.target.value})}
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Sample Body Paragraph 1</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Body Paragraph 1</label>
                 <textarea 
-                  rows={4}
-                  className="w-full px-3 py-2 rounded-lg border border-[#e6dbdb] text-sm focus:border-primary outline-none resize-none font-serif text-gray-800"
+                  rows={5}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
                   placeholder="Enter sample body paragraph 1..."
                   value={formData.sample_body_1}
                   onChange={(e) => setFormData({...formData, sample_body_1: e.target.value})}
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Sample Body Paragraph 2</label>
+                <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Body Paragraph 2</label>
                 <textarea 
-                  rows={4}
-                  className="w-full px-3 py-2 rounded-lg border border-[#e6dbdb] text-sm focus:border-primary outline-none resize-none font-serif text-gray-800"
+                  rows={5}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
                   placeholder="Enter sample body paragraph 2..."
                   value={formData.sample_body_2}
                   onChange={(e) => setFormData({...formData, sample_body_2: e.target.value})}
@@ -415,34 +470,43 @@ export default function WritingPromptDetailPage() {
 
           {/* Section 4: Guide Tips (Conditional for Builder) */}
           {formData.category === "builder" && (
-            <div className="border-b border-gray-200 pb-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-lg text-primary flex items-center gap-2">
-                  <span className="material-symbols-outlined">tips_and_updates</span>
-                  <span>Guide Tips (Step-by-step instructions)</span>
-                </h3>
+            <div className="bg-white rounded-xl border border-[#f4f0f0] shadow-sm p-6">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-2">
+                  <div className="h-10 w-10 rounded-lg bg-orange-50 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-orange-600">tips_and_updates</span>
+                  </div>
+                  <h3 className="text-lg font-black text-[#181111]">Guide Tips</h3>
+                </div>
                 <button
                   type="button"
                   onClick={addGuideTip}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary text-primary font-bold hover:bg-primary/10 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-50 text-orange-700 border border-orange-200 font-bold hover:bg-orange-100 transition-colors"
                 >
                   <span className="material-symbols-outlined text-sm">add</span>
-                  Add Tip
+                  <span>Add Tip</span>
                 </button>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {formData.guide_tips.length === 0 ? (
-                  <p className="text-sm text-gray-500 italic">No guide tips yet. Click "Add Tip" to add step-by-step instructions.</p>
+                  <div className="text-center py-8 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                    <span className="material-symbols-outlined text-4xl text-gray-300 mb-2 block">tips_and_updates</span>
+                    <p className="text-sm text-gray-500 font-medium">No guide tips yet</p>
+                    <p className="text-xs text-gray-400 mt-1">Click "Add Tip" to add step-by-step instructions</p>
+                  </div>
                 ) : (
                   formData.guide_tips.map((tip, index) => (
-                    <div key={index} className="flex gap-2 items-start">
+                    <div key={index} className="flex gap-3 items-start p-4 bg-gray-50 rounded-lg border border-[#f4f0f0]">
+                      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
+                        {index + 1}
+                      </div>
                       <div className="flex-1">
-                        <label className="block text-xs font-bold text-gray-500 uppercase mb-1">
+                        <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">
                           Step {index + 1}
                         </label>
                         <textarea
-                          rows={2}
-                          className="w-full px-3 py-2 rounded-lg border border-[#e6dbdb] text-sm focus:border-primary outline-none resize-none"
+                          rows={3}
+                          className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none bg-white"
                           placeholder={`Enter step ${index + 1} instruction...`}
                           value={tip}
                           onChange={(e) => updateGuideTip(index, e.target.value)}
@@ -451,7 +515,7 @@ export default function WritingPromptDetailPage() {
                       <button
                         type="button"
                         onClick={() => removeGuideTip(index)}
-                        className="mt-6 text-red-500 hover:text-red-700 transition-colors"
+                        className="mt-8 p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Remove tip"
                       >
                         <span className="material-symbols-outlined">delete</span>
@@ -464,19 +528,29 @@ export default function WritingPromptDetailPage() {
           )}
 
           {/* Form Actions */}
-          <div className="flex justify-end gap-3 pt-4">
+          <div className="flex justify-end gap-3 pt-4 pb-8">
             <Link
               href="/admin/writing"
-              className="px-6 py-2 rounded-lg border border-[#e6dbdb] font-bold text-gray-600 hover:bg-gray-50 transition-colors"
+              className="px-6 py-2.5 rounded-lg border border-[#f4f0f0] font-bold text-[#181111] hover:bg-[#f8f6f6] transition-colors"
             >
               Cancel
             </Link>
             <button 
               type="submit"
               disabled={isSubmitting}
-              className="px-8 py-2 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-red-600 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              className="px-8 py-2.5 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Saving..." : "Save Changes"}
+              {isSubmitting ? (
+                <span className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+                  <span>Saving...</span>
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  <span className="material-symbols-outlined text-sm">save</span>
+                  <span>Save Changes</span>
+                </span>
+              )}
             </button>
           </div>
         </form>
