@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { WritingService, WritingPrompt } from "@/services/writing.service";
 import { WRITING_SOURCES, TASK1_SUB_TYPES, TASK2_SUB_TYPES } from "@/lib/constants/writing";
@@ -26,7 +26,9 @@ function Toast({ message, type, onClose }: { message: string, type: 'success' | 
 export default function WritingPromptDetailPage() {
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
   const promptId = typeof params.id === 'string' ? params.id : '';
+  const isViewMode = searchParams.get('mode') === 'view';
   
   const [prompt, setPrompt] = useState<WritingPrompt | null>(null);
   const [loading, setLoading] = useState(true);
@@ -258,21 +260,37 @@ export default function WritingPromptDetailPage() {
               <span className="material-symbols-outlined text-xl">arrow_back</span>
             </Link>
             <div>
-              <h2 className="text-3xl font-black tracking-tight text-[#181111]">Edit Writing Prompt</h2>
-              <p className="text-[#896161] mt-1">Update prompt details and content</p>
+              <h2 className="text-3xl font-black tracking-tight text-[#181111]">
+                {isViewMode ? "View Writing Prompt" : "Edit Writing Prompt"}
+              </h2>
+              <p className="text-[#896161] mt-1">
+                {isViewMode ? "View prompt details and content" : "Update prompt details and content"}
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border ${getCategoryBadgeColor()}`}>
               {getCategoryLabel()}
             </span>
-            <button
-              onClick={handleDelete}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-600 font-bold hover:bg-red-50 transition-all"
-            >
-              <span className="material-symbols-outlined">delete</span>
-              <span>Delete</span>
-            </button>
+            {isViewMode ? (
+              <Link
+                href={`/admin/writing/${promptId}`}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white font-bold hover:bg-red-700 transition-all shadow-lg shadow-primary/20"
+              >
+                <span className="material-symbols-outlined">edit</span>
+                <span>Edit</span>
+              </Link>
+            ) : (
+              <>
+                <button
+                  onClick={handleDelete}
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-600 font-bold hover:bg-red-50 transition-all"
+                >
+                  <span className="material-symbols-outlined">delete</span>
+                  <span>Delete</span>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -294,7 +312,8 @@ export default function WritingPromptDetailPage() {
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Category *</label>
                 <select
                   required
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   value={formData.category}
                   onChange={(e) => handleCategoryChange(e.target.value as "task1" | "task2" | "builder")}
                 >
@@ -307,7 +326,8 @@ export default function WritingPromptDetailPage() {
               <div>
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Source</label>
                 <select
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   value={formData.source}
                   onChange={(e) => setFormData({...formData, source: e.target.value})}
                 >
@@ -321,10 +341,10 @@ export default function WritingPromptDetailPage() {
               <div>
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Sub Type</label>
                 <select
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium disabled:bg-gray-50 disabled:text-gray-400"
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white text-sm font-medium disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
                   value={formData.sub_type}
                   onChange={(e) => setFormData({...formData, sub_type: e.target.value})}
-                  disabled={!formData.category}
+                  disabled={!formData.category || isViewMode}
                 >
                   <option value="">Select Sub Type</option>
                   {getSubTypeOptions().map((subType) => (
@@ -368,7 +388,8 @@ export default function WritingPromptDetailPage() {
                   <input 
                     type="text"
                     required
-                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium"
+                    disabled={isViewMode}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                     placeholder="e.g. The Impact of Technology"
                     value={formData.title}
                     onChange={(e) => setFormData({...formData, title: e.target.value})}
@@ -379,7 +400,8 @@ export default function WritingPromptDetailPage() {
                   <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Image URL</label>
                   <input 
                     type="text"
-                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium"
+                    disabled={isViewMode}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                     placeholder="https://example.com/chart.png"
                     value={formData.image_url}
                     onChange={(e) => setFormData({...formData, image_url: e.target.value})}
@@ -394,7 +416,8 @@ export default function WritingPromptDetailPage() {
                   <textarea 
                     required
                     rows={5}
-                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium"
+                    disabled={isViewMode}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                     placeholder="The charts below show..."
                     value={formData.question_text}
                     onChange={(e) => setFormData({...formData, question_text: e.target.value})}
@@ -406,7 +429,8 @@ export default function WritingPromptDetailPage() {
                   <textarea 
                     required
                     rows={4}
-                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium"
+                    disabled={isViewMode}
+                    className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-sm font-medium disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                     placeholder="Write at least 150 words..."
                     value={formData.instruction}
                     onChange={(e) => setFormData({...formData, instruction: e.target.value})}
@@ -429,7 +453,8 @@ export default function WritingPromptDetailPage() {
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Introduction</label>
                 <textarea 
                   rows={4}
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800 disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   placeholder="Enter sample introduction..."
                   value={formData.sample_intro}
                   onChange={(e) => setFormData({...formData, sample_intro: e.target.value})}
@@ -439,7 +464,8 @@ export default function WritingPromptDetailPage() {
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Overview</label>
                 <textarea 
                   rows={4}
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800 disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   placeholder="Enter sample overview..."
                   value={formData.sample_overview}
                   onChange={(e) => setFormData({...formData, sample_overview: e.target.value})}
@@ -449,7 +475,8 @@ export default function WritingPromptDetailPage() {
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Body Paragraph 1</label>
                 <textarea 
                   rows={5}
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800 disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   placeholder="Enter sample body paragraph 1..."
                   value={formData.sample_body_1}
                   onChange={(e) => setFormData({...formData, sample_body_1: e.target.value})}
@@ -459,7 +486,8 @@ export default function WritingPromptDetailPage() {
                 <label className="block text-xs font-bold text-[#896161] uppercase tracking-wide mb-2">Body Paragraph 2</label>
                 <textarea 
                   rows={5}
-                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800"
+                  disabled={isViewMode}
+                  className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none font-serif text-gray-800 disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                   placeholder="Enter sample body paragraph 2..."
                   value={formData.sample_body_2}
                   onChange={(e) => setFormData({...formData, sample_body_2: e.target.value})}
@@ -478,14 +506,16 @@ export default function WritingPromptDetailPage() {
                   </div>
                   <h3 className="text-lg font-black text-[#181111]">Guide Tips</h3>
                 </div>
-                <button
-                  type="button"
-                  onClick={addGuideTip}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-50 text-orange-700 border border-orange-200 font-bold hover:bg-orange-100 transition-colors"
-                >
-                  <span className="material-symbols-outlined text-sm">add</span>
-                  <span>Add Tip</span>
-                </button>
+                {!isViewMode && (
+                  <button
+                    type="button"
+                    onClick={addGuideTip}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-50 text-orange-700 border border-orange-200 font-bold hover:bg-orange-100 transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-sm">add</span>
+                    <span>Add Tip</span>
+                  </button>
+                )}
               </div>
               <div className="space-y-4">
                 {formData.guide_tips.length === 0 ? (
@@ -506,20 +536,23 @@ export default function WritingPromptDetailPage() {
                         </label>
                         <textarea
                           rows={3}
-                          className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none bg-white"
+                          disabled={isViewMode}
+                          className="w-full px-4 py-2.5 rounded-lg border border-[#f4f0f0] text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none bg-white disabled:bg-gray-50 disabled:text-gray-600 disabled:cursor-not-allowed"
                           placeholder={`Enter step ${index + 1} instruction...`}
                           value={tip}
                           onChange={(e) => updateGuideTip(index, e.target.value)}
                         />
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => removeGuideTip(index)}
-                        className="mt-8 p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Remove tip"
-                      >
-                        <span className="material-symbols-outlined">delete</span>
-                      </button>
+                      {!isViewMode && (
+                        <button
+                          type="button"
+                          onClick={() => removeGuideTip(index)}
+                          className="mt-8 p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Remove tip"
+                        >
+                          <span className="material-symbols-outlined">delete</span>
+                        </button>
+                      )}
                     </div>
                   ))
                 )}
@@ -528,31 +561,33 @@ export default function WritingPromptDetailPage() {
           )}
 
           {/* Form Actions */}
-          <div className="flex justify-end gap-3 pt-4 pb-8">
-            <Link
-              href="/admin/writing"
-              className="px-6 py-2.5 rounded-lg border border-[#f4f0f0] font-bold text-[#181111] hover:bg-[#f8f6f6] transition-colors"
-            >
-              Cancel
-            </Link>
-            <button 
-              type="submit"
-              disabled={isSubmitting}
-              className="px-8 py-2.5 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <span className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
-                  <span>Saving...</span>
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-sm">save</span>
-                  <span>Save Changes</span>
-                </span>
-              )}
-            </button>
-          </div>
+          {!isViewMode && (
+            <div className="flex justify-end gap-3 pt-4 pb-8">
+              <Link
+                href="/admin/writing"
+                className="px-6 py-2.5 rounded-lg border border-[#f4f0f0] font-bold text-[#181111] hover:bg-[#f8f6f6] transition-colors"
+              >
+                Cancel
+              </Link>
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="px-8 py-2.5 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>
+                    <span>Saving...</span>
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm">save</span>
+                    <span>Save Changes</span>
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>

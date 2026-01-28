@@ -405,7 +405,7 @@ export default function AdminWritingPage() {
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <Link
-                          href={`/admin/writing/${prompt.id}`}
+                          href={`/admin/writing/${prompt.id}?mode=view`}
                           className="p-2 text-zinc-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
                           title="View Prompt"
                         >
