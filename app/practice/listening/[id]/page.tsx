@@ -51,10 +51,10 @@ export default function ListeningTestPage() {
         <DashboardHeader />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <span className="material-symbols-outlined text-5xl text-gray-400 animate-spin mb-4 block">
+            <span className="material-symbols-outlined text-5xl text-primary/50 animate-spin mb-4 block">
               progress_activity
             </span>
-            <p className="text-gray-500 font-medium">Loading test...</p>
+            <p className="text-[#896161] font-medium">Loading test...</p>
           </div>
         </main>
       </div>
@@ -95,35 +95,50 @@ export default function ListeningTestPage() {
   return (
     <div className="bg-background-light min-h-screen flex flex-col">
       <DashboardHeader />
-      <main className="flex-1 max-w-4xl mx-auto w-full py-8 px-4 sm:px-6 pb-24">
-        {/* Breadcrumb */}
-        <div className="mb-4 flex items-center gap-2 text-sm flex-wrap">
-          <Link
-            href="/practice/listening"
-            className="text-[#896161] hover:text-primary transition-colors font-medium"
-          >
-            Listening
-          </Link>
-          <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
-          <span className="text-[#181111] font-bold truncate max-w-[200px] sm:max-w-none" title={test.title}>
-            {test.title}
-          </span>
-          {isPreview && (
-            <span className="ml-2 px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-medium rounded">
-              Preview
+
+      {/* Sticky top bar: back + breadcrumb + title */}
+      <header className="sticky top-0 z-30 bg-white border-b border-[#e6dbdb] shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-center gap-3 flex-wrap">
+            <Link
+              href="/practice/listening"
+              className="flex items-center gap-1.5 text-[#896161] hover:text-primary transition-colors font-medium text-sm"
+            >
+              <span className="material-symbols-outlined text-xl">arrow_back</span>
+              <span>Listening</span>
+            </Link>
+            <span className="material-symbols-outlined text-[#896161] text-sm">chevron_right</span>
+            <span
+              className="text-[#181111] font-bold truncate max-w-[180px] sm:max-w-md"
+              title={test.title}
+            >
+              {test.title}
             </span>
-          )}
+            {isPreview && (
+              <span className="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider">
+                Preview
+              </span>
+            )}
+          </div>
         </div>
+      </header>
 
-        <h1 className="text-2xl font-bold text-[#181111] mb-6">{test.title}</h1>
+      <main className="flex-1 max-w-4xl mx-auto w-full py-8 px-4 sm:px-6 pb-28">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#181111] mb-2">{test.title}</h1>
+        {test.source && (
+          <p className="text-sm text-[#896161] font-medium mb-8">{test.source}</p>
+        )}
 
-        {/* Audio card in main */}
+        {/* Audio card */}
         {test.audio_url && (
           <div className="mb-8 p-6 bg-white rounded-xl border border-[#e6dbdb] shadow-sm">
-            <p className="text-sm font-medium text-[#896161] mb-2">Audio</p>
-            <audio controls src={test.audio_url} className="w-full max-w-2xl" />
-            <p className="text-xs text-gray-500 mt-2">
-              You can also use the player at the bottom of the page while scrolling.
+            <div className="flex items-center gap-2 mb-3">
+              <span className="material-symbols-outlined text-primary text-xl">graphic_eq</span>
+              <p className="text-sm font-bold text-[#896161] uppercase tracking-wider">Audio</p>
+            </div>
+            <audio controls src={test.audio_url} className="w-full max-w-2xl h-10" />
+            <p className="text-xs text-gray-500 mt-3">
+              Use the player at the bottom of the page while you scroll through questions.
             </p>
           </div>
         )}
@@ -134,16 +149,21 @@ export default function ListeningTestPage() {
             <button
               type="button"
               onClick={() => setTranscriptOpen((o) => !o)}
-              className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50/50 transition-colors"
+              className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50/80 transition-colors"
             >
-              <p className="text-sm font-medium text-[#896161]">Transcript</p>
-              <span className="material-symbols-outlined text-[#896161]">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-[#896161] text-xl">menu_book</span>
+                <p className="text-sm font-bold text-[#896161] uppercase tracking-wider">
+                  Transcript
+                </p>
+              </div>
+              <span className="material-symbols-outlined text-[#896161] text-xl">
                 {transcriptOpen ? "expand_less" : "expand_more"}
               </span>
             </button>
             {transcriptOpen && (
               <div className="px-6 pb-6 pt-0 border-t border-[#e6dbdb]">
-                <div className="text-[#181111] whitespace-pre-wrap text-sm leading-relaxed">
+                <div className="text-[#181111] whitespace-pre-wrap text-sm leading-relaxed pt-4">
                   {test.transcript}
                 </div>
               </div>
@@ -156,51 +176,65 @@ export default function ListeningTestPage() {
           {(test.question_groups || []).map((group, gIdx) => (
             <div
               key={gIdx}
-              className="bg-white rounded-xl border border-[#e6dbdb] p-6 shadow-sm"
+              className="bg-white rounded-xl border border-[#e6dbdb] p-6 sm:p-8 shadow-sm"
             >
-              <p className="text-sm font-bold text-[#896161] mb-3">
-                Section {gIdx + 1}
-              </p>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-black">
+                  {gIdx + 1}
+                </span>
+                <p className="text-sm font-bold text-[#896161] uppercase tracking-wider">
+                  Section {gIdx + 1}
+                </p>
+              </div>
               {group.instruction && (
-                <p className="text-sm font-medium text-[#896161] mb-4">{group.instruction}</p>
+                <p className="text-sm font-medium text-[#896161] mb-5 leading-relaxed border-l-2 border-primary/30 pl-4">
+                  {group.instruction}
+                </p>
               )}
               {group.image_url && (
                 <img
                   src={group.image_url}
                   alt=""
-                  className="max-w-full h-auto rounded-lg mb-4 border border-[#e6dbdb]"
+                  className="max-w-full h-auto rounded-lg mb-6 border border-[#e6dbdb] shadow-sm"
                 />
               )}
               <div className="space-y-6">
                 {(group.questions || []).map((q, qIdx) => (
-                  <div key={qIdx} className="border-l-2 border-[#e6dbdb] pl-4">
-                    <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+                  <div
+                    key={qIdx}
+                    className="pl-4 border-l-2 border-[#e6dbdb] hover:border-primary/30 transition-colors"
+                  >
+                    <p className="text-xs font-bold text-[#896161] uppercase tracking-wider mb-2">
                       Question {q.question_number}
                     </p>
                     {q.question_text && (
-                      <p className="text-[#181111] mb-3 font-medium">{q.question_text}</p>
+                      <p className="text-[#181111] mb-3 font-medium leading-relaxed">
+                        {q.question_text}
+                      </p>
                     )}
                     {Array.isArray(q.options) && q.options.length > 0 && (
-                      <ul className="space-y-1.5 mb-3">
+                      <ul className="space-y-2 mb-3">
                         {q.options.map((opt, i) => (
                           <li
                             key={i}
-                            className="text-sm text-[#181111] flex gap-2"
+                            className="text-sm text-[#181111] flex gap-2 items-start"
                           >
-                            <span className="font-semibold text-[#896161] shrink-0">
+                            <span className="font-bold text-[#896161] shrink-0 mt-0.5">
                               {OPTION_LETTERS[i] ?? i + 1}.
                             </span>
-                            <span>{opt}</span>
+                            <span className="leading-relaxed">{opt}</span>
                           </li>
                         ))}
                       </ul>
                     )}
                     {isPreview && q.explanation && (
-                      <div className="bg-gray-50 rounded-lg p-3 border-l-2 border-primary/30 mt-2">
-                        <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+                      <div className="bg-gray-50 rounded-lg p-4 border-l-2 border-primary/40 mt-3">
+                        <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">
                           Explanation
                         </p>
-                        <p className="text-sm text-gray-600 italic">{q.explanation}</p>
+                        <p className="text-sm text-gray-600 italic leading-relaxed">
+                          {q.explanation}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -211,15 +245,17 @@ export default function ListeningTestPage() {
         </div>
 
         {(!test.question_groups || test.question_groups.length === 0) && (
-          <div className="text-center py-12 bg-white rounded-xl border border-[#e6dbdb]">
+          <div className="text-center py-16 bg-white rounded-xl border border-[#e6dbdb] shadow-sm">
             <span className="material-symbols-outlined text-6xl text-gray-300 mb-4 block">
               quiz
             </span>
-            <p className="text-gray-500 font-medium">No questions in this test yet.</p>
+            <p className="text-gray-500 font-medium mb-1">No questions in this test yet.</p>
+            <p className="text-sm text-gray-400 mb-6">Check back later or try another test.</p>
             <Link
               href="/practice/listening"
-              className="inline-block mt-4 text-primary font-semibold hover:underline"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-white font-bold hover:bg-red-700 transition-colors shadow-lg shadow-primary/20"
             >
+              <span className="material-symbols-outlined text-lg">arrow_back</span>
               Back to Listening Practice
             </Link>
           </div>
@@ -228,9 +264,18 @@ export default function ListeningTestPage() {
 
       {/* Sticky Audio Player at bottom */}
       {test.audio_url && (
-        <div className="sticky bottom-0 left-0 right-0 z-20 bg-white border-t border-[#e6dbdb] p-4 shadow-lg">
-          <p className="text-xs font-medium text-[#896161] mb-1">Listen</p>
-          <audio controls src={test.audio_url} className="w-full max-w-2xl" />
+        <div className="sticky bottom-0 left-0 right-0 z-20 bg-white border-t border-[#e6dbdb] p-4 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+          <div className="max-w-4xl mx-auto flex items-center gap-3">
+            <span className="material-symbols-outlined text-primary text-2xl shrink-0">
+              graphic_eq
+            </span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold text-[#896161] uppercase tracking-wider mb-1.5">
+                Listen
+              </p>
+              <audio controls src={test.audio_url} className="w-full h-10" />
+            </div>
+          </div>
         </div>
       )}
     </div>
