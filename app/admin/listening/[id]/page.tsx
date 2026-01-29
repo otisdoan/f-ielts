@@ -264,121 +264,156 @@ export default function EditListeningTestPage() {
 
   if (loading) {
     return (
-      <div className="flex-1 flex items-center justify-center">
-        <p className="text-[#896161]">Loading...</p>
+      <div className="flex-1 flex flex-col items-center justify-center gap-4">
+        <span className="material-symbols-outlined text-5xl text-[#896161] animate-spin">
+          progress_activity
+        </span>
+        <p className="text-[#896161] font-medium">Loading test...</p>
       </div>
     );
   }
   if (!test) return null;
 
   return (
-    <div className="flex-1 flex flex-col overflow-y-auto">
+    <div className="flex-1 flex flex-col overflow-y-auto bg-[#faf9f9]">
       {toast && (
         <div
-          className={`fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white font-bold z-[100] ${
+          className={`fixed bottom-4 right-4 px-6 py-3 rounded-xl shadow-lg text-white font-bold z-[100] flex items-center gap-2 ${
             toast.type === "success" ? "bg-green-600" : "bg-red-600"
           }`}
         >
-          {toast.message}
+          <span className="material-symbols-outlined">
+            {toast.type === "success" ? "check_circle" : "error"}
+          </span>
+          <span>{toast.message}</span>
         </div>
       )}
 
       {/* Sticky Audio Player */}
       {audioUrl && (
-        <div className="sticky bottom-0 left-0 right-0 z-20 bg-white border-t border-[#e6dbdb] p-4 shadow-lg">
-          <p className="text-xs font-medium text-[#896161] mb-1">Preview audio</p>
-          <audio controls src={audioUrl} className="w-full max-w-2xl" />
+        <div className="sticky bottom-0 left-0 right-0 z-20 bg-white border-t border-[#e6dbdb] p-4 shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+          <p className="text-xs font-bold text-[#896161] uppercase tracking-wider mb-2">Preview audio</p>
+          <audio controls src={audioUrl} className="w-full max-w-2xl h-10" />
         </div>
       )}
 
-      <div className="px-8 py-4 flex items-center gap-2 text-sm">
-        <Link href="/admin" className="text-[#896161] hover:text-primary transition-colors">
-          Home
-        </Link>
-        <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
-        <Link href="/admin/listening" className="text-[#896161] hover:text-primary transition-colors">
-          Listening Management
-        </Link>
-        <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
-        <span className="text-[#181111] font-medium">{test.title || "Edit"}</span>
+      {/* Breadcrumb + Actions */}
+      <div className="bg-white border-b border-[#e6dbdb] px-8 py-4 shrink-0">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-sm min-w-0">
+            <Link
+              href="/admin/listening"
+              className="flex items-center gap-1 text-[#896161] hover:text-primary transition-colors shrink-0"
+            >
+              <span className="material-symbols-outlined text-lg">arrow_back</span>
+              <span>Listening</span>
+            </Link>
+            <span className="material-symbols-outlined text-xs text-[#896161] shrink-0">chevron_right</span>
+            <span className="text-[#181111] font-bold truncate" title={test.title}>
+              {test.title || "Edit test"}
+            </span>
+          </div>
+          <Link
+            href={`/practice/listening/${id}?preview=1`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#e6dbdb] text-[#181111] text-sm font-medium hover:bg-[#f8f6f6] transition-colors shrink-0"
+          >
+            <span className="material-symbols-outlined text-lg">visibility</span>
+            <span>Preview</span>
+          </Link>
+        </div>
       </div>
 
-      <div className="px-8 py-4 flex gap-2 border-b border-[#e6dbdb]">
+      {/* Tabs */}
+      <div className="bg-white px-8 py-3 flex gap-1 border-b border-[#e6dbdb]">
         <button
           type="button"
           onClick={() => setActiveTab("metadata")}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            activeTab === "metadata" ? "bg-primary/10 text-primary" : "bg-gray-100 text-gray-700"
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${
+            activeTab === "metadata"
+              ? "bg-primary/10 text-primary border border-primary/20"
+              : "text-gray-600 hover:bg-gray-100 border border-transparent"
           }`}
         >
-          Metadata
+          <span className="material-symbols-outlined text-lg">info</span>
+          <span>Metadata</span>
         </button>
         <button
           type="button"
           onClick={() => setActiveTab("questions")}
-          className={`px-4 py-2 rounded-lg font-medium ${
-            activeTab === "questions" ? "bg-primary/10 text-primary" : "bg-gray-100 text-gray-700"
+          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${
+            activeTab === "questions"
+              ? "bg-primary/10 text-primary border border-primary/20"
+              : "text-gray-600 hover:bg-gray-100 border border-transparent"
           }`}
         >
-          Question Builder
+          <span className="material-symbols-outlined text-lg">quiz</span>
+          <span>Question Builder</span>
         </button>
       </div>
 
-      <div className="px-8 py-6 max-w-4xl">
+      <div className="px-8 py-6 max-w-4xl flex-1">
         {activeTab === "metadata" && (
-          <div className="flex flex-col gap-6">
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Test Title *</label>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5"
-              />
+          <div className="bg-white rounded-xl border border-[#e6dbdb] shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-[#e6dbdb] bg-[#faf9f9]">
+              <h3 className="text-base font-bold text-[#181111]">Test information</h3>
+              <p className="text-xs text-[#896161] mt-0.5">Title, source, audio, transcript and status</p>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Source</label>
-              <select
-                value={source}
-                onChange={(e) => setSource(e.target.value)}
-                className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white"
-              >
-                <option value="">Select source</option>
-                {LISTENING_SOURCES.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Test Type</label>
-              <select
-                value={sectionType}
-                onChange={(e) => setSectionType(e.target.value)}
-                className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white"
-              >
-                {SECTION_TYPES.map((s) => (
-                  <option key={s.value} value={s.value}>
-                    {s.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Audio</label>
-              <div className="flex flex-col gap-2">
+            <div className="p-6 flex flex-col gap-6">
+              <div>
+                <label className="block text-sm font-bold text-[#181111] mb-1.5">Test Title *</label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-shadow"
+                  placeholder="e.g. Cam 18 - Test 1"
+                />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-bold text-[#181111] mb-1.5">Source</label>
+                  <select
+                    value={source}
+                    onChange={(e) => setSource(e.target.value)}
+                    className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                  >
+                    <option value="">Select source</option>
+                    {LISTENING_SOURCES.map((s) => (
+                      <option key={s} value={s}>
+                        {s}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-[#181111] mb-1.5">Test Type</label>
+                  <select
+                    value={sectionType}
+                    onChange={(e) => setSectionType(e.target.value)}
+                    className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                  >
+                    {SECTION_TYPES.map((s) => (
+                      <option key={s.value} value={s.value}>
+                        {s.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-[#181111] mb-1.5">Audio</label>
                 <input
                   type="url"
                   value={audioUrl}
                   onChange={(e) => setAudioUrl(e.target.value)}
-                  placeholder="Or paste audio URL (e.g. Google Drive, server)"
-                  className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5"
+                  placeholder="Paste audio URL (Google Drive, server...)"
+                  className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                 />
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <span className="px-3 py-2 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">
-                    {uploadingAudio ? "Uploading..." : "Upload MP3/WAV"}
-                  </span>
+                <label className="inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg bg-[#f8f6f6] border border-[#e6dbdb] text-sm font-medium text-[#181111] hover:bg-[#f4f0f0] transition-colors">
+                  <span className="material-symbols-outlined text-lg">upload_file</span>
+                  {uploadingAudio ? "Uploading..." : "Upload MP3/WAV"}
                   <input
                     type="file"
                     accept="audio/mpeg,audio/wav,audio/mp3,.mp3,.wav"
@@ -388,39 +423,42 @@ export default function EditListeningTestPage() {
                   />
                 </label>
               </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Transcript</label>
-              <textarea
-                value={transcript}
-                onChange={(e) => setTranscript(e.target.value)}
-                rows={10}
-                className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5"
-                placeholder="Paste or type the listening script..."
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Status</label>
-              <select
-                value={status}
-                onChange={(e) => setStatus(e.target.value as "draft" | "published")}
-                className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white"
-              >
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
-              </select>
+              <div>
+                <label className="block text-sm font-bold text-[#181111] mb-1.5">Transcript</label>
+                <textarea
+                  value={transcript}
+                  onChange={(e) => setTranscript(e.target.value)}
+                  rows={10}
+                  className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-y min-h-[200px]"
+                  placeholder="Paste or type the listening script..."
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-[#181111] mb-1.5">Status</label>
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value as "draft" | "published")}
+                  className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none max-w-xs"
+                >
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                </select>
+              </div>
             </div>
           </div>
         )}
 
         {activeTab === "questions" && (
           <div className="flex flex-col gap-8">
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-bold text-[#181111]">Question Groups</h3>
+            <div className="flex justify-between items-center flex-wrap gap-4">
+              <div>
+                <h3 className="text-lg font-bold text-[#181111]">Question Groups</h3>
+                <p className="text-xs text-[#896161] mt-0.5">Add instruction, type and questions per group</p>
+              </div>
               <button
                 type="button"
                 onClick={addGroup}
-                className="bg-primary text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2"
+                className="bg-primary hover:bg-red-700 text-white px-5 py-2.5 rounded-lg font-bold flex items-center gap-2 shadow-lg shadow-primary/20 transition-colors"
               >
                 <span className="material-symbols-outlined text-lg">add</span>
                 Add Group
@@ -428,30 +466,34 @@ export default function EditListeningTestPage() {
             </div>
 
             {groups.map((group, gIdx) => (
-              <div key={gIdx} className="border border-[#e6dbdb] rounded-xl p-6 bg-white">
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-sm font-bold text-[#896161]">Group {gIdx + 1}</span>
+              <div key={gIdx} className="border border-[#e6dbdb] rounded-xl p-6 bg-white shadow-sm">
+                <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#e6dbdb]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-sm font-bold">
+                    <span className="material-symbols-outlined text-lg">folder_open</span>
+                    Group {gIdx + 1}
+                  </span>
                   <button
                     type="button"
                     onClick={() => removeGroup(gIdx)}
-                    className="text-red-600 hover:bg-red-50 p-1 rounded"
+                    className="flex items-center gap-1.5 text-red-600 hover:bg-red-50 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
                     <span className="material-symbols-outlined text-lg">delete</span>
+                    Remove group
                   </button>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div>
-                    <label className="block text-sm font-medium mb-1">Instruction</label>
+                    <label className="block text-sm font-bold text-[#181111] mb-1.5">Instruction</label>
                     <textarea
                       value={group.instruction ?? ""}
                       onChange={(e) => updateGroup(gIdx, { instruction: e.target.value })}
                       rows={2}
-                      className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm"
+                      className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                       placeholder="e.g. Complete the notes below. Write ONE WORD AND/OR A NUMBER"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-1">Question Type</label>
+                    <label className="block text-sm font-bold text-[#181111] mb-1.5">Question Type</label>
                     <select
                       value={group.group_type}
                       onChange={(e) =>
@@ -459,7 +501,7 @@ export default function EditListeningTestPage() {
                           group_type: e.target.value as EditableGroup["group_type"],
                         })
                       }
-                      className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 bg-white"
+                      className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                     >
                       {QUESTION_GROUP_TYPES.map((t) => (
                         <option key={t.value} value={t.value}>
@@ -470,27 +512,27 @@ export default function EditListeningTestPage() {
                   </div>
                   {(group.group_type === "map_labeling" || group.group_type === "matching") && (
                     <div>
-                      <label className="block text-sm font-medium mb-1">Image (optional)</label>
+                      <label className="block text-sm font-bold text-[#181111] mb-1.5">Image (optional)</label>
                       {group.image_url ? (
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-start gap-4">
                           <img
                             src={group.image_url}
                             alt="Group"
-                            className="max-h-32 rounded border"
+                            className="max-h-40 rounded-lg border border-[#e6dbdb] shadow-sm"
                           />
                           <button
                             type="button"
                             onClick={() => updateGroup(gIdx, { image_url: "" })}
-                            className="text-red-600 text-sm"
+                            className="flex items-center gap-2 text-red-600 hover:bg-red-50 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
                           >
-                            Remove
+                            <span className="material-symbols-outlined text-lg">delete</span>
+                            Remove image
                           </button>
                         </div>
                       ) : (
-                        <label className="flex items-center gap-2 cursor-pointer">
-                          <span className="px-3 py-2 bg-gray-100 rounded-lg text-sm font-medium hover:bg-gray-200">
-                            {uploadingImage === `group-${gIdx}` ? "Uploading..." : "Upload image"}
-                          </span>
+                        <label className="inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg bg-[#f8f6f6] border border-[#e6dbdb] text-sm font-medium text-[#181111] hover:bg-[#f4f0f0] transition-colors">
+                          <span className="material-symbols-outlined text-lg">image</span>
+                          {uploadingImage === `group-${gIdx}` ? "Uploading..." : "Upload image"}
                           <input
                             type="file"
                             accept="image/*"
@@ -502,13 +544,13 @@ export default function EditListeningTestPage() {
                     </div>
                   )}
 
-                  <div className="pt-4 border-t border-[#e6dbdb]">
-                    <div className="flex justify-between items-center mb-2">
-                      <label className="text-sm font-medium">Questions</label>
+                  <div className="pt-6 border-t border-[#e6dbdb]">
+                    <div className="flex justify-between items-center mb-4">
+                      <label className="text-sm font-bold text-[#181111]">Questions</label>
                       <button
                         type="button"
                         onClick={() => addQuestion(gIdx)}
-                        className="text-primary text-sm font-medium flex items-center gap-1"
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg border border-primary/30 text-primary text-sm font-bold hover:bg-primary/10 transition-colors"
                       >
                         <span className="material-symbols-outlined text-lg">add</span>
                         Add question
@@ -516,15 +558,15 @@ export default function EditListeningTestPage() {
                     </div>
 
                     {(group.questions || []).map((q, qIdx) => (
-                      <div key={qIdx} className="mb-4 pl-4 border-l-2 border-gray-200">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-xs font-medium text-gray-500">
-                            Q{q.question_number ?? qIdx + 1}
+                      <div key={qIdx} className="mb-6 pl-4 border-l-2 border-[#e6dbdb] last:mb-0">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-xs font-bold text-[#896161] uppercase tracking-wider">
+                            Question {q.question_number ?? qIdx + 1}
                           </span>
                           <button
                             type="button"
                             onClick={() => removeQuestion(gIdx, qIdx)}
-                            className="text-red-500 text-xs"
+                            className="text-red-600 hover:bg-red-50 px-2 py-1 rounded text-xs font-medium transition-colors"
                           >
                             Remove
                           </button>
@@ -538,7 +580,7 @@ export default function EditListeningTestPage() {
                                 updateQuestion(gIdx, qIdx, { question_text: e.target.value })
                               }
                               placeholder="Question text with [1], [2]..."
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <input
                               type="text"
@@ -551,7 +593,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               placeholder="Correct answer (use | for alternatives: 10am | 10.00 am)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                           </>
                         )}
@@ -564,7 +606,7 @@ export default function EditListeningTestPage() {
                                 updateQuestion(gIdx, qIdx, { question_text: e.target.value })
                               }
                               placeholder="Question text"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <div className="text-xs text-gray-500 mb-1">Options (one per line)</div>
                             <textarea
@@ -575,7 +617,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               rows={3}
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                               placeholder="A. Option A&#10;B. Option B"
                             />
                             <input
@@ -589,7 +631,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               placeholder="Correct answer (e.g. A or Option A)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                           </>
                         )}
@@ -602,7 +644,7 @@ export default function EditListeningTestPage() {
                                 updateQuestion(gIdx, qIdx, { question_text: e.target.value })
                               }
                               placeholder="Question text (e.g. Which are the TWO main duties?)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <div className="text-xs text-gray-500 mb-1">Options (one per line)</div>
                             <textarea
@@ -613,7 +655,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               rows={3}
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <input
                               type="text"
@@ -630,7 +672,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               placeholder="Correct answers (comma-separated: A, C)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                           </>
                         )}
@@ -643,7 +685,7 @@ export default function EditListeningTestPage() {
                                 updateQuestion(gIdx, qIdx, { question_text: e.target.value })
                               }
                               placeholder="Left column item (e.g. 1. Ken Simpson)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <input
                               type="text"
@@ -656,7 +698,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               placeholder="Correct option (e.g. A, B, C)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                           </>
                         )}
@@ -669,7 +711,7 @@ export default function EditListeningTestPage() {
                                 updateQuestion(gIdx, qIdx, { question_text: e.target.value })
                               }
                               placeholder="Label or question (e.g. 11)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                             <input
                               type="text"
@@ -682,7 +724,7 @@ export default function EditListeningTestPage() {
                                 })
                               }
                               placeholder="Correct answer (letter or word)"
-                              className="w-full border rounded px-2 py-1.5 text-sm mb-2"
+                              className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm mb-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                             />
                           </>
                         )}
@@ -692,7 +734,7 @@ export default function EditListeningTestPage() {
                             updateQuestion(gIdx, qIdx, { explanation: e.target.value })
                           }
                           rows={2}
-                          className="w-full border rounded px-2 py-1.5 text-sm text-gray-600"
+                          className="w-full border border-[#e6dbdb] rounded-lg px-3 py-2 text-sm text-gray-600 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none mt-2"
                           placeholder="Explanation (optional)"
                         />
                       </div>
@@ -704,13 +746,14 @@ export default function EditListeningTestPage() {
           </div>
         )}
 
-        <div className="mt-8 flex gap-3">
+        <div className="mt-8 pt-6 border-t border-[#e6dbdb] flex flex-wrap gap-3">
           <button
             type="button"
             onClick={handleSaveAll}
             disabled={saving}
-            className="bg-primary hover:bg-red-700 disabled:opacity-50 text-white px-6 py-2.5 rounded-lg font-bold"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-red-700 disabled:opacity-50 text-white px-6 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-colors"
           >
+            <span className="material-symbols-outlined text-lg">save</span>
             {saving ? "Saving..." : "Save All"}
           </button>
           {activeTab === "metadata" && (
@@ -718,15 +761,17 @@ export default function EditListeningTestPage() {
               type="button"
               onClick={handleSaveMetadata}
               disabled={saving}
-              className="border border-[#e6dbdb] px-6 py-2.5 rounded-lg font-medium text-[#181111]"
+              className="inline-flex items-center gap-2 border border-[#e6dbdb] px-6 py-3 rounded-lg font-bold text-[#181111] hover:bg-[#f8f6f6] transition-colors"
             >
+              <span className="material-symbols-outlined text-lg">edit_note</span>
               Save metadata only
             </button>
           )}
           <Link
             href="/admin/listening"
-            className="px-6 py-2.5 rounded-lg border border-[#e6dbdb] text-[#181111] font-medium"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#e6dbdb] text-[#181111] font-bold hover:bg-[#f8f6f6] transition-colors"
           >
+            <span className="material-symbols-outlined text-lg">arrow_back</span>
             Back to list
           </Link>
         </div>
