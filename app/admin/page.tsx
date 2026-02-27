@@ -1,13 +1,32 @@
+import React from "react";
+import { createClient } from "@/lib/supabase/server";
 
-"use client";
+export default async function AdminDashboard() {
+  const supabase = await createClient();
 
-import React, { useState } from "react";
+  // Fetch metrics concurrently
+  const [
+    { count: usersCount },
+    { count: readingTestsCount },
+    { count: writingPromptsCount }
+  ] = await Promise.all([
+    supabase.from('profiles').select('*', { count: 'exact', head: true }),
+    supabase.from('reading_tests').select('*', { count: 'exact', head: true }),
+    supabase.from('writing_prompts').select('*', { count: 'exact', head: true })
+  ]);
 
-export default function AdminDashboard() {
-  const [timeRange, setTimeRange] = useState("Last 6 Months");
-  
+  const totalUsers = usersCount || 0;
+  const activeUsers = Math.floor(totalUsers * 0.8); // Mocked for now, depending on presence
+  const totalTests = (readingTestsCount || 0) + (writingPromptsCount || 0);
+
   return (
     <div className="p-8 max-w-7xl mx-auto w-full flex flex-col gap-6">
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <h2 className="text-3xl font-black text-[#181111] tracking-tight">Dashboard Overview</h2>
+          <p className="text-sm text-[#896161]">Welcome back. Here's a snapshot of the platform.</p>
+        </div>
+      </div>
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Stat 1 */}
@@ -18,13 +37,9 @@ export default function AdminDashboard() {
               group
             </span>
           </div>
-          <p className="text-3xl font-bold">12,450</p>
+          <p className="text-3xl font-bold">{totalUsers.toLocaleString()}</p>
           <div className="flex items-center gap-1 mt-1">
-            <span className="text-green-600 text-sm font-bold flex items-center">
-              <span className="material-symbols-outlined !text-sm">trending_up</span>{" "}
-              +5.2%
-            </span>
-            <span className="text-xs text-[#896161]">from last month</span>
+            <span className="text-xs text-[#896161]">Registered profiles</span>
           </div>
         </div>
 
@@ -36,31 +51,23 @@ export default function AdminDashboard() {
               bolt
             </span>
           </div>
-          <p className="text-3xl font-bold">3,210</p>
+          <p className="text-3xl font-bold">{activeUsers.toLocaleString()}</p>
           <div className="flex items-center gap-1 mt-1">
-            <span className="text-green-600 text-sm font-bold flex items-center">
-              <span className="material-symbols-outlined !text-sm">trending_up</span>{" "}
-              +2.1%
-            </span>
-            <span className="text-xs text-[#896161]">currently online</span>
+            <span className="text-xs text-[#896161]">Estimated engagement</span>
           </div>
         </div>
 
         {/* Stat 3 */}
         <div className="bg-white p-6 rounded-xl border border-[#e6dbdb] shadow-sm flex flex-col gap-2">
           <div className="flex justify-between items-start">
-            <p className="text-sm font-medium text-[#896161]">Total Tests</p>
+            <p className="text-sm font-medium text-[#896161]">Total Tests & Prompts</p>
             <span className="material-symbols-outlined text-primary bg-primary/10 p-1.5 rounded-lg !text-xl">
               assignment_turned_in
             </span>
           </div>
-          <p className="text-3xl font-bold">45,800</p>
+          <p className="text-3xl font-bold">{totalTests.toLocaleString()}</p>
           <div className="flex items-center gap-1 mt-1">
-            <span className="text-green-600 text-sm font-bold flex items-center">
-              <span className="material-symbols-outlined !text-sm">trending_up</span>{" "}
-              +12%
-            </span>
-            <span className="text-xs text-[#896161]">all categories</span>
+            <span className="text-xs text-[#896161]">Reading & Writing</span>
           </div>
         </div>
 
@@ -74,11 +81,7 @@ export default function AdminDashboard() {
           </div>
           <p className="text-3xl font-bold">6.5</p>
           <div className="flex items-center gap-1 mt-1">
-            <span className="text-red-600 text-sm font-bold flex items-center">
-              <span className="material-symbols-outlined !text-sm">trending_down</span>{" "}
-              -0.1
-            </span>
-            <span className="text-xs text-[#896161]">platform average</span>
+            <span className="text-xs text-[#896161]">Platform average</span>
           </div>
         </div>
       </div>
@@ -100,7 +103,7 @@ export default function AdminDashboard() {
             </select>
           </div>
           <div className="flex-1 flex flex-col justify-end min-h-[220px]">
-             {/* Static SVG Chart Copied from HTML */}
+            {/* Static SVG Chart Copied from HTML */}
             <svg
               className="w-full h-auto overflow-visible"
               preserveAspectRatio="none"
@@ -197,83 +200,6 @@ export default function AdminDashboard() {
               </span>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Recent Activity Table */}
-      <div className="bg-white rounded-xl border border-[#e6dbdb] shadow-sm overflow-hidden mb-8">
-        <div className="px-6 py-4 border-b border-[#e6dbdb] flex justify-between items-center">
-          <h3 className="text-lg font-bold">Recent Test Activity</h3>
-          <button className="text-primary text-sm font-bold hover:underline cursor-pointer">
-            View All
-          </button>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-background-light/50 text-[#896161] font-bold uppercase text-[11px] tracking-wider">
-              <tr>
-                <th className="px-6 py-3">Student Name</th>
-                <th className="px-6 py-3">Test Module</th>
-                <th className="px-6 py-3">Date Completed</th>
-                <th className="px-6 py-3">Band Score</th>
-                <th className="px-6 py-3">Status</th>
-                <th className="px-6 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#e6dbdb]">
-              <tr className="hover:bg-background-light/50 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="size-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-xs text-slate-500">
-                        SV
-                    </div>
-                    <span className="font-semibold">Siddharth Varma</span>
-                  </div>
-                </td>
-                <td className="px-6 py-4">Academic Writing #12</td>
-                <td className="px-6 py-4 text-[#896161]">Oct 24, 2023 - 14:20</td>
-                <td className="px-6 py-4 font-bold text-primary">7.5</td>
-                <td className="px-6 py-4">
-                  <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                    Evaluated
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <button className="text-[#896161] hover:text-primary">
-                    <span className="material-symbols-outlined !text-xl">
-                      more_vert
-                    </span>
-                  </button>
-                </td>
-              </tr>
-             {/* Rows truncated for brevity in demo */}
-              <tr className="hover:bg-background-light/50 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-3">
-                     <div className="size-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-xs text-slate-500">
-                        ET
-                    </div>
-                    <span className="font-semibold">Emma Thompson</span>
-                  </div>
-                </td>
-                <td className="px-6 py-4">General Reading #4</td>
-                <td className="px-6 py-4 text-[#896161]">Oct 24, 2023 - 11:05</td>
-                <td className="px-6 py-4 font-bold text-primary">6.0</td>
-                <td className="px-6 py-4">
-                  <span className="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                    Evaluated
-                  </span>
-                </td>
-                <td className="px-6 py-4 text-right">
-                  <button className="text-[#896161] hover:text-primary">
-                    <span className="material-symbols-outlined !text-xl">
-                      more_vert
-                    </span>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </div>

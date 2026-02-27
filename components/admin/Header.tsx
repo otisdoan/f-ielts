@@ -1,30 +1,7 @@
 
-"use client";
+import React from "react";
 
-import { createClient } from "@/lib/supabase/client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
-export default function AdminHeader() {
-  const router = useRouter();
-  const supabase = createClient();
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      
-      if (user) {
-         // Optionally fetch profile for name/avatar
-         setUser(user);
-      }
-    };
-    fetchUser();
-  }, [supabase]);
-
-
+export default function AdminHeader({ user }: { user: any }) {
   return (
     <header className="h-16 flex items-center justify-between border-b border-[#e6dbdb] bg-white px-8 sticky top-0 z-10 shrink-0">
       <div className="flex items-center gap-8">
@@ -62,9 +39,9 @@ export default function AdminHeader() {
             }}
           >
             {!user?.user_metadata?.avatar_url && (
-                 <span className="flex items-center justify-center h-full w-full text-slate-500 font-bold text-xs">
-                     {user?.email?.[0]?.toUpperCase() || "A"}
-                 </span>
+              <span className="flex items-center justify-center h-full w-full text-slate-500 font-bold text-xs">
+                {user?.email?.[0]?.toUpperCase() || "A"}
+              </span>
             )}
           </div>
         </div>
