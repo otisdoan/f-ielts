@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "db:status": "node scripts/check-db.js",
+    "db:setup": "echo 'Please run the SQL migration in Supabase Dashboard. See DATABASE_SETUP.md for instructions.'",
+    "test:api": "node scripts/test-api.js",
+    "test:speaking": "node scripts/test-speaking-api.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
