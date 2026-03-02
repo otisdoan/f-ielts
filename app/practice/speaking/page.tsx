@@ -80,7 +80,8 @@ export default function SpeakingPracticePage() {
             Speaking Practice
           </h1>
           <p className="text-slate-500 text-lg">
-            Practice your speaking skills with authentic IELTS topics and get AI-powered feedback
+            Practice your speaking skills with authentic IELTS topics and get
+            AI-powered feedback
           </p>
         </div>
 
@@ -168,7 +169,7 @@ export default function SpeakingPracticePage() {
                   <div className="mb-3">
                     <span
                       className={`inline-block px-2 py-1 rounded-md text-xs font-bold uppercase ${getPartColor(
-                        prompt.part
+                        prompt.part,
                       )}`}
                     >
                       Part {prompt.part}
@@ -201,7 +202,8 @@ export default function SpeakingPracticePage() {
                       </span>
                       <span>
                         {Math.floor(prompt.speakingTime / 60)}:
-                        {String(prompt.speakingTime % 60).padStart(2, "0")} speaking
+                        {String(prompt.speakingTime % 60).padStart(2, "0")}{" "}
+                        speaking
                       </span>
                     </div>
                   </div>

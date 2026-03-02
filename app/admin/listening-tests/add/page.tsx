@@ -108,7 +108,9 @@ export default function AddListeningTestPage() {
   };
 
   const removeQuestionFromCurrentPart = (index: number) => {
-    const questions = (currentPart.questions || []).filter((_, i) => i !== index);
+    const questions = (currentPart.questions || []).filter(
+      (_, i) => i !== index,
+    );
     // Renumber questions
     const renumberedQuestions = questions.map((q, i) => ({
       ...q,
@@ -120,7 +122,7 @@ export default function AddListeningTestPage() {
   const updateQuestionInCurrentPart = (
     index: number,
     field: keyof ListeningQuestion,
-    value: any
+    value: any,
   ) => {
     const questions = [...(currentPart.questions || [])];
     questions[index] = { ...questions[index], [field]: value };
@@ -139,7 +141,7 @@ export default function AddListeningTestPage() {
   const updateQuestionOption = (
     qIndex: number,
     optIndex: number,
-    value: string
+    value: string,
   ) => {
     const questions = [...(currentPart.questions || [])];
     questions[qIndex].options![optIndex] = value;
@@ -341,7 +343,7 @@ export default function AddListeningTestPage() {
                 <span className="material-symbols-outlined">headphones</span>
                 Audio Information
               </h3>
-              
+
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">
                   Audio URL *
@@ -379,7 +381,7 @@ export default function AddListeningTestPage() {
                 <p className="text-xs text-gray-500 mt-1">
                   {formData.audioDuration > 0 &&
                     `= ${Math.floor(formData.audioDuration / 60)}:${String(
-                      formData.audioDuration % 60
+                      formData.audioDuration % 60,
                     ).padStart(2, "0")} minutes`}
                 </p>
               </div>
@@ -507,7 +509,7 @@ export default function AddListeningTestPage() {
                                 <div key={key}>
                                   <strong>{key}:</strong> {value}
                                 </div>
-                              )
+                              ),
                             )}
                           </div>
                         )}
@@ -525,9 +527,7 @@ export default function AddListeningTestPage() {
                         </span>
                         <div className="flex-1">
                           <span className="text-gray-700">
-                            {q.type === "fill-in-blank"
-                              ? q.label
-                              : q.text}
+                            {q.type === "fill-in-blank" ? q.label : q.text}
                           </span>
                           {q.type === "multiple-choice" &&
                             q.options &&
@@ -663,7 +663,7 @@ export default function AddListeningTestPage() {
                         0 && (
                         <div className="space-y-2">
                           {Object.entries(
-                            currentPart.context.prefilledData
+                            currentPart.context.prefilledData,
                           ).map(([key, value]) => (
                             <div
                               key={key}
@@ -743,7 +743,7 @@ export default function AddListeningTestPage() {
                               updateQuestionInCurrentPart(
                                 qIndex,
                                 "type",
-                                e.target.value as ListeningQuestionType
+                                e.target.value as ListeningQuestionType,
                               )
                             }
                           >
@@ -769,7 +769,7 @@ export default function AddListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "label",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -786,7 +786,7 @@ export default function AddListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "text",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -821,7 +821,7 @@ export default function AddListeningTestPage() {
                                       updateQuestionOption(
                                         qIndex,
                                         optIndex,
-                                        e.target.value
+                                        e.target.value,
                                       )
                                     }
                                   />
@@ -856,7 +856,7 @@ export default function AddListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "correctAnswer",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             >
@@ -880,7 +880,7 @@ export default function AddListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "correctAnswer",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />

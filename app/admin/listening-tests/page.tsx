@@ -56,9 +56,7 @@ export default function AdminListeningTestsPage() {
 
       if (response.ok) {
         const { data } = await response.json();
-        setTests(
-          tests.map((t) => (t.id === test.id ? data : t))
-        );
+        setTests(tests.map((t) => (t.id === test.id ? data : t)));
       }
     } catch (error) {
       console.error("Error toggling publish status:", error);
@@ -164,7 +162,7 @@ export default function AdminListeningTestsPage() {
                     <span className="text-slate-600">
                       {test.parts.reduce(
                         (sum, part) => sum + part.questions.length,
-                        0
+                        0,
                       )}
                     </span>
                   </td>

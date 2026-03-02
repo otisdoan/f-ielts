@@ -106,7 +106,7 @@ export default function ListeningPracticePage() {
                       <span>
                         {test.parts.reduce(
                           (sum, part) => sum + part.questions.length,
-                          0
+                          0,
                         )}{" "}
                         questions
                       </span>

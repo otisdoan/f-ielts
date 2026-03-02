@@ -80,7 +80,10 @@ export default function AddSpeakingPromptPage() {
     if (questionInput.trim()) {
       setFormData({
         ...formData,
-        followUpQuestions: [...formData.followUpQuestions, questionInput.trim()],
+        followUpQuestions: [
+          ...formData.followUpQuestions,
+          questionInput.trim(),
+        ],
       });
       setQuestionInput("");
     }
@@ -89,7 +92,9 @@ export default function AddSpeakingPromptPage() {
   const removeQuestion = (index: number) => {
     setFormData({
       ...formData,
-      followUpQuestions: formData.followUpQuestions.filter((_, i) => i !== index),
+      followUpQuestions: formData.followUpQuestions.filter(
+        (_, i) => i !== index,
+      ),
     });
   };
 
@@ -147,7 +152,9 @@ export default function AddSpeakingPromptPage() {
         <h1 className="text-3xl font-black text-slate-900 mb-2">
           Add Speaking Prompt
         </h1>
-        <p className="text-slate-600">Create a new IELTS speaking practice prompt</p>
+        <p className="text-slate-600">
+          Create a new IELTS speaking practice prompt
+        </p>
       </div>
 
       <div className="grid grid-cols-1 gap-8">
@@ -338,7 +345,9 @@ export default function AddSpeakingPromptPage() {
         {(formData.part === 1 || formData.part === 3) && (
           <div className="bg-white rounded-xl border border-slate-200 p-6">
             <h2 className="text-xl font-bold text-slate-900 mb-6">
-              {formData.part === 1 ? "Interview Questions" : "Discussion Questions"}
+              {formData.part === 1
+                ? "Interview Questions"
+                : "Discussion Questions"}
             </h2>
 
             <div className="space-y-4">

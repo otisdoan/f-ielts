@@ -19,7 +19,7 @@ export default function ListeningTestPage() {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [audioProgress, setAudioProgress] = useState(0);
   const [flaggedQuestions, setFlaggedQuestions] = useState<Set<number>>(
-    new Set()
+    new Set(),
   );
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -90,7 +90,7 @@ export default function ListeningTestPage() {
   const handleSubmit = async () => {
     if (
       !confirm(
-        "Are you sure you want to submit? You cannot change your answers after submission."
+        "Are you sure you want to submit? You cannot change your answers after submission.",
       )
     ) {
       return;
@@ -237,7 +237,9 @@ export default function ListeningTestPage() {
                 </div>
                 <div className="flex justify-between mt-1">
                   <span className="text-xs text-gray-500 font-medium">
-                    {formatTime(Math.floor((audioProgress / 100) * test.audioDuration))}
+                    {formatTime(
+                      Math.floor((audioProgress / 100) * test.audioDuration),
+                    )}
                   </span>
                   <span className="text-xs text-gray-500 font-medium">
                     {formatTime(test.audioDuration)}
@@ -294,7 +296,7 @@ export default function ListeningTestPage() {
                                 {value}
                               </p>
                             </div>
-                          )
+                          ),
                         )}
                       </div>
                     )}
@@ -343,7 +345,7 @@ export default function ListeningTestPage() {
                                   onChange={(e) =>
                                     handleAnswerChange(
                                       question.id,
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                 />
@@ -377,18 +379,20 @@ export default function ListeningTestPage() {
                 {allQuestions.map((question) => {
                   const isAnswered = answers[question.id];
                   const isFlagged = flaggedQuestions.has(
-                    question.questionNumber
+                    question.questionNumber,
                   );
                   return (
                     <button
                       key={question.id}
-                      onClick={() => setCurrentQuestion(question.questionNumber)}
+                      onClick={() =>
+                        setCurrentQuestion(question.questionNumber)
+                      }
                       className={`aspect-square flex items-center justify-center rounded-lg font-bold text-sm ${
                         isAnswered
                           ? "border-2 border-primary bg-primary text-white"
                           : isFlagged
-                          ? "border border-yellow-400 bg-yellow-400 text-white"
-                          : "border border-gray-200 text-gray-400"
+                            ? "border border-yellow-400 bg-yellow-400 text-white"
+                            : "border border-gray-200 text-gray-400"
                       }`}
                     >
                       {question.questionNumber}
@@ -450,7 +454,7 @@ export default function ListeningTestPage() {
               onClick={() => {
                 const nextQuestion = Math.min(
                   getTotalQuestions(),
-                  currentQuestion + 1
+                  currentQuestion + 1,
                 );
                 setCurrentQuestion(nextQuestion);
               }}

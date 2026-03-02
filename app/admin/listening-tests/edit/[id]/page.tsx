@@ -48,17 +48,17 @@ export default function EditListeningTestPage() {
   const fetchTest = async () => {
     try {
       const response = await fetch(`/api/listening-tests/${params.id}`);
-      
+
       if (!response.ok) {
         throw new Error(`Failed to fetch test: ${response.status}`);
       }
-      
+
       const { data } = await response.json();
-      
+
       if (!data) {
         throw new Error("Test not found");
       }
-      
+
       setFormData({
         title: data.title,
         targetBand: data.targetBand,
@@ -71,7 +71,9 @@ export default function EditListeningTestPage() {
       });
     } catch (error) {
       console.error("Error fetching test:", error);
-      alert("Failed to load test. The test may not exist or the database table may not be created yet. Please run the migration first.");
+      alert(
+        "Failed to load test. The test may not exist or the database table may not be created yet. Please run the migration first.",
+      );
       router.push("/admin/listening-tests");
     } finally {
       setLoading(false);
@@ -147,7 +149,9 @@ export default function EditListeningTestPage() {
   };
 
   const removeQuestionFromCurrentPart = (index: number) => {
-    const questions = (currentPart.questions || []).filter((_, i) => i !== index);
+    const questions = (currentPart.questions || []).filter(
+      (_, i) => i !== index,
+    );
     const renumberedQuestions = questions.map((q, i) => ({
       ...q,
       questionNumber: i + 1,
@@ -158,7 +162,7 @@ export default function EditListeningTestPage() {
   const updateQuestionInCurrentPart = (
     index: number,
     field: keyof ListeningQuestion,
-    value: any
+    value: any,
   ) => {
     const questions = [...(currentPart.questions || [])];
     questions[index] = { ...questions[index], [field]: value };
@@ -177,7 +181,7 @@ export default function EditListeningTestPage() {
   const updateQuestionOption = (
     qIndex: number,
     optIndex: number,
-    value: string
+    value: string,
   ) => {
     const questions = [...(currentPart.questions || [])];
     questions[qIndex].options![optIndex] = value;
@@ -384,7 +388,7 @@ export default function EditListeningTestPage() {
                 <span className="material-symbols-outlined">headphones</span>
                 Audio Information
               </h3>
-              
+
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2">
                   Audio URL *
@@ -419,7 +423,7 @@ export default function EditListeningTestPage() {
                 <p className="text-xs text-gray-500 mt-1">
                   {formData.audioDuration > 0 &&
                     `= ${Math.floor(formData.audioDuration / 60)}:${String(
-                      formData.audioDuration % 60
+                      formData.audioDuration % 60,
                     ).padStart(2, "0")} minutes`}
                 </p>
               </div>
@@ -556,7 +560,7 @@ export default function EditListeningTestPage() {
                                 <div key={key}>
                                   <strong>{key}:</strong> {value}
                                 </div>
-                              )
+                              ),
                             )}
                           </div>
                         )}
@@ -704,31 +708,31 @@ export default function EditListeningTestPage() {
                       Object.keys(currentPart.context.prefilledData).length >
                         0 && (
                         <div className="space-y-2">
-                          {Object.entries(currentPart.context.prefilledData).map(
-                            ([key, value]) => (
-                              <div
-                                key={key}
-                                className="flex items-center gap-2 p-2 bg-white rounded border"
-                              >
-                                <div className="flex-1">
-                                  <span className="text-sm font-medium">
-                                    {key}:
-                                  </span>
-                                  <span className="text-sm text-gray-600 ml-2">
-                                    {value}
-                                  </span>
-                                </div>
-                                <button
-                                  onClick={() => removePrefilledField(key)}
-                                  className="text-red-500 hover:text-red-700"
-                                >
-                                  <span className="material-symbols-outlined text-sm">
-                                    close
-                                  </span>
-                                </button>
+                          {Object.entries(
+                            currentPart.context.prefilledData,
+                          ).map(([key, value]) => (
+                            <div
+                              key={key}
+                              className="flex items-center gap-2 p-2 bg-white rounded border"
+                            >
+                              <div className="flex-1">
+                                <span className="text-sm font-medium">
+                                  {key}:
+                                </span>
+                                <span className="text-sm text-gray-600 ml-2">
+                                  {value}
+                                </span>
                               </div>
-                            )
-                          )}
+                              <button
+                                onClick={() => removePrefilledField(key)}
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <span className="material-symbols-outlined text-sm">
+                                  close
+                                </span>
+                              </button>
+                            </div>
+                          ))}
                         </div>
                       )}
                   </div>
@@ -784,7 +788,7 @@ export default function EditListeningTestPage() {
                               updateQuestionInCurrentPart(
                                 qIndex,
                                 "type",
-                                e.target.value as ListeningQuestionType
+                                e.target.value as ListeningQuestionType,
                               )
                             }
                           >
@@ -809,7 +813,7 @@ export default function EditListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "label",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -826,7 +830,7 @@ export default function EditListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "text",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -860,7 +864,7 @@ export default function EditListeningTestPage() {
                                       updateQuestionOption(
                                         qIndex,
                                         optIndex,
-                                        e.target.value
+                                        e.target.value,
                                       )
                                     }
                                   />
@@ -894,7 +898,7 @@ export default function EditListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "correctAnswer",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             >
@@ -918,7 +922,7 @@ export default function EditListeningTestPage() {
                                 updateQuestionInCurrentPart(
                                   qIndex,
                                   "correctAnswer",
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />

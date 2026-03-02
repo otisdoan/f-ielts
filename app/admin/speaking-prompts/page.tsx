@@ -222,7 +222,7 @@ export default function AdminSpeakingPromptsPage() {
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${getPartColor(
-                        prompt.part
+                        prompt.part,
                       )}`}
                     >
                       {getPartLabel(prompt.part)}

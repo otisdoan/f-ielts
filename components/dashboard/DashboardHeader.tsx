@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function DashboardHeader() {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
-    if (path === '/dashboard') {
-      return pathname === '/dashboard';
+    if (path === "/dashboard") {
+      return pathname === "/dashboard";
     }
     return pathname?.startsWith(path);
   };
 
   const getLinkClass = (path: string) => {
     return isActive(path)
-      ? 'text-primary text-sm font-semibold leading-normal'
-      : 'text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors';
+      ? "text-primary text-sm font-semibold leading-normal"
+      : "text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors";
   };
 
   return (
@@ -35,28 +35,16 @@ export default function DashboardHeader() {
               </h2>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
-              <Link
-                className={getLinkClass('/dashboard')}
-                href="/dashboard"
-              >
+              <Link className={getLinkClass("/dashboard")} href="/dashboard">
                 Dashboard
               </Link>
-              <Link
-                className={getLinkClass('/practice')}
-                href="/practice"
-              >
+              <Link className={getLinkClass("/practice")} href="/practice">
                 Practice Tests
               </Link>
-              <Link
-                className={getLinkClass('/courses')}
-                href="/courses"
-              >
+              <Link className={getLinkClass("/courses")} href="/courses">
                 Study Material
               </Link>
-              <Link
-                className={getLinkClass('/settings')}
-                href="/settings"
-              >
+              <Link className={getLinkClass("/settings")} href="/settings">
                 Settings
               </Link>
             </nav>
