@@ -23,7 +23,7 @@ export default function SpeakingPracticePage({
     try {
       // Fetch topic from database
       const data = await SpeakingService.getTopicById(id);
-      
+
       if (data && data.status === "published") {
         setTopic(data);
       } else {

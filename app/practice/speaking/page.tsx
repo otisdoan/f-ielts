@@ -26,16 +26,20 @@ export default function SpeakingPracticePage() {
     }
   };
 
-  const filteredTopics = filterPart 
-    ? topics.filter(t => t.part === filterPart) 
+  const filteredTopics = filterPart
+    ? topics.filter((t) => t.part === filterPart)
     : topics;
 
   const getDifficultyColor = (difficulty: string) => {
-    switch(difficulty) {
-      case "Easy": return "text-green-600 bg-green-50";
-      case "Medium": return "text-yellow-600 bg-yellow-50";
-      case "Hard": return "text-red-600 bg-red-50";
-      default: return "text-gray-600 bg-gray-50";
+    switch (difficulty) {
+      case "Easy":
+        return "text-green-600 bg-green-50";
+      case "Medium":
+        return "text-yellow-600 bg-yellow-50";
+      case "Hard":
+        return "text-red-600 bg-red-50";
+      default:
+        return "text-gray-600 bg-gray-50";
     }
   };
 
@@ -109,7 +113,9 @@ export default function SpeakingPracticePage() {
             <span className="material-symbols-outlined text-6xl text-gray-300 mb-4">
               mic_off
             </span>
-            <p className="text-gray-600 text-lg font-medium">No topics available</p>
+            <p className="text-gray-600 text-lg font-medium">
+              No topics available
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -122,7 +128,9 @@ export default function SpeakingPracticePage() {
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary">
                     Part {topic.part}
                   </span>
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${getDifficultyColor(topic.difficulty)}`}>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${getDifficultyColor(topic.difficulty)}`}
+                  >
                     {topic.difficulty}
                   </span>
                 </div>
@@ -141,7 +149,9 @@ export default function SpeakingPracticePage() {
                   </span>
                   <Link href={`/practice/speaking/${topic.id}`}>
                     <button className="flex items-center gap-1 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-colors">
-                      <span className="material-symbols-outlined text-sm">mic</span>
+                      <span className="material-symbols-outlined text-sm">
+                        mic
+                      </span>
                       Start
                     </button>
                   </Link>

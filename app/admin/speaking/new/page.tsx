@@ -4,12 +4,19 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { SpeakingService } from "@/services/speaking.service";
-import { SPEAKING_PARTS, DIFFICULTY_LEVELS, SPEAKING_CATEGORIES } from "@/lib/constants/speaking";
+import {
+  SPEAKING_PARTS,
+  DIFFICULTY_LEVELS,
+  SPEAKING_CATEGORIES,
+} from "@/lib/constants/speaking";
 
 export default function NewSpeakingTopicPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
   const [formData, setFormData] = useState({
     part: 2,
     title: "",
@@ -101,30 +108,46 @@ export default function NewSpeakingTopicPage() {
 
       {/* Breadcrumb */}
       <div className="px-8 py-4 flex items-center gap-2 text-sm border-b border-[#e6dbdb]">
-        <Link href="/admin" className="text-[#896161] hover:text-primary transition-colors">
+        <Link
+          href="/admin"
+          className="text-[#896161] hover:text-primary transition-colors"
+        >
           Home
         </Link>
-        <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
-        <Link href="/admin/speaking" className="text-[#896161] hover:text-primary transition-colors">
+        <span className="material-symbols-outlined text-xs text-[#896161]">
+          chevron_right
+        </span>
+        <Link
+          href="/admin/speaking"
+          className="text-[#896161] hover:text-primary transition-colors"
+        >
           Speaking Management
         </Link>
-        <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
+        <span className="material-symbols-outlined text-xs text-[#896161]">
+          chevron_right
+        </span>
         <span className="text-[#181111] font-medium">New Topic</span>
       </div>
 
       {/* Form */}
       <div className="px-8 py-6 max-w-4xl">
-        <h2 className="text-2xl font-bold text-[#181111] mb-6">Create Speaking Topic</h2>
+        <h2 className="text-2xl font-bold text-[#181111] mb-6">
+          Create Speaking Topic
+        </h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           {/* Part Selection */}
           <div>
-            <label className="block text-sm font-medium text-[#181111] mb-2">Speaking Part *</label>
+            <label className="block text-sm font-medium text-[#181111] mb-2">
+              Speaking Part *
+            </label>
             <div className="grid grid-cols-3 gap-3">
               {SPEAKING_PARTS.map((part) => (
                 <button
                   key={part.value}
                   type="button"
-                  onClick={() => setFormData((f) => ({ ...f, part: part.value }))}
+                  onClick={() =>
+                    setFormData((f) => ({ ...f, part: part.value }))
+                  }
                   className={`px-4 py-3 rounded-lg border-2 text-sm font-semibold transition-all ${
                     formData.part === part.value
                       ? "border-primary bg-primary/10 text-primary"
@@ -139,11 +162,15 @@ export default function NewSpeakingTopicPage() {
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-[#181111] mb-1">Topic Title *</label>
+            <label className="block text-sm font-medium text-[#181111] mb-1">
+              Topic Title *
+            </label>
             <input
               type="text"
               value={formData.title}
-              onChange={(e) => setFormData((f) => ({ ...f, title: e.target.value }))}
+              onChange={(e) =>
+                setFormData((f) => ({ ...f, title: e.target.value }))
+              }
               className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-[#181111]"
               placeholder="e.g. Describe a book you recently read"
             />
@@ -151,10 +178,14 @@ export default function NewSpeakingTopicPage() {
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-[#181111] mb-1">Description *</label>
+            <label className="block text-sm font-medium text-[#181111] mb-1">
+              Description *
+            </label>
             <textarea
               value={formData.description}
-              onChange={(e) => setFormData((f) => ({ ...f, description: e.target.value }))}
+              onChange={(e) =>
+                setFormData((f) => ({ ...f, description: e.target.value }))
+              }
               className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-[#181111] min-h-[100px]"
               placeholder="You should say: what the book is, why you chose it, what it is about, and explain why you liked or disliked it."
             />
@@ -163,10 +194,14 @@ export default function NewSpeakingTopicPage() {
           {/* Category and Difficulty */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Category *</label>
+              <label className="block text-sm font-medium text-[#181111] mb-1">
+                Category *
+              </label>
               <select
                 value={formData.category}
-                onChange={(e) => setFormData((f) => ({ ...f, category: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((f) => ({ ...f, category: e.target.value }))
+                }
                 className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 bg-white"
               >
                 {SPEAKING_CATEGORIES.map((cat) => (
@@ -178,7 +213,9 @@ export default function NewSpeakingTopicPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-[#181111] mb-1">Difficulty *</label>
+              <label className="block text-sm font-medium text-[#181111] mb-1">
+                Difficulty *
+              </label>
               <select
                 value={formData.difficulty}
                 onChange={(e) =>
@@ -209,7 +246,10 @@ export default function NewSpeakingTopicPage() {
                   type="number"
                   value={formData.preparation_time}
                   onChange={(e) =>
-                    setFormData((f) => ({ ...f, preparation_time: parseInt(e.target.value) || 0 }))
+                    setFormData((f) => ({
+                      ...f,
+                      preparation_time: parseInt(e.target.value) || 0,
+                    }))
                   }
                   className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-[#181111]"
                   min="0"
@@ -225,7 +265,10 @@ export default function NewSpeakingTopicPage() {
                 type="number"
                 value={formData.speaking_time}
                 onChange={(e) =>
-                  setFormData((f) => ({ ...f, speaking_time: parseInt(e.target.value) || 0 }))
+                  setFormData((f) => ({
+                    ...f,
+                    speaking_time: parseInt(e.target.value) || 0,
+                  }))
                 }
                 className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-[#181111]"
                 min="0"
@@ -235,7 +278,9 @@ export default function NewSpeakingTopicPage() {
 
           {/* Tips */}
           <div>
-            <label className="block text-sm font-medium text-[#181111] mb-2">Speaking Tips</label>
+            <label className="block text-sm font-medium text-[#181111] mb-2">
+              Speaking Tips
+            </label>
             <div className="space-y-2">
               {formData.tips.map((tip, index) => (
                 <div key={index} className="flex gap-2">
@@ -251,7 +296,9 @@ export default function NewSpeakingTopicPage() {
                     onClick={() => removeTip(index)}
                     className="px-3 py-2 border border-[#e6dbdb] rounded-lg hover:bg-red-50 hover:border-red-300 transition-colors"
                   >
-                    <span className="material-symbols-outlined text-red-600">delete</span>
+                    <span className="material-symbols-outlined text-red-600">
+                      delete
+                    </span>
                   </button>
                 </div>
               ))}
@@ -273,7 +320,9 @@ export default function NewSpeakingTopicPage() {
             </label>
             <textarea
               value={formData.sample_answer}
-              onChange={(e) => setFormData((f) => ({ ...f, sample_answer: e.target.value }))}
+              onChange={(e) =>
+                setFormData((f) => ({ ...f, sample_answer: e.target.value }))
+              }
               className="w-full border border-[#e6dbdb] rounded-lg px-4 py-2.5 text-[#181111] min-h-[150px]"
               placeholder="Provide a sample answer for reference..."
             />
@@ -281,7 +330,9 @@ export default function NewSpeakingTopicPage() {
 
           {/* Status */}
           <div>
-            <label className="block text-sm font-medium text-[#181111] mb-2">Status</label>
+            <label className="block text-sm font-medium text-[#181111] mb-2">
+              Status
+            </label>
             <div className="flex gap-3">
               <button
                 type="button"
@@ -296,7 +347,9 @@ export default function NewSpeakingTopicPage() {
               </button>
               <button
                 type="button"
-                onClick={() => setFormData((f) => ({ ...f, status: "published" }))}
+                onClick={() =>
+                  setFormData((f) => ({ ...f, status: "published" }))
+                }
                 className={`px-4 py-2 rounded-lg border-2 text-sm font-semibold transition-all ${
                   formData.status === "published"
                     ? "border-green-500 bg-green-100 text-green-700"

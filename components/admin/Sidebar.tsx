@@ -17,7 +17,11 @@ export default function AdminSidebar() {
       href: "/admin/reading-tests",
       icon: "description",
     },
-    { name: "Listening Management", href: "/admin/listening", icon: "headphones" },
+    {
+      name: "Listening Management",
+      href: "/admin/listening",
+      icon: "headphones",
+    },
     { name: "Speaking Management", href: "/admin/speaking", icon: "mic" },
     { name: "Reports", href: "/admin/reports", icon: "bar_chart" },
     { name: "Settings", href: "/admin/settings", icon: "settings" },
@@ -42,7 +46,8 @@ export default function AdminSidebar() {
         {/* Nav Links */}
         <nav className="flex flex-col gap-2 flex-1">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
+            const isActive =
+              pathname === item.href || pathname?.startsWith(item.href + "/");
             return (
               <Link
                 key={item.href}

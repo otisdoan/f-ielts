@@ -11,7 +11,9 @@ interface SpeakingInterfaceProps {
 
 export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
   const pathname = usePathname();
-  const [phase, setPhase] = useState<"preparation" | "recording" | "finished">("preparation");
+  const [phase, setPhase] = useState<"preparation" | "recording" | "finished">(
+    "preparation",
+  );
   const [prepTime, setPrepTime] = useState(topic.preparation_time || 60);
   const [recordTime, setRecordTime] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
@@ -60,9 +62,11 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
       };
 
       mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: "audio/webm",
+        });
         setAudioBlob(audioBlob);
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       };
 
       mediaRecorder.start();
@@ -107,9 +111,16 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b border-solid border-[#e6dbdb] bg-white dark:bg-background-dark/90 backdrop-blur px-4 md:px-10 lg:px-40 py-3">
         <div className="flex items-center justify-between max-w-[1200px] mx-auto">
-          <Link href="/practice/speaking" className="flex items-center gap-4 text-primary">
+          <Link
+            href="/practice/speaking"
+            className="flex items-center gap-4 text-primary"
+          >
             <div className="size-8">
-              <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z"
                   fill="currentColor"
@@ -140,7 +151,8 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
             </Link>
             <Link
               className={`text-sm font-semibold leading-normal hover:text-primary transition-colors ${
-                pathname?.startsWith("/mock-tests") || pathname?.startsWith("/courses")
+                pathname?.startsWith("/mock-tests") ||
+                pathname?.startsWith("/courses")
                   ? "text-primary font-bold underline underline-offset-4"
                   : "text-[#181111] dark:text-white/80"
               }`}
@@ -182,11 +194,15 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
               <Link className="hover:text-primary" href="/practice">
                 Practice
               </Link>
-              <span className="material-symbols-outlined text-xs">chevron_right</span>
+              <span className="material-symbols-outlined text-xs">
+                chevron_right
+              </span>
               <Link className="hover:text-primary" href="/practice/speaking">
                 Speaking
               </Link>
-              <span className="material-symbols-outlined text-xs">chevron_right</span>
+              <span className="material-symbols-outlined text-xs">
+                chevron_right
+              </span>
               <span className="font-semibold text-[#181111] dark:text-white">
                 Part {topic.part}
               </span>
@@ -260,7 +276,9 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
               {phase === "preparation" && (
                 <div className="text-center">
                   <div className="size-24 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 mx-auto">
-                    <span className="material-symbols-outlined text-4xl">schedule</span>
+                    <span className="material-symbols-outlined text-4xl">
+                      schedule
+                    </span>
                   </div>
                   <span className="block mt-4 text-sm font-bold text-[#181111] dark:text-white">
                     Preparing...
@@ -272,7 +290,9 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
                 <button onClick={stopRecording} className="relative group">
                   <div className="absolute -inset-4 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-all"></div>
                   <div className="relative size-24 rounded-full bg-primary flex items-center justify-center text-white shadow-2xl shadow-primary/40 hover:scale-105 transition-transform">
-                    <span className="material-symbols-outlined text-4xl">mic</span>
+                    <span className="material-symbols-outlined text-4xl">
+                      mic
+                    </span>
                   </div>
                   <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-sm font-bold text-[#181111] dark:text-white whitespace-nowrap">
                     Stop Recording
@@ -283,7 +303,9 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
               {phase === "finished" && (
                 <div className="text-center">
                   <div className="size-24 rounded-full bg-green-100 flex items-center justify-center text-green-600 mx-auto">
-                    <span className="material-symbols-outlined text-4xl">check_circle</span>
+                    <span className="material-symbols-outlined text-4xl">
+                      check_circle
+                    </span>
                   </div>
                   <span className="block mt-4 text-sm font-bold text-[#181111] dark:text-white">
                     Recording Complete!
@@ -299,7 +321,8 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
             <div className="bg-gradient-to-br from-[#181111] to-[#2d1a1a] text-white p-6 rounded-2xl shadow-lg border border-white/10">
               <h3 className="text-lg font-bold mb-2">Ready for analysis?</h3>
               <p className="text-white/70 text-sm mb-6 leading-relaxed">
-                Our AI will evaluate your fluency, pronunciation, and vocabulary range instantly.
+                Our AI will evaluate your fluency, pronunciation, and vocabulary
+                range instantly.
               </p>
               <button
                 onClick={submitForFeedback}
@@ -310,7 +333,9 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
                     : "bg-gray-500 cursor-not-allowed opacity-50"
                 } text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-primary/30`}
               >
-                <span className="material-symbols-outlined text-[20px]">psychology</span>
+                <span className="material-symbols-outlined text-[20px]">
+                  psychology
+                </span>
                 Submit for AI Feedback
               </button>
             </div>
@@ -319,19 +344,26 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
             <div className="bg-white dark:bg-[#2d1a1a] border border-[#e6dbdb] dark:border-white/10 rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[#181111] dark:text-white font-bold flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary">lightbulb</span>
+                  <span className="material-symbols-outlined text-primary">
+                    lightbulb
+                  </span>
                   Speaking Tips
                 </h3>
               </div>
               <ul className="space-y-4">
-                {(topic.tips && topic.tips.length > 0 ? topic.tips : [
-                  'Use connectors like "Moreover" or "On the other hand" to improve flow.',
-                  'Don\'t be afraid of brief pauses; it\'s better than saying "uhm" repeatedly.',
-                  'Vary your tone to sound more natural and engaged with the topic.'
-                ]).map((tip, index) => (
+                {(topic.tips && topic.tips.length > 0
+                  ? topic.tips
+                  : [
+                      'Use connectors like "Moreover" or "On the other hand" to improve flow.',
+                      "Don't be afraid of brief pauses; it's better than saying \"uhm\" repeatedly.",
+                      "Vary your tone to sound more natural and engaged with the topic.",
+                    ]
+                ).map((tip, index) => (
                   <li key={index} className="flex gap-3">
                     <div className="size-5 rounded-full bg-green-100 dark:bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="material-symbols-outlined text-xs">check</span>
+                      <span className="material-symbols-outlined text-xs">
+                        check
+                      </span>
                     </div>
                     <p className="text-sm text-[#896161] dark:text-white/60">
                       {tip}
@@ -347,12 +379,16 @@ export default function SpeakingInterface({ topic }: SpeakingInterfaceProps) {
                 onClick={retryRecording}
                 className="flex-1 flex items-center justify-center gap-2 bg-white dark:bg-white/5 border border-[#e6dbdb] dark:border-white/10 text-[#181111] dark:text-white font-bold py-3 px-4 rounded-xl hover:bg-[#f4f0f0] transition-all"
               >
-                <span className="material-symbols-outlined text-[18px]">replay</span>
+                <span className="material-symbols-outlined text-[18px]">
+                  replay
+                </span>
                 Retry
               </button>
               <Link href="/practice/speaking" className="flex-1">
                 <button className="w-full flex items-center justify-center gap-2 bg-white dark:bg-white/5 border border-[#e6dbdb] dark:border-white/10 text-[#181111] dark:text-white font-bold py-3 px-4 rounded-xl hover:bg-[#f4f0f0] transition-all">
-                  <span className="material-symbols-outlined text-[18px]">skip_next</span>
+                  <span className="material-symbols-outlined text-[18px]">
+                    skip_next
+                  </span>
                   Skip
                 </button>
               </Link>

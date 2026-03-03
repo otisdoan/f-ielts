@@ -56,8 +56,15 @@ export default function AdminSpeakingPage() {
   const [topics, setTopics] = useState<SpeakingTopic[]>([]);
   const [filteredTopics, setFilteredTopics] = useState<SpeakingTopic[]>([]);
   const [loading, setLoading] = useState(true);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
-  const [filters, setFilters] = useState({ part: "", difficulty: "", status: "" });
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+  const [filters, setFilters] = useState({
+    part: "",
+    difficulty: "",
+    status: "",
+  });
 
   useEffect(() => {
     loadTopics();
@@ -65,8 +72,10 @@ export default function AdminSpeakingPage() {
 
   useEffect(() => {
     let list = [...topics];
-    if (filters.part) list = list.filter((t) => t.part === parseInt(filters.part));
-    if (filters.difficulty) list = list.filter((t) => t.difficulty === filters.difficulty);
+    if (filters.part)
+      list = list.filter((t) => t.part === parseInt(filters.part));
+    if (filters.difficulty)
+      list = list.filter((t) => t.difficulty === filters.difficulty);
     if (filters.status) list = list.filter((t) => t.status === filters.status);
     setFilteredTopics(list);
   }, [topics, filters]);
@@ -94,7 +103,8 @@ export default function AdminSpeakingPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this speaking topic?")) return;
+    if (!confirm("Are you sure you want to delete this speaking topic?"))
+      return;
     try {
       await SpeakingService.deleteTopic(id);
       showToast("Topic deleted successfully.", "success");
@@ -133,18 +143,27 @@ export default function AdminSpeakingPage() {
 
       {/* Breadcrumb */}
       <div className="px-8 py-4 flex items-center gap-2 text-sm border-b border-[#e6dbdb]">
-        <Link href="/admin" className="text-[#896161] hover:text-primary transition-colors">
+        <Link
+          href="/admin"
+          className="text-[#896161] hover:text-primary transition-colors"
+        >
           Home
         </Link>
-        <span className="material-symbols-outlined text-xs text-[#896161]">chevron_right</span>
+        <span className="material-symbols-outlined text-xs text-[#896161]">
+          chevron_right
+        </span>
         <span className="text-[#181111] font-medium">Speaking Management</span>
       </div>
 
       {/* Header */}
       <div className="px-8 py-6 flex items-center justify-between border-b border-[#e6dbdb]">
         <div>
-          <h1 className="text-2xl font-bold text-[#181111] mb-1">Speaking Topics</h1>
-          <p className="text-sm text-[#896161]">Manage IELTS speaking practice topics</p>
+          <h1 className="text-2xl font-bold text-[#181111] mb-1">
+            Speaking Topics
+          </h1>
+          <p className="text-sm text-[#896161]">
+            Manage IELTS speaking practice topics
+          </p>
         </div>
         <Link href="/admin/speaking/new">
           <button className="flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/30">
@@ -171,7 +190,9 @@ export default function AdminSpeakingPage() {
 
         <select
           value={filters.difficulty}
-          onChange={(e) => setFilters((f) => ({ ...f, difficulty: e.target.value }))}
+          onChange={(e) =>
+            setFilters((f) => ({ ...f, difficulty: e.target.value }))
+          }
           className="border border-[#e6dbdb] rounded-lg px-4 py-2 bg-white text-sm"
         >
           <option value="">All Difficulties</option>
@@ -184,7 +205,9 @@ export default function AdminSpeakingPage() {
 
         <select
           value={filters.status}
-          onChange={(e) => setFilters((f) => ({ ...f, status: e.target.value }))}
+          onChange={(e) =>
+            setFilters((f) => ({ ...f, status: e.target.value }))
+          }
           className="border border-[#e6dbdb] rounded-lg px-4 py-2 bg-white text-sm"
         >
           <option value="">All Status</option>
@@ -214,7 +237,9 @@ export default function AdminSpeakingPage() {
             <span className="material-symbols-outlined text-6xl text-gray-300 mb-4">
               mic_off
             </span>
-            <p className="text-gray-600 text-lg font-medium mb-2">No topics found</p>
+            <p className="text-gray-600 text-lg font-medium mb-2">
+              No topics found
+            </p>
             <p className="text-gray-500 text-sm mb-6">
               {filters.part || filters.difficulty || filters.status
                 ? "Try adjusting your filters"
@@ -255,9 +280,14 @@ export default function AdminSpeakingPage() {
               </thead>
               <tbody className="divide-y divide-[#e6dbdb]">
                 {filteredTopics.map((topic) => (
-                  <tr key={topic.id} className="hover:bg-[#f8f6f6] transition-colors">
+                  <tr
+                    key={topic.id}
+                    className="hover:bg-[#f8f6f6] transition-colors"
+                  >
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-[#181111]">{topic.title}</div>
+                      <div className="text-sm font-medium text-[#181111]">
+                        {topic.title}
+                      </div>
                       <div className="text-xs text-[#896161] mt-1 line-clamp-1">
                         {topic.description}
                       </div>
@@ -268,12 +298,14 @@ export default function AdminSpeakingPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-sm text-[#181111]">{topic.category}</span>
+                      <span className="text-sm text-[#181111]">
+                        {topic.category}
+                      </span>
                     </td>
                     <td className="px-6 py-4">
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${getDifficultyColor(
-                          topic.difficulty
+                          topic.difficulty,
                         )}`}
                       >
                         {topic.difficulty}

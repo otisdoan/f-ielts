@@ -1,7 +1,7 @@
 "use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function DashboardHeader() {
   const pathname = usePathname();
@@ -43,7 +43,8 @@ export default function DashboardHeader() {
               </Link>
               <Link
                 className={`text-sm font-semibold leading-normal transition-colors ${
-                  pathname?.startsWith("/courses") || pathname?.startsWith("/mock-tests")
+                  pathname?.startsWith("/courses") ||
+                  pathname?.startsWith("/mock-tests")
                     ? "text-primary font-semibold"
                     : "text-slate-600 -slate-400 font-medium hover:text-primary"
                 }`}
