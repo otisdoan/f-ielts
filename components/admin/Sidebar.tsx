@@ -12,15 +12,13 @@ export default function AdminSidebar() {
     { name: "Users", href: "/admin/users", icon: "group" },
     { name: "Courses", href: "/admin/courses", icon: "menu_book" },
     { name: "Writing Management", href: "/admin/writing", icon: "edit_note" },
-
-
     {
       name: "Reading Tests",
       href: "/admin/reading-tests",
       icon: "description",
     },
     { name: "Listening Management", href: "/admin/listening", icon: "headphones" },
-
+    { name: "Speaking Management", href: "/admin/speaking", icon: "mic" },
     { name: "Reports", href: "/admin/reports", icon: "bar_chart" },
     { name: "Settings", href: "/admin/settings", icon: "settings" },
   ];

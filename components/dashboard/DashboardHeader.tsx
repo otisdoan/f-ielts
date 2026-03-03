@@ -1,7 +1,10 @@
+"use client";
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function DashboardHeader() {
+  const pathname = usePathname();
   return (
     <header className="sticky top-0 z-50 bg-white -background-dark border-b border-slate-200 -slate-800">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,25 +22,41 @@ export default function DashboardHeader() {
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link
-                className="text-primary text-sm font-semibold leading-normal"
+                className={`text-sm font-semibold leading-normal transition-colors ${
+                  pathname === "/dashboard"
+                    ? "text-primary font-semibold"
+                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
+                }`}
                 href="/dashboard"
               >
                 Dashboard
               </Link>
               <Link
-                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className={`text-sm font-semibold leading-normal transition-colors ${
+                  pathname?.startsWith("/practice")
+                    ? "text-primary font-semibold"
+                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
+                }`}
                 href="/practice"
               >
                 Practice Tests
               </Link>
               <Link
-                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className={`text-sm font-semibold leading-normal transition-colors ${
+                  pathname?.startsWith("/courses") || pathname?.startsWith("/mock-tests")
+                    ? "text-primary font-semibold"
+                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
+                }`}
                 href="/courses"
               >
                 Study Material
               </Link>
               <Link
-                className="text-slate-600 -slate-400 text-sm font-medium hover:text-primary transition-colors"
+                className={`text-sm font-semibold leading-normal transition-colors ${
+                  pathname?.startsWith("/settings")
+                    ? "text-primary font-semibold"
+                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
+                }`}
                 href="/settings"
               >
                 Settings
