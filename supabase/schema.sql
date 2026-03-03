@@ -10,6 +10,8 @@ create table profiles
   role text default 'student',
   -- 'student', 'admin', 'tutor'
   target_band numeric,
+  preferred_language text default 'en',
+  updated_at timestamptz default now(),
   created_at timestamptz default now()
 );
 

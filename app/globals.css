@@ -68,3 +68,32 @@ body {
   border-bottom: 2px solid #3b82f6;
   cursor: pointer;
 }
+
+/* Dashboard New Styles */
+.dashboard-body-bg {
+  background: radial-gradient(circle at top left, #fdf2f2 0%, #ffffff 40%),
+              radial-gradient(circle at bottom right, #fff5f5 0%, #ffffff 40%),
+              linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-xl;
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.08);
+}
+
+.gauge-svg {
+  transform: rotate(-90deg);
+}
+
+.timeline-item::before {
+  content: '';
+  @apply absolute left-6 top-10 bottom-0 w-px bg-slate-100;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.floating-icon {
+  @apply absolute pointer-events-none drop-shadow-2xl opacity-20 transition-all duration-1000;
+}
