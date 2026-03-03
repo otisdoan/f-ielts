@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function DashboardHeader() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   return (
     <header className="sticky top-0 z-50 bg-white -background-dark border-b border-slate-200 -slate-800">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,45 +24,41 @@ export default function DashboardHeader() {
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link
-                className={`text-sm font-semibold leading-normal transition-colors ${
-                  pathname === "/dashboard"
+                className={`text-sm font-semibold leading-normal transition-colors ${pathname === "/dashboard"
                     ? "text-primary font-semibold"
-                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
-                }`}
+                    : "text-slate-600 font-medium hover:text-primary"
+                  }`}
                 href="/dashboard"
               >
-                Dashboard
+                {t('dashboard')}
               </Link>
               <Link
-                className={`text-sm font-semibold leading-normal transition-colors ${
-                  pathname?.startsWith("/practice")
+                className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/practice")
                     ? "text-primary font-semibold"
-                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
-                }`}
+                    : "text-slate-600 font-medium hover:text-primary"
+                  }`}
                 href="/practice"
               >
-                Practice Tests
+                {t('practiceTests')}
               </Link>
               <Link
-                className={`text-sm font-semibold leading-normal transition-colors ${
-                  pathname?.startsWith("/courses") ||
-                  pathname?.startsWith("/mock-tests")
+                className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/courses") ||
+                    pathname?.startsWith("/mock-tests")
                     ? "text-primary font-semibold"
-                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
-                }`}
+                    : "text-slate-600 font-medium hover:text-primary"
+                  }`}
                 href="/courses"
               >
-                Study Material
+                {t('studyMaterial')}
               </Link>
               <Link
-                className={`text-sm font-semibold leading-normal transition-colors ${
-                  pathname?.startsWith("/settings")
+                className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/settings")
                     ? "text-primary font-semibold"
-                    : "text-slate-600 -slate-400 font-medium hover:text-primary"
-                }`}
+                    : "text-slate-600 font-medium hover:text-primary"
+                  }`}
                 href="/settings"
               >
-                Settings
+                {t('settings')}
               </Link>
             </nav>
           </div>
@@ -71,7 +69,7 @@ export default function DashboardHeader() {
               </span>
               <input
                 className="bg-transparent border-none focus:ring-0 text-sm w-48 p-0 placeholder:text-slate-500 outline-none"
-                placeholder="Search lessons..."
+                placeholder={t('searchLessons')}
                 type="text"
               />
             </div>

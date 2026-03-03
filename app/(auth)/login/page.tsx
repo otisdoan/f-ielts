@@ -58,6 +58,23 @@ export default function LoginPage() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+    } catch (err: any) {
+      setError(err.message || "Failed to sign in with Google");
+    }
+  };
+
   return (
     <div className="bg-white -slate-900 rounded-2xl shadow-xl border border-slate-200 -slate-800 p-8">
       <div className="text-center mb-8">
@@ -131,7 +148,12 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-6">
-          <button className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 -slate-700 rounded-lg shadow-sm bg-white -slate-800 text-sm font-medium text-slate-700 -slate-200 hover:bg-slate-50 :bg-slate-700 transition-colors">
+          <button 
+            type="button"
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-slate-200 -slate-700 rounded-lg shadow-sm bg-white -slate-800 text-sm font-medium text-slate-700 -slate-200 hover:bg-slate-50 :bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <svg className="size-5" viewBox="0 0 24 24">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"

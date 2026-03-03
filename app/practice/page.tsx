@@ -1,8 +1,13 @@
-
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Link from "next/link";
+import { getDictionary, Language } from "@/lib/i18n";
+import { cookies } from "next/headers";
 
-export default function PracticePage() {
+export default async function PracticePage() {
+  const cookieStore = await cookies();
+  const lang = (cookieStore.get("preferred_language")?.value as Language) || "en";
+  const dict = getDictionary(lang);
+
   return (
     <div className="bg-background-light font-display min-h-screen font-sans">
       <DashboardHeader />
@@ -11,10 +16,10 @@ export default function PracticePage() {
         <div className="flex flex-wrap justify-between items-end gap-3 pb-8">
           <div className="flex min-w-72 flex-col gap-1">
             <p className="text-[#181111] -white text-4xl font-black leading-tight tracking-[-0.033em]">
-              Master Your Skills
+              {dict.masterSkills}
             </p>
             <p className="text-[#896161] -white/60 text-lg font-normal leading-normal">
-              Select an IELTS module to begin your targeted practice session.
+              {dict.selectModule}
             </p>
           </div>
           <div className="flex items-center gap-2 bg-white -white/5 px-4 py-2 rounded-xl border border-[#e6dbdb] -white/10">
@@ -22,7 +27,7 @@ export default function PracticePage() {
               event
             </span>
             <span className="text-sm font-medium text-[#181111] -white/80">
-              Goal: 7.5 Band by Oct 20
+              {dict.goalBand}
             </span>
           </div>
         </div>
@@ -68,20 +73,19 @@ export default function PracticePage() {
             </div>
             <div className="flex flex-col gap-2">
               <h2 className="text-[#181111] -white text-2xl font-bold leading-tight">
-                Reading
+                {dict.reading}
               </h2>
               <p className="text-[#896161] -white/60 text-base leading-normal">
-                Enhance comprehension with academic passages and question-type
-                drills.
+                {dict.enhanceComprehension}
               </p>
             </div>
             <div className="flex items-center justify-between mt-auto">
               <span className="text-xs font-semibold text-[#896161] -white/40 uppercase tracking-wider">
-                15/20 Lessons
+                15/20 {dict.lessons}
               </span>
               <Link href="/practice/reading">
                 <button className="flex items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 cursor-pointer">
-                  Practice Now
+                  {dict.practiceNow}
                 </button>
               </Link>
             </div>
@@ -97,7 +101,7 @@ export default function PracticePage() {
               </div>
               <div className="relative flex items-center justify-center">
                 <svg className="size-16">
-                    <circle
+                  <circle
                     className="text-[#f4f0f0] -white/5"
                     cx="32"
                     cy="32"
@@ -126,20 +130,19 @@ export default function PracticePage() {
             </div>
             <div className="flex flex-col gap-2">
               <h2 className="text-[#181111] -white text-2xl font-bold leading-tight">
-                Listening
+                {dict.listening}
               </h2>
               <p className="text-[#896161] -white/60 text-base leading-normal">
-                Improve accuracy across various English accents and complex
-                conversations.
+                {dict.improveAccuracy}
               </p>
             </div>
             <div className="flex items-center justify-between mt-auto">
               <span className="text-xs font-semibold text-[#896161] -white/40 uppercase tracking-wider">
-                9/20 Lessons
+                9/20 {dict.lessons}
               </span>
               <Link href="/practice/listening">
                 <button className="flex items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 cursor-pointer">
-                  Practice Now
+                  {dict.practiceNow}
                 </button>
               </Link>
             </div>
@@ -184,20 +187,19 @@ export default function PracticePage() {
             </div>
             <div className="flex flex-col gap-2">
               <h2 className="text-[#181111] -white text-2xl font-bold leading-tight">
-                Writing
+                {dict.writing}
               </h2>
               <p className="text-[#896161] -white/60 text-base leading-normal">
-                Refine Task 1 and Task 2 structures with real-time grammar
-                checking.
+                {dict.refineTask}
               </p>
             </div>
             <div className="flex items-center justify-between mt-auto">
               <span className="text-xs font-semibold text-[#896161] -white/40 uppercase tracking-wider">
-                4/20 Lessons
+                4/20 {dict.lessons}
               </span>
               <Link href="/practice/writing">
                 <button className="flex items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 cursor-pointer">
-                  Practice Now
+                  {dict.practiceNow}
                 </button>
               </Link>
             </div>
@@ -242,20 +244,19 @@ export default function PracticePage() {
             </div>
             <div className="flex flex-col gap-2">
               <h2 className="text-[#181111] -white text-2xl font-bold leading-tight">
-                Speaking
+                {dict.speaking}
               </h2>
               <p className="text-[#896161] -white/60 text-base leading-normal">
-                Practice fluency and pronunciation with interactive AI feedback
-                modules.
+                {dict.practiceFluency}
               </p>
             </div>
             <div className="flex items-center justify-between mt-auto">
               <span className="text-xs font-semibold text-[#896161] -white/40 uppercase tracking-wider">
-                2/20 Lessons
+                2/20 {dict.lessons}
               </span>
               <Link href="/practice/speaking">
                 <button className="flex items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 cursor-pointer">
-                  Practice Now
+                  {dict.practiceNow}
                 </button>
               </Link>
             </div>
@@ -266,10 +267,10 @@ export default function PracticePage() {
         <div className="bg-white -[#2d1a1a] rounded-xl border border-[#e6dbdb] -white/10 p-8">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-[#181111] -white text-xl font-bold">
-              Recommended for you
+              {dict.recommendedForYou}
             </h3>
             <a href="#" className="text-primary text-sm font-bold hover:underline">
-              View all recommendations
+              {dict.viewAllRecommendations}
             </a>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -279,10 +280,10 @@ export default function PracticePage() {
               </div>
               <div>
                 <p className="text-[#181111] -white font-bold">
-                  Vocabulary Drill: Environment
+                  {dict.vocabDrillEnv}
                 </p>
                 <p className="text-[#896161] -white/60 text-sm">
-                  Targeting your weak area in Speaking
+                  {dict.targetingWeakArea}
                 </p>
               </div>
             </div>
@@ -292,29 +293,29 @@ export default function PracticePage() {
               </div>
               <div>
                 <p className="text-[#181111] -white font-bold">
-                  Mock Test #4 Analysis
+                  {dict.mockTestAnalysis}
                 </p>
                 <p className="text-[#896161] -white/60 text-sm">
-                  Review common errors in Reading
+                  {dict.reviewCommonErrors}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </main>
-      
+
       <footer className="mt-auto border-t border-[#e6dbdb] -white/10 py-10 px-4 md:px-10 lg:px-40 opacity-60">
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm">database</span>
-                <p className="text-xs font-bold">© 2024 F-IELTS EdTech. All rights reserved.</p>
-            </div>
-            <div className="flex gap-8 text-[#896161] -white/40 text-sm font-medium">
-                <a className="hover:text-primary" href="#">Help Center</a>
-                <a className="hover:text-primary" href="#">Terms of Service</a>
-                <a className="hover:text-primary" href="#">Privacy Policy</a>
-                <a className="hover:text-primary" href="#">Community</a>
-            </div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">database</span>
+            <p className="text-xs font-bold">{dict.allRightsReserved}</p>
+          </div>
+          <div className="flex gap-8 text-[#896161] -white/40 text-sm font-medium">
+            <a className="hover:text-primary" href="#">{dict.helpCenter}</a>
+            <a className="hover:text-primary" href="#">{dict.termsOfService}</a>
+            <a className="hover:text-primary" href="#">{dict.privacyPolicy}</a>
+            <a className="hover:text-primary" href="#">{dict.community}</a>
+          </div>
         </div>
       </footer>
     </div>
