@@ -69,8 +69,8 @@ export default async function AdminCoursesPage() {
                                 <tr key={course.id} className="hover:bg-[#f8f6f6] transition-colors group">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-4">
-                                            {course.image_url ? (
-                                                <div className="h-12 w-16 rounded-md flex-shrink-0 bg-cover bg-center border border-zinc-200 flex items-center justify-center" style={{ backgroundImage: `url(${course.image_url})` }}></div>
+                                            {course.thumbnail ? (
+                                                <div className="h-12 w-16 rounded-md flex-shrink-0 bg-cover bg-center border border-zinc-200 flex items-center justify-center" style={{ backgroundImage: `url(${course.thumbnail})` }}></div>
                                             ) : (
                                                 <div className="h-12 w-16 rounded-md bg-zinc-100 flex-shrink-0 bg-cover bg-center border border-zinc-200 flex items-center justify-center">
                                                     <span className="text-[10px] font-bold text-slate-400">IMAGE</span>
@@ -78,13 +78,13 @@ export default async function AdminCoursesPage() {
                                             )}
                                             <div>
                                                 <p className="font-bold text-[#181111]">{course.title || 'Untitled Course'}</p>
-                                                <p className="text-xs text-[#896161]">Last updated: {new Date(course.updated_at || course.created_at).toLocaleDateString()}</p>
+                                                <p className="text-xs text-[#896161]">Last updated: {new Date(course.created_at).toLocaleDateString()}</p>
                                             </div>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
                                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20">
-                                            Band {course.target_band || 'N/A'}
+                                            Band {course.level || 'N/A'}
                                         </span>
                                     </td>
                                     <td className="px-6 py-4">

@@ -28,6 +28,70 @@ export default async function Dashboard() {
   const lang = (cookieStore.get("preferred_language")?.value as Language) || "en";
   const dict = getDictionary(lang);
 
+  // === Study Intensity: đếm số lần attempt của user theo ngày trong tuần ===
+  // Xác định phạm vi ngày của tuần hiện tại (Mon-Sun) và tuần trước
+  const now = new Date();
+  // Tính ngày đầu tuần (Thứ Hai)
+  const dayOfWeek = now.getDay(); // 0=Sun,1=Mon,...,6=Sat
+  const daysFromMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  const thisWeekStart = new Date(now);
+  thisWeekStart.setDate(now.getDate() - daysFromMonday);
+  thisWeekStart.setHours(0, 0, 0, 0);
+  const thisWeekEnd = new Date(thisWeekStart);
+  thisWeekEnd.setDate(thisWeekStart.getDate() + 7);
+
+  const lastWeekStart = new Date(thisWeekStart);
+  lastWeekStart.setDate(thisWeekStart.getDate() - 7);
+
+  // Fetch tất cả attempt trong 2 tuần gần nhất
+  const [{ data: testAttempts }, { data: readingAttempts }] = await Promise.all([
+    supabase
+      .from("test_attempts")
+      .select("submitted_at")
+      .eq("user_id", user.id)
+      .gte("submitted_at", lastWeekStart.toISOString())
+      .lt("submitted_at", thisWeekEnd.toISOString()),
+    supabase
+      .from("reading_test_attempts")
+      .select("submitted_at")
+      .eq("user_id", user.id)
+      .gte("submitted_at", lastWeekStart.toISOString())
+      .lt("submitted_at", thisWeekEnd.toISOString()),
+  ]);
+
+  // Gom tất cả submitted_at lại
+  const allAttempts = [
+    ...(testAttempts ?? []),
+    ...(readingAttempts ?? []),
+  ];
+
+  // Đếm theo từng ngày trong tuần hiện tại (0=Mon, 6=Sun)
+  const weekDayCount = [0, 0, 0, 0, 0, 0, 0]; // Mon..Sun
+  let lastWeekTotal = 0;
+  let thisWeekTotal = 0;
+
+  for (const a of allAttempts) {
+    const d = new Date(a.submitted_at);
+    if (d >= thisWeekStart && d < thisWeekEnd) {
+      const wd = d.getDay(); // 0=Sun
+      const idx = wd === 0 ? 6 : wd - 1; // convert Sun=0 -> idx=6
+      weekDayCount[idx]++;
+      thisWeekTotal++;
+    } else {
+      lastWeekTotal++;
+    }
+  }
+
+  // Tính % thay đổi so tuần trước
+  let changePercent: number | null = null;
+  if (lastWeekTotal > 0) {
+    changePercent = Math.round(((thisWeekTotal - lastWeekTotal) / lastWeekTotal) * 100);
+  } else if (thisWeekTotal > 0) {
+    changePercent = 100;
+  }
+
+  const maxCount = Math.max(...weekDayCount, 1); // tránh chia 0
+
   return (
     <div className="dashboard-body-bg text-slate-900 min-h-screen font-sans flex flex-col">
       <DashboardHeader />
@@ -127,43 +191,80 @@ export default async function Dashboard() {
             <div className="glass-card rounded-[32px] p-8">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">Study Intensity</h3>
-                  <p className="text-slate-500 text-sm">Daily practice hours this week</p>
+                  <h3 className="text-xl font-bold text-slate-900">{dict.studyIntensity}</h3>
+                  <p className="text-slate-500 text-sm">{dict.dailyPracticeHours}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 bg-green-50 text-green-600 rounded-full text-xs font-bold">+15% vs last week</span>
+                  {changePercent !== null ? (
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${changePercent >= 0
+                        ? "bg-green-50 text-green-600"
+                        : "bg-red-50 text-red-500"
+                        }`}
+                    >
+                      {changePercent >= 0 ? "+" : ""}{changePercent}% {dict.vsLastWeek}
+                    </span>
+                  ) : (
+                    <span className="px-3 py-1 bg-slate-50 text-slate-400 rounded-full text-xs font-bold">
+                      {dict.noActivity}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="flex items-end justify-between h-40 gap-4">
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[45%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Mon</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[65%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Tue</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-primary rounded-lg h-[95%] shadow-lg shadow-primary/20"></div>
-                  <span className="text-[10px] font-bold text-slate-900 uppercase">Wed</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[35%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Thu</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[75%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Fri</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[55%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Sat</span>
-                </div>
-                <div className="flex-1 flex flex-col items-center gap-3">
-                  <div className="w-full bg-slate-100 rounded-lg h-[25%] hover:bg-primary/20 transition-colors"></div>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase">Sun</span>
-                </div>
+                {([
+                  { key: "mon", label: dict.dayMon },
+                  { key: "tue", label: dict.dayTue },
+                  { key: "wed", label: dict.dayWed },
+                  { key: "thu", label: dict.dayThu },
+                  { key: "fri", label: dict.dayFri },
+                  { key: "sat", label: dict.daySat },
+                  { key: "sun", label: dict.daySun },
+                ] as const).map((day, idx) => {
+                  const count = weekDayCount[idx];
+                  // Độ cao tối thiểu 8% nếu có dữ liệu, 4% nếu không
+                  const heightPct = count > 0 ? Math.max(8, Math.round((count / maxCount) * 90)) : 4;
+                  // ngày hiện tại
+                  const isToday = idx === (daysFromMonday);
+                  const isActive = count > 0;
+                  return (
+                    <div key={day.key} className="flex-1 flex flex-col items-center gap-3 group/bar relative">
+                      {/* Tooltip */}
+                      {count > 0 && (
+                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/bar:opacity-100 transition-opacity pointer-events-none z-10">
+                          <div className="bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded-lg whitespace-nowrap shadow-lg">
+                            {count} {dict.attempts}
+                          </div>
+                          <div className="w-2 h-2 bg-slate-900 rotate-45 mx-auto -mt-1"></div>
+                        </div>
+                      )}
+                      <div
+                        className={`w-full rounded-lg transition-all duration-300 ${isActive
+                          ? isToday
+                            ? "bg-primary shadow-lg shadow-primary/30 hover:bg-red-600"
+                            : "bg-primary/70 hover:bg-primary"
+                          : isToday
+                            ? "bg-slate-200 ring-2 ring-primary/30"
+                            : "bg-slate-100 hover:bg-primary/20"
+                          }`}
+                        style={{ height: `${heightPct}%` }}
+                      />
+                      <span
+                        className={`text-[10px] font-bold uppercase ${isToday ? "text-primary" : "text-slate-400"
+                          }`}
+                      >
+                        {day.label}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
+              {/* Tổng hoạt động trong tuần */}
+              {thisWeekTotal > 0 && (
+                <p className="text-xs text-slate-400 mt-4 text-center">
+                  {thisWeekTotal} {dict.attempts} {lang === "vi" ? "trong tuần này" : "this week"}
+                </p>
+              )}
             </div>
 
             {/* Skill Progress (KEPT FROM ORIGINAL) */}

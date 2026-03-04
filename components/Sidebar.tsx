@@ -28,33 +28,30 @@ export default function Sidebar() {
         <nav className="flex flex-col gap-1 flex-1">
           <Link
             href="/dashboard"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              isActive("/dashboard")
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/dashboard")
                 ? "bg-primary/10 text-primary"
                 : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
-            }`}
+              }`}
           >
             <span className="material-symbols-outlined">dashboard</span>
             <span className="text-sm font-semibold">Dashboard</span>
           </Link>
           <Link
             href="/practice"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              isActive("/practice")
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/practice")
                 ? "bg-primary/10 text-primary"
                 : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
-            }`}
+              }`}
           >
             <span className="material-symbols-outlined">edit_note</span>
             <span className="text-sm font-semibold">Practice Tests</span>
           </Link>
           <Link
             href="/analytics"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              isActive("/analytics")
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/analytics")
                 ? "bg-primary/10 text-primary"
                 : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
-            }`}
+              }`}
           >
             <span
               className="material-symbols-outlined"
@@ -65,23 +62,31 @@ export default function Sidebar() {
             <span className="text-sm font-semibold">Analytics</span>
           </Link>
           <Link
-            href="#"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              isActive("/materials")
+            href="/translation"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/translation")
                 ? "bg-primary/10 text-primary"
                 : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
-            }`}
+              }`}
+          >
+            <span className="material-symbols-outlined">translate</span>
+            <span className="text-sm font-semibold">Translation</span>
+          </Link>
+          <Link
+            href="#"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/materials")
+                ? "bg-primary/10 text-primary"
+                : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
+              }`}
           >
             <span className="material-symbols-outlined">menu_book</span>
             <span className="text-sm font-semibold">Study Materials</span>
           </Link>
           <Link
             href="#"
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-              isActive("/plan")
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors ${isActive("/plan")
                 ? "bg-primary/10 text-primary"
                 : "text-[#896161] hover:bg-[#f4f0f0] :bg-[#3d2424]"
-            }`}
+              }`}
           >
             <span className="material-symbols-outlined">event</span>
             <span className="text-sm font-semibold">Study Plan</span>

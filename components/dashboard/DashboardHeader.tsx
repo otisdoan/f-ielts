@@ -25,17 +25,26 @@ export default function DashboardHeader() {
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 className={`text-sm font-semibold leading-normal transition-colors ${pathname === "/dashboard"
-                    ? "text-primary font-semibold"
-                    : "text-slate-600 font-medium hover:text-primary"
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 font-medium hover:text-primary"
                   }`}
                 href="/dashboard"
               >
                 {t('dashboard')}
               </Link>
               <Link
+                className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/translation")
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 font-medium hover:text-primary"
+                  }`}
+                href="/translation"
+              >
+                Translation
+              </Link>
+              <Link
                 className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/practice")
-                    ? "text-primary font-semibold"
-                    : "text-slate-600 font-medium hover:text-primary"
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 font-medium hover:text-primary"
                   }`}
                 href="/practice"
               >
@@ -43,9 +52,9 @@ export default function DashboardHeader() {
               </Link>
               <Link
                 className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/courses") ||
-                    pathname?.startsWith("/mock-tests")
-                    ? "text-primary font-semibold"
-                    : "text-slate-600 font-medium hover:text-primary"
+                  pathname?.startsWith("/mock-tests")
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 font-medium hover:text-primary"
                   }`}
                 href="/courses"
               >
@@ -53,8 +62,8 @@ export default function DashboardHeader() {
               </Link>
               <Link
                 className={`text-sm font-semibold leading-normal transition-colors ${pathname?.startsWith("/settings")
-                    ? "text-primary font-semibold"
-                    : "text-slate-600 font-medium hover:text-primary"
+                  ? "text-primary font-semibold"
+                  : "text-slate-600 font-medium hover:text-primary"
                   }`}
                 href="/settings"
               >
